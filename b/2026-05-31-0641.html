@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Briefing de Tráfego, 31/05/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --bg: #f4f6f9;
+      --white: #ffffff;
+      --navy: #0f172a;
+      --blue: #2563eb;
+      --blue-light: #eff6ff;
+      --amber: #b45309;
+      --amber-bg: #fffbeb;
+      --amber-border: #fcd34d;
+      --green: #15803d;
+      --green-bg: #f0fdf4;
+      --red-bg: #fef2f2;
+      --red: #b91c1c;
+      --gray: #64748b;
+      --border: #e2e8f0;
+      --shadow: 0 1px 3px rgba(0,0,0,.08), 0 1px 2px rgba(0,0,0,.06);
+      --radius: 10px;
+      --font: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    }
+    html { font-size: 16px; }
+    body {
+      background: var(--bg);
+      font-family: var(--font);
+      color: var(--navy);
+      line-height: 1.6;
+      padding: 0 0 48px;
+    }
+    /* HEADER */
+    header {
+      background: var(--navy);
+      color: #fff;
+      padding: 28px 24px 22px;
+      text-align: center;
+    }
+    header h1 { font-size: 1.55rem; font-weight: 700; letter-spacing: -0.02em; }
+    header .sub { margin-top: 4px; font-size: .9rem; opacity: .7; letter-spacing: .04em; }
+    /* CONTAINER */
+    .container { max-width: 780px; margin: 0 auto; padding: 0 16px; }
+    /* TL;DR */
+    .tldr {
+      background: var(--amber-bg);
+      border: 1.5px solid var(--amber-border);
+      border-radius: var(--radius);
+      padding: 20px 22px;
+      margin: 24px 0 8px;
+    }
+    .tldr h2 { font-size: .75rem; text-transform: uppercase; letter-spacing: .1em; color: var(--amber); font-weight: 700; margin-bottom: 8px; }
+    .tldr p { font-size: .97rem; color: #451a03; line-height: 1.65; }
+    /* SECTION */
+    section.area { margin-top: 28px; }
+    section.area h2 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: var(--navy);
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--border);
+      margin-bottom: 14px;
+    }
+    /* CARD GRID */
+    .cards { display: grid; gap: 12px; grid-template-columns: 1fr; }
+    @media(min-width: 580px){ .cards { grid-template-columns: 1fr 1fr; } }
+    /* CARD */
+    .card {
+      background: var(--white);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 16px 18px 14px;
+      box-shadow: var(--shadow);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+    .card h3 { font-size: .93rem; font-weight: 700; color: var(--navy); line-height: 1.35; }
+    .card .importa {
+      font-size: .87rem;
+      color: #334155;
+      line-height: 1.55;
+    }
+    .card .importa strong { color: var(--blue); }
+    .card a {
+      display: inline-block;
+      margin-top: 4px;
+      font-size: .78rem;
+      font-weight: 600;
+      color: var(--blue);
+      text-decoration: none;
+      word-break: break-all;
+    }
+    .card a:hover { text-decoration: underline; }
+    .card .badge {
+      display: inline-block;
+      font-size: .68rem;
+      font-weight: 700;
+      letter-spacing: .05em;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 99px;
+      margin-bottom: 2px;
+      width: fit-content;
+    }
+    .badge.novo { background: #dcfce7; color: #15803d; }
+    .badge.urgente { background: #fee2e2; color: #b91c1c; }
+    .badge.atencao { background: #fef9c3; color: #854d0e; }
+    /* FOOTER */
+    footer {
+      text-align: center;
+      margin-top: 40px;
+      font-size: .78rem;
+      color: var(--gray);
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>Briefing de Tráfego</h1>
+  <div class="sub">31/05/2026 &nbsp;|&nbsp; Geração de Leads</div>
+</header>
+
+<div class="container">
+
+  <!-- TL;DR -->
+  <div class="tldr">
+    <h2>TL;DR</h2>
+    <p>
+      O Google lançou o <strong>Business Agent for Leads</strong> em beta aberto nos EUA (imobiliário, auto, educação): um agente Gemini dentro do anúncio de pesquisa substitui o formulário estático e só envia o lead depois de qualificado. A Meta activou o <strong>CAPI em um clique</strong> (sem programação, sem servidor) e expandiu as audiências de compra para 730 dias. Enquanto isso, o ChatGPT abre o seu <strong>Ads Manager a parceiros</strong> e a Perplexity abandona a publicidade por completo.
+    </p>
+  </div>
+
+  <!-- A: PLATAFORMAS & ALGORITMOS -->
+  <section class="area">
+    <h2>⚡ Plataformas &amp; Algoritmos</h2>
+    <div class="cards">
+
+      <div class="card">
+        <span class="badge atencao">Meta, ativo desde 18 mai</span>
+        <h3>Audiências de compra expandem para 730 dias</h3>
+        <p class="importa">As audiências custom baseadas em evento "Purchase" passaram automaticamente de 180 para 730 dias. <strong>Porquê importa:</strong> revisitar janelas de retargeting e exclusões, especialmente se não optaste por sair antes de 18 de maio.</p>
+        <a href="https://www.tryvizup.com/blog/meta-ads-updates-may-2026" target="_blank">tryvizup.com &rarr; Meta Ads Updates May 2026</a>
+      </div>
+
+      <div class="card">
+        <span class="badge novo">Meta, maio 2026</span>
+        <h3>Engaged-view agora conta vídeo com 5+ segundos</h3>
+        <p class="importa">Vídeos só entram em engaged-view attribution após 5 segundos de visualização (antes era 2s); a janela de 1-day engaged-view para anúncios de imagem foi removida. <strong>Porquê importa:</strong> relatórios de conversão vão mudar, não confundir com queda real de performance.</p>
+        <a href="https://socialbee.com/blog/facebook-updates/" target="_blank">socialbee.com &rarr; 2026 Meta &amp; Facebook updates</a>
+      </div>
+
+      <div class="card">
+        <span class="badge novo">Google, GML 20 mai</span>
+        <h3>AI Max para Shopping + Demand Gen com Veo Video</h3>
+        <p class="importa">No Google Marketing Live 2026, o AI Max expandiu para campanhas Shopping e o Demand Gen passou a gerar variações de vídeo a partir de imagens estáticas com Veo. <strong>Porquê importa:</strong> mais automação criativa para tráfego visual; ideal para imobiliário e stands auto.</p>
+        <a href="https://blog.google/products/ads-commerce/ai-max-new-features/" target="_blank">blog.google &rarr; Steer performance with new AI Max features</a>
+      </div>
+
+      <div class="card">
+        <span class="badge urgente">Google, prazo: 10 jun</span>
+        <h3>YouTube será auto-ligado a contas Google Ads após 10 junho</h3>
+        <p class="importa">Após 10 de junho, o Google vai ligar automaticamente canais YouTube às contas de Ads. <strong>Porquê importa:</strong> se não queres a ligação automática, acede às definições da conta antes do prazo para evitar partilha de dados não intencional.</p>
+        <a href="https://support.google.com/google-ads/announcements/9048695" target="_blank">support.google.com &rarr; New features &amp; announcements</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- B: TRACKING & PRIVACIDADE -->
+  <section class="area">
+    <h2>🎯 Tracking &amp; Privacidade</h2>
+    <div class="cards">
+
+      <div class="card">
+        <span class="badge novo">Meta, meados de maio 2026</span>
+        <h3>CAPI em um clique, sem programação, sem custo</h3>
+        <p class="importa">A Meta activou o setup de Conversions API com um clique no Events Manager para contas só com Pixel. Sem developer, sem servidor, com deduplicação automática. <strong>Porquê importa:</strong> não há desculpa para não ter server-side tracking; Meta reporta ~17,8% menor custo por resultado com CAPI activo.</p>
+        <a href="https://ultrabyrich.com/blogs/tutorials/metas-free-server-side-tracking-is-now-live-in-your-events-manager" target="_blank">ultrabyrich.com &rarr; Meta's Free Server-Side Tracking Is Now Live</a>
+      </div>
+
+      <div class="card">
+        <span class="badge atencao">Meta, estrutural 2026</span>
+        <h3>Pixel agora vive dentro de um "Dataset" unificado</h3>
+        <p class="importa">O Pixel passou a ser um componente dentro de um container chamado Dataset, que agrega eventos browser (Pixel), servidor (CAPI) e offline. <strong>Porquê importa:</strong> ao rever contas de clientes, o Pixel pode aparecer com um nome diferente; é a mesma ferramenta numa nova estrutura.</p>
+        <a href="https://www.wetracked.io/post/what-is-capi-meta-facebook-conversion-api" target="_blank">wetracked.io &rarr; Meta Ads CAPI Explained 2026</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- C: GERAÇÃO DE LEADS -->
+  <section class="area">
+    <h2>🧲 Geração de Leads</h2>
+    <div class="cards">
+
+      <div class="card">
+        <span class="badge novo">Google, beta aberto EUA, GML 20 mai</span>
+        <h3>Business Agent for Leads: agente Gemini dentro do anúncio de pesquisa</h3>
+        <p class="importa">Novo formato da Google substitui o formulário estático por um chat Gemini ancorado no site do anunciante; o formulário só dispara depois da conversa qualificar o lead. Beta aberto para anunciantes EUA em auto, imobiliário e educação. <strong>Porquê importa:</strong> leads pré-qualificados directamente no SERP, disponível 24/7.</p>
+        <a href="https://business.google.com/us/accelerate/announcements/business-agent-for-leads/" target="_blank">business.google.com &rarr; Business Agent for Leads (oficial)</a>
+      </div>
+
+      <div class="card">
+        <span class="badge atencao">Benchmark 2026</span>
+        <h3>CPL médio: Google Ads $70, Meta $30-65 por lead</h3>
+        <p class="importa">Benchmarks 2026 apontam para CPL médio de $70 no Google Ads e $30-65 no Meta para leads directos; serviços locais pagam 40-60% mais em grandes metrópoles. <strong>Porquê importa:</strong> calibra expectativas com clientes e identifica campanhas fora do intervalo normal.</p>
+        <a href="https://www.get-ryze.ai/blog/cost-per-lead-benchmarks-industry-2026" target="_blank">get-ryze.ai &rarr; Cost Per Lead Benchmarks 2026</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- D: PULSO DO ICP -->
+  <section class="area">
+    <h2>👥 Pulso do ICP</h2>
+    <div class="cards">
+
+      <div class="card">
+        <span class="badge atencao">PMEs / serviços locais</span>
+        <h3>"Os leads chegam, mas nunca atendem o telefone"</h3>
+        <p class="importa">Queixa recorrente de donos de pequenos negócios: Meta Lead Ads geram volume barato, mas sem intenção real. A causa: o algoritmo não sabe distinguir lead bom de lead mau sem feedback de CRM. <strong>Porquê importa:</strong> implementar loop de conversão offline (CAPI + CRM) é o maior alavanca de qualidade disponível hoje.</p>
+        <a href="https://ppcverse.com/blog/low-quality-leads-from-facebook-ads/" target="_blank">ppcverse.com &rarr; Low Quality Leads from Facebook Ads</a>
+      </div>
+
+      <div class="card">
+        <span class="badge atencao">Imobiliário</span>
+        <h3>"Tenho 50 leads no mês e nenhum quer comprar de facto"</h3>
+        <p class="importa">Agentes imobiliários reportam frustração com volume vs. qualidade: a estratégia de "centenas de cliques baratos" foi substituída por foco em sinais de intenção (tempo no site, visitas a página de preço). <strong>Porquê importa:</strong> ângulo de venda para o nicho: "não precisas de mais leads, precisas de leads melhores".</p>
+        <a href="https://chicagoagentmagazine.com/2026/01/26/maximizing-lead-generation-2026/" target="_blank">chicagoagentmagazine.com &rarr; Maximizing Lead Generation 2026</a>
+      </div>
+
+      <div class="card">
+        <span class="badge atencao">Infoprodutos</span>
+        <h3>"O meu custo por lead baixou mas o CPL do meu gestor subiu"</h3>
+        <p class="importa">Produtores digitais vêem uma desconexão entre Ads Manager (leads baratos) e receita real (conversões que nunca chegam ao CRM). A raiz: ausência de rastreio pós-clique e sem loop de feedback para o algoritmo. <strong>Porquê importa:</strong> o pitch para este nicho está no tracking, não no criativo.</p>
+        <a href="https://leadenforce.com/blog/what-causes-facebook-lead-ads-to-fail-even-when-metrics-look-good" target="_blank">leadenforce.com &rarr; What Causes Facebook Lead Ads to Fail</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- E: FOCO EUA -->
+  <section class="area">
+    <h2>🇺🇸 Foco EUA</h2>
+    <div class="cards">
+
+      <div class="card">
+        <span class="badge novo">Auto dealers EUA, 2026</span>
+        <h3>Tráfego de LLMs (ChatGPT, Claude) para dealers cresceu 15x em 2026</h3>
+        <p class="importa">Concessionárias americanas reportam que compradores com menos de 40 anos chegam cada vez mais via ChatGPT e Claude em vez do Google. GEO (Generative Engine Optimization) tornou-se indispensável. <strong>Porquê importa:</strong> oportunidade de entrada: oferecer estratégia de presença em IA search como diferencial para dealers EUA.</p>
+        <a href="https://www.dealer.com/resources/top-digital-automotive-marketing-trends-to-watch-in-2026/" target="_blank">dealer.com &rarr; Top Digital Automotive Marketing Trends 2026</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- F: IA & BUSCA GENERATIVA -->
+  <section class="area">
+    <h2>🤖 IA &amp; Busca Generativa</h2>
+    <div class="cards">
+
+      <div class="card">
+        <span class="badge novo">Google, GML 20 mai</span>
+        <h3>Conversational Discovery Ads em teste no AI Mode</h3>
+        <p class="importa">A Google testa anúncios conversacionais dentro do AI Mode: o criativo é gerado por Gemini à medida da pergunta do utilizador. AI Mode já tem mais de 1 mil milhão de utilizadores mensais. <strong>Porquê importa:</strong> o futuro do search advertising é contextual, não baseado em keywords; quem não acompanhar perde quota.</p>
+        <a href="https://searchengineland.com/google-marketing-live-2026-everything-you-need-to-know-478167" target="_blank">searchengineland.com &rarr; Google Marketing Live 2026: Everything you need to know</a>
+      </div>
+
+      <div class="card">
+        <span class="badge novo">ChatGPT, fev-mar 2026</span>
+        <h3>ChatGPT lança anúncios (planos Free/Go) com Ads Manager em beta</h3>
+        <p class="importa">Desde fevereiro 2026, os planos gratuitos do ChatGPT mostram anúncios em caixas separadas abaixo das respostas; o Ads Manager está em beta com parceiros enterprise desde março. <strong>Porquê importa:</strong> novo inventário de anúncios em escala (800M+ utilizadores) a chegar ao mercado; começar a acompanhar CPCs e formatos agora.</p>
+        <a href="https://www.adventureppc.com/blog/chatgpt-ads-vs-perplexity-ads-2026-ai-search-advertising-comparison" target="_blank">adventureppc.com &rarr; ChatGPT Ads vs Perplexity Ads 2026</a>
+      </div>
+
+      <div class="card">
+        <span class="badge atencao">Perplexity, fev 2026</span>
+        <h3>Perplexity abandona publicidade, aposta em subscrições</h3>
+        <p class="importa">A Perplexity cancelou o programa de anúncios em fevereiro 2026, alegando que publicidade destrói a confiança na pesquisa por IA; foca-se em atingir $500M de receita de subscrições. <strong>Porquê importa:</strong> menos um canal de paid ads emergente no horizonte imediato; reforça posição do ChatGPT e Google como canais IA a monitorizar.</p>
+        <a href="https://almcorp.com/blog/perplexity-ai-abandons-advertising-2026-analysis/" target="_blank">almcorp.com &rarr; Perplexity AI Abandons Advertising 2026</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- G: CRIATIVOS & ÂNGULOS -->
+  <section class="area">
+    <h2>🎨 Criativos &amp; Ângulos</h2>
+    <div class="cards">
+
+      <div class="card">
+        <span class="badge atencao">Tendência 2026</span>
+        <h3>UGC vídeo 15-30s: 36,8% de share, domina todos os formatos</h3>
+        <p class="importa">Vídeo UGC vertical de 15 a 30 segundos supera todos os outros formatos em engagement e longevidade de anúncio. Testemunhos, unboxing e antes/depois lideram em conversão. <strong>Porquê importa:</strong> para clientes de serviços locais e imobiliário, um vídeo de cliente real bate qualquer criativo de agência.</p>
+        <a href="https://adligator.com/blog/facebook-ad-creative-trends-2026" target="_blank">adligator.com &rarr; Facebook Ad Creative Trends 2026</a>
+      </div>
+
+      <div class="card">
+        <span class="badge atencao">Best practice 2026</span>
+        <h3>Hook nos primeiros 3 segundos: único KPI que importa para o algoritmo</h3>
+        <p class="importa">Anúncios sem hook forte nos 3 primeiros segundos são automaticamente suprimidos pelo algoritmo antes de chegarem ao orçamento planeado. Estrutura que converte: problema (1-3s) + prova (4-12s) + CTA (final). <strong>Porquê importa:</strong> rever criativos existentes apenas por este critério pode recuperar campanhas "mortas".</p>
+        <a href="https://blog.gethookd.ai/learn/7-best-ugc-video-ads-examples-to-try-in-2026/" target="_blank">blog.gethookd.ai &rarr; 7 Best UGC Video Ads Examples 2026</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- H: WHATSAPP & CTWA -->
+  <section class="area">
+    <h2>💬 WhatsApp &amp; CTWA</h2>
+    <div class="cards">
+
+      <div class="card">
+        <span class="badge novo">Meta / CTWA, 2026</span>
+        <h3>CTWA: janela gratuita de 72h para follow-up + tracking via ctwa_clid</h3>
+        <p class="importa">Após um clique em anúncio CTWA, a Meta abre 72 horas de mensagens de marketing gratuitas para nutrir o lead (sem custo adicional). O ctwa_clid permite atribuição via CAPI mesmo sem IDFA (iOS). <strong>Porquê importa:</strong> canal de menor custo de conversão para serviços locais em Portugal e LATAM; crescimento mais rápido dentro do inventário Meta.</p>
+        <a href="https://www.go4whatsup.com/guides/click-to-whatsapp-ads/" target="_blank">go4whatsup.com &rarr; Click-to-WhatsApp Ads 2026 Campaign Playbook</a>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- I: FERRAMENTAS & AUTOMAÇÃO -->
+  <section class="area">
+    <h2>🛠️ Ferramentas &amp; Automação</h2>
+    <div class="cards">
+
+      <div class="card">
+        <span class="badge novo">Stape, 21 mai 2026</span>
+        <h3>Stape lança apps Odoo para server-side tracking + analytics actualizado</h3>
+        <p class="importa">A Stape lançou integração nativa com Odoo CMS/CRM para server-side tracking (21 mai) e actualizou o Stape Analytics (6 mai) com métricas de eventos recuperados e extensão de cookie. <strong>Porquê importa:</strong> clientes em Odoo (comum em PMEs portuguesas) ganham rastreio server-side sem desenvolvimento à medida.</p>
+        <a href="https://stape.io/news" target="_blank">stape.io/news &rarr; Stape News &amp; Updates</a>
+      </div>
+
+      <div class="card">
+        <span class="badge novo">Perplexity Computer, 2026</span>
+        <h3>Agente IA Perplexity "Computer" gere campanhas Meta/Google de forma autónoma</h3>
+        <p class="importa">O agente Perplexity Computer conecta-se às APIs de Meta e Google Ads e faz centenas de micro-optimizações por hora de forma autónoma (orçamentos, criativos, audiências). <strong>Porquê importa:</strong> ferramenta de alto risco/alta recompensa para testar em contas com volume; requer supervisão humana activa mas pode reduzir tempo de gestão manual.</p>
+        <a href="https://x.com/AravSrinivas/status/2031105215429226843" target="_blank">x.com/AravSrinivas &rarr; Perplexity Computer &amp; Ads APIs (fundador)</a>
+      </div>
+
+    </div>
+  </section>
+
+</div>
+
+<footer>
+  <div class="container">
+    <p>Briefing de Tráfego Pago &nbsp;|&nbsp; 31/05/2026 &nbsp;|&nbsp; Gerado para Elisabete Silva, Gestora de Tráfego Pago</p>
+  </div>
+</footer>
+
+</body>
+</html>
