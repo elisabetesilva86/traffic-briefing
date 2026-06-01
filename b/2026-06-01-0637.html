@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Briefing de Tráfego, 01/06/2026</title>
+  <style>
+    :root {
+      --primary: #1a1a2e;
+      --accent: #e94560;
+      --accent2: #0f3460;
+      --bg: #f7f8fc;
+      --card-bg: #ffffff;
+      --text: #2d2d3a;
+      --muted: #6b7280;
+      --border: #e5e7eb;
+      --warning: #f59e0b;
+      --success: #10b981;
+      --tag-bg: #eef2ff;
+      --tag-color: #4f46e5;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 15px;
+      line-height: 1.6;
+    }
+    .header {
+      background: linear-gradient(135deg, var(--primary) 0%, var(--accent2) 100%);
+      color: #fff;
+      padding: 28px 20px 24px;
+      text-align: center;
+    }
+    .header .label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      opacity: 0.7;
+      margin-bottom: 6px;
+    }
+    .header h1 {
+      font-size: 22px;
+      font-weight: 700;
+      line-height: 1.3;
+    }
+    .header .date-pill {
+      display: inline-block;
+      margin-top: 10px;
+      background: rgba(255,255,255,0.15);
+      padding: 4px 14px;
+      border-radius: 20px;
+      font-size: 13px;
+      font-weight: 500;
+    }
+    .container {
+      max-width: 760px;
+      margin: 0 auto;
+      padding: 20px 16px 40px;
+    }
+    /* TL;DR */
+    .tldr {
+      background: linear-gradient(135deg, #fef3c7 0%, #fde68a 100%);
+      border-left: 4px solid var(--warning);
+      border-radius: 10px;
+      padding: 18px 20px;
+      margin-bottom: 28px;
+    }
+    .tldr .tldr-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #92400e;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+    .tldr ul {
+      list-style: none;
+      padding: 0;
+    }
+    .tldr ul li {
+      padding: 4px 0 4px 18px;
+      position: relative;
+      color: #78350f;
+      font-size: 14px;
+      font-weight: 500;
+    }
+    .tldr ul li::before {
+      content: "→";
+      position: absolute;
+      left: 0;
+      color: #d97706;
+      font-weight: 700;
+    }
+    /* Section headers */
+    .section {
+      margin-bottom: 28px;
+    }
+    .section-title {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--primary);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      margin-bottom: 12px;
+      padding-bottom: 8px;
+      border-bottom: 2px solid var(--border);
+    }
+    .section-title .emoji {
+      font-size: 18px;
+    }
+    /* Cards */
+    .card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      padding: 16px 18px;
+      margin-bottom: 10px;
+      transition: box-shadow 0.2s;
+    }
+    .card:hover {
+      box-shadow: 0 4px 14px rgba(0,0,0,0.08);
+    }
+    .card.urgent {
+      border-left: 4px solid var(--accent);
+    }
+    .card.warning {
+      border-left: 4px solid var(--warning);
+    }
+    .card-header {
+      display: flex;
+      align-items: flex-start;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .card-title {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--primary);
+      flex: 1;
+    }
+    .badge {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      font-weight: 700;
+      padding: 2px 8px;
+      border-radius: 20px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .badge-urgent { background: #fee2e2; color: #dc2626; }
+    .badge-new { background: #d1fae5; color: #065f46; }
+    .badge-update { background: #dbeafe; color: #1e40af; }
+    .badge-watch { background: #ede9fe; color: #5b21b6; }
+    .badge-deadline { background: #fef3c7; color: #92400e; }
+    .card-why {
+      font-size: 13.5px;
+      color: var(--text);
+      margin-bottom: 10px;
+      line-height: 1.55;
+    }
+    .card-why strong {
+      color: var(--accent);
+    }
+    .card-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent2);
+      text-decoration: none;
+      border: 1px solid #c7d2fe;
+      background: var(--tag-bg);
+      padding: 4px 10px;
+      border-radius: 20px;
+    }
+    .card-link:hover { background: #e0e7ff; }
+    /* ICP cards */
+    .icp-card {
+      background: var(--card-bg);
+      border-radius: 10px;
+      border: 1px solid var(--border);
+      padding: 14px 18px;
+      margin-bottom: 10px;
+    }
+    .icp-card .nicho-tag {
+      display: inline-block;
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+      font-weight: 700;
+      background: var(--tag-bg);
+      color: var(--tag-color);
+      padding: 2px 10px;
+      border-radius: 20px;
+      margin-bottom: 6px;
+    }
+    .icp-card .queixa {
+      font-size: 14px;
+      font-weight: 600;
+      color: var(--primary);
+      font-style: italic;
+      margin-bottom: 6px;
+    }
+    .icp-card .resposta {
+      font-size: 13.5px;
+      color: var(--muted);
+      line-height: 1.5;
+    }
+    .icp-card .icp-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      font-size: 12px;
+      font-weight: 600;
+      color: var(--accent2);
+      text-decoration: none;
+      border: 1px solid #c7d2fe;
+      background: var(--tag-bg);
+      padding: 4px 10px;
+      border-radius: 20px;
+      margin-top: 8px;
+    }
+    /* Divider */
+    .section-divider {
+      height: 1px;
+      background: var(--border);
+      margin: 6px 0 16px;
+    }
+    /* Footer */
+    .footer {
+      text-align: center;
+      font-size: 12px;
+      color: var(--muted);
+      padding: 20px 0 10px;
+      border-top: 1px solid var(--border);
+    }
+    @media (max-width: 600px) {
+      .header h1 { font-size: 18px; }
+      .container { padding: 14px 12px 30px; }
+      .card { padding: 14px 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="label">Inteligência de Marketing</div>
+  <h1>Briefing de Tráfego Pago</h1>
+  <div class="date-pill">01/06/2026</div>
+</div>
+
+<div class="container">
+
+  <!-- TL;DR -->
+  <div class="tldr">
+    <div class="tldr-label">TL;DR — O mais importante de hoje</div>
+    <ul>
+      <li>Google unifica os controlos de Consent Mode em 15 de junho: quem não atualizar o CMP vai perder dados de conversão no Google Ads.</li>
+      <li>Meta impõe taxas DST de 2 a 5% nos anúncios entregues em AT, FR, IT, ES, TR e UK a partir de 1 de julho; custo invisível que vai inflar o CPL nesses mercados.</li>
+      <li>OpenAI abriu o ChatGPT Ads Manager a anunciantes self-serve (5 maio) com CPC bidding e expandiu para UK, Brasil e Japão: novo canal de geração de leads a testar com orçamento pequeno.</li>
+    </ul>
+  </div>
+
+  <!-- A: PLATAFORMAS & ALGORITMOS -->
+  <div class="section">
+    <div class="section-title"><span class="emoji">⚡</span> Plataformas &amp; Algoritmos</div>
+
+    <div class="card urgent">
+      <div class="card-header">
+        <div class="card-title">Meta cobra taxas DST de 2-5% em 6 países europeus a partir de julho</div>
+        <span class="badge badge-deadline">Deadline Jul 1</span>
+      </div>
+      <div class="card-why">
+        A Meta passou a passar os custos de <em>Digital Services Tax</em> para os anunciantes: <strong>AT e TR a 5%, FR, IT e ES a 3%, UK a 2%</strong>. As taxas aparecem como linha separada na fatura e incidem sobre impressões entregues nesses territórios, independentemente de onde o anunciante está sediado. Google e Amazon já fazem o mesmo desde 2020-2024. Para campanhas com audiências em Espanha, França ou Reino Unido, o CPL real vai subir; vale rever metas e orçamentos agora.
+      </div>
+      <a href="https://almcorp.com/blog/meta-location-fees-2026-ad-price-increase-six-countries/" class="card-link" target="_blank">Ver análise completa</a>
+    </div>
+
+    <div class="card warning">
+      <div class="card-header">
+        <div class="card-title">Meta muda atribuição click-through: só cliques em links contam (desde março 2026)</div>
+        <span class="badge badge-update">Atribuição</span>
+      </div>
+      <div class="card-why">
+        Desde março, a Meta redefiniu o que conta como conversão click-through: <strong>apenas cliques num link</strong>. Likes, partilhas, comentários e vistas de vídeo passaram para a nova janela "engage-through" (1 dia, ativa por defeito). Muitas contas registaram quedas de 40-60% nas conversões reportadas, mas trata-se de reclassificação, não de queda real. A soma click-through + engage-through mantém-se próxima dos valores anteriores. Ação: verificar se os dashboards de reporte já foram ajustados.
+      </div>
+      <a href="https://www.dataslayer.ai/blog/meta-attribution-change-2026-what-engage-through-attribution-is-and-why-your-numbers-look-different" class="card-link" target="_blank">Ver impacto por objetivo</a>
+    </div>
+
+    <div class="card urgent">
+      <div class="card-header">
+        <div class="card-title">Stands auto: campanhas de Automotive Inventory Ads pausam a 22 de junho (Nielsen DMA out)</div>
+        <span class="badge badge-urgent">22 Junho</span>
+      </div>
+      <div class="card-why">
+        A Meta vai substituir o targeting Nielsen DMA pelo <strong>Comscore Markets</strong> para anúncios automóvel. Campanhas que ainda usem Nielsen DMA ficam pausadas automaticamente a 22 de junho. A atualização faz-se no Catalog Manager ou via API com os novos Comscore Market IDs. Para stands com campanhas ativas de viaturas, <strong>a ação é urgente esta semana</strong>.
+      </div>
+      <a href="https://web.swipeinsight.app/topics/meta-ads" class="card-link" target="_blank">Detalhes no Swipe Insight</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Google substitui Dynamic Search Ads por AI Max (migração automática em setembro)</div>
+        <span class="badge badge-watch">Set 2026</span>
+      </div>
+      <div class="card-why">
+        Anunciado em abril, o <strong>AI Max</strong> substitui os DSA com mais IA no matching de pesquisa e geração de criativos. A Google indica que o AI Max entrega uma média de <em>7% mais conversões</em> ao mesmo CPA/ROAS. A migração automática das campanhas DSA restantes acontece em setembro 2026. De agosto em diante, não será possível criar novos DSA. Quem ainda tem DSA deve testar AI Max em campanha separada antes de setembro.
+      </div>
+      <a href="https://blog.google/products/ads-commerce/dsa-upgrade-to-ai-max-2026/" class="card-link" target="_blank">Anúncio oficial Google</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Meta CAPI com setup 1 clique e pixel AI enrichment (desde abril)</div>
+        <span class="badge badge-new">Novo</span>
+      </div>
+      <div class="card-why">
+        A Meta lançou um caminho simplificado para ativar o Conversions API sem configuração técnica: o <strong>one-click CAPI</strong> é gerido pela própria Meta, sem custos extra e sem manutenção. Em paralelo, o pixel passou a usar IA para ler o site e anexar automaticamente nomes de produto, disponibilidade e dados de negócio aos eventos, sem código adicional. Segundo a Meta, anunciantes com CAPI registam em média 17,8% de CPA mais baixo (dado Meta; verificar com dados próprios).
+      </div>
+      <a href="https://ppc.land/meta-upgrades-pixel-and-conversions-api-to-close-the-gap-for-small-advertisers/" class="card-link" target="_blank">Ver detalhes CAPI one-click</a>
+    </div>
+
+  </div>
+
+  <!-- B: TRACKING & PRIVACIDADE -->
+  <div class="section">
+    <div class="section-title"><span class="emoji">🎯</span> Tracking &amp; Privacidade</div>
+
+    <div class="card urgent">
+      <div class="card-header">
+        <div class="card-title">Google Consent Mode: controlo unificado Analytics + Ads a 15 de junho</div>
+        <span class="badge badge-deadline">Deadline 15 Jun</span>
+      </div>
+      <div class="card-why">
+        A 15 de junho, o Google Ads deixa de referenciar as definições do Google Analytics e passa a usar <strong>exclusivamente os sinais do Consent Mode</strong> enviados pelo CMP do site. Quem tiver o Consent Mode v2 mal configurado (67% das implementações, segundo dados da indústria) pode perder rastreio de conversões em campanhas Google Ads. Ação imediata: auditar o CMP, confirmar que os sinais <code>ad_storage</code> e <code>analytics_storage</code> são enviados corretamente, e que não há override das definições do Analytics a sobrepor-se ao Ads.
+      </div>
+      <a href="https://www.techwyse.com/news/platform-updates/google-analytics-ads-consent-controls-june-2026" class="card-link" target="_blank">Resumo da mudança</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Third-party cookies a 100% deprecados nos principais browsers em 2026</div>
+        <span class="badge badge-update">Privacidade</span>
+      </div>
+      <div class="card-why">
+        Em 2026, os principais browsers eliminaram os cookies de terceiros. O tracking server-side e o Consent Mode modelado são agora a única forma de recuperar dados de conversão sem depender de cookies de terceiros. Quem ainda não migrou para sGTM ou CAPI está a reportar dados incompletos e a alimentar o algoritmo com sinais pobres.
+      </div>
+      <a href="https://secureprivacy.ai/blog/global-cookie-consent-trends-2026" class="card-link" target="_blank">Tendências globais de privacidade</a>
+    </div>
+
+  </div>
+
+  <!-- H: WHATSAPP & CTWA -->
+  <div class="section">
+    <div class="section-title"><span class="emoji">💬</span> WhatsApp &amp; CTWA</div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Meta Conversations 2026 amanha em Londres: AI agents e novos formatos de mensagem</div>
+        <span class="badge badge-watch">3 Jun</span>
+      </div>
+      <div class="card-why">
+        O evento anual de business messaging da Meta realiza-se <strong>amanha, 3 de junho, em Londres</strong> (keynote às 14h30 BST). O foco estará em AI agents para WhatsApp e Messenger, medição de conversão em mensagens, e novos formatos de aquisição de clientes. Esperam-se anúncios sobre AI-assisted messaging, voice support e ligação mais direta entre investimento em media e resultados em conversas. A transmissão é gratuita para inscritos.
+      </div>
+      <a href="https://www.socialmediatoday.com/news/meta-announces-date-for-2026-conversations-event/817512/" class="card-link" target="_blank">Social Media Today</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">CTWA chega ao WhatsApp Status: anuncios full-screen que abrem conversa direta</div>
+        <span class="badge badge-new">Novo formato</span>
+      </div>
+      <div class="card-why">
+        A Meta está a expandir os Click-to-WhatsApp Ads para os <strong>Status do WhatsApp</strong>, com anuncios em ecra completo que, ao serem tocados, abrem imediatamente uma conversa com o negocio. O formato combina o alcance dos Status (visualizados por centenas de milhoes diariamente) com a conversao direta do CTWA. Novos objetivos disponiveis: purchase optimization, lead optimization e value optimization para campanhas de CTWA.
+      </div>
+      <a href="https://www.thekeyword.co/news/whatsapp-rolls-out-click-to-message-ads-in-status-updates" class="card-link" target="_blank">The Keyword</a>
+    </div>
+
+  </div>
+
+  <!-- F: IA & BUSCA GENERATIVA -->
+  <div class="section">
+    <div class="section-title"><span class="emoji">🤖</span> IA &amp; Busca Generativa</div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">ChatGPT Ads Manager self-serve lançado a 5 maio: CPC bidding disponivel, sem minimo de orcamento</div>
+        <span class="badge badge-new">Novo canal</span>
+      </div>
+      <div class="card-why">
+        A OpenAI lançou uma versao beta do <strong>Ads Manager para anunciantes diretos</strong> (5 de maio), removendo o minimo anterior de $50.000. Qualquer negocio pode agora criar campanhas, definir orcamento, CPC e gerir criativos diretamente na plataforma. O ChatGPT ja ultrapassou 1 mil milhao de utilizadores mensais no AI Mode. Os anuncios aparecem apenas para utilizadores do plano Free e Go (nao nos planos pagos). A OpenAI expandiu recentemente para UK, Brasil e Japao. Para o ICP da Elisabete, e um canal de topo de funil a considerar com orcamento de teste.
+      </div>
+      <a href="https://www.axios.com/2026/05/05/openai-self-serve-ad-platform" class="card-link" target="_blank">Axios (5 mai 2026)</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Google lanca "Business Agent for Leads" em AI Mode: leads gerados diretamente na pesquisa</div>
+        <span class="badge badge-new">Open beta EUA</span>
+      </div>
+      <div class="card-why">
+        No Google Marketing Live 2026, a Google anunciou o <strong>Business Agent for Leads</strong>, agora em open beta nos EUA, que permite a um negocio receber leads diretamente dentro do AI Mode do Google Search, sem o utilizador sair da pagina. Em paralelo, os Conversational Discovery Ads permitem que o anuncio responda diretamente a uma pergunta dentro do AI Mode com criativo gerado pelo Gemini. A pesquisa AI Mode ja conta com mais de mil milhoes de utilizadores mensais, com queries a duplicar cada trimestre.
+      </div>
+      <a href="https://blog.google/products/ads-commerce/google-marketing-live-search-ads/" class="card-link" target="_blank">Blog oficial Google</a>
+    </div>
+
+  </div>
+
+  <!-- G: CRIATIVOS & ANGULOS -->
+  <div class="section">
+    <div class="section-title"><span class="emoji">🎨</span> Criativos &amp; Angulos</div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">UGC style domina: 4x CTR e 50% CPA mais baixo vs criativos de marca polidos</div>
+        <span class="badge badge-update">Benchmark</span>
+      </div>
+      <div class="card-why">
+        Os dados de 2026 confirmam que o formato UGC-style (video casual, sem edicao pesada, voz real, 15-30s em vertical) continua a superar sistematicamente o criativo de marca em quase todos os verticais de resposta direta. Os primeiros <strong>3 segundos</strong> sao decisivos: a taxa de thumb-stop deve ser superior a 30%. Pratica recomendada: 3 a 5 novos criativos por semana, pois os UGC mostram sinais de fadiga em 10-14 dias com orcamentos medios. Para geracao de leads, a imagem estatica ainda gera 60-70% das conversoes; video tem leads mais qualificados.
+      </div>
+      <a href="https://adligator.com/blog/facebook-ad-creative-trends-2026" class="card-link" target="_blank">Facebook Ad Creative Trends 2026</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Meta Advantage+ Creative gera video a partir de imagem estatica com IA</div>
+        <span class="badge badge-new">Novo</span>
+      </div>
+      <div class="card-why">
+        O Advantage+ Creative passou a criar automaticamente versoes em video a partir de imagens estaticas de produto, com movimento, transicoes e efeitos optimizados por placement. Os primeiros testes da Meta indicam desempenho dentro de 10-15% de producoes profissionais para campanhas de resposta direta. Para PME sem orcamento de producao de video, e uma forma de testar o formato sem investimento adicional em criativo.
+      </div>
+      <a href="https://benly.ai/learn/meta-ads/advantage-plus-updates-2026" class="card-link" target="_blank">Advantage+ Updates 2026</a>
+    </div>
+
+  </div>
+
+  <!-- D: ICP / PULSO -->
+  <div class="section">
+    <div class="section-title"><span class="emoji">👥</span> Pulso do ICP</div>
+
+    <div class="icp-card">
+      <span class="nicho-tag">Stand Auto</span>
+      <div class="queixa">"As minhas campanhas de catalogo de viaturas vao pausar no fim do mes?"</div>
+      <div class="resposta">Sim, se ainda tiverem targeting Nielsen DMA ativo. A mudanca para Comscore Markets e obrigatoria antes de 22 de junho. A acao e atualizar o catalogo de viaturas com os novos IDs via Catalog Manager ou API. Para gestores com clientes no setor auto, verificar esta semana.</div>
+      <a href="https://web.swipeinsight.app/topics/meta-ads" class="icp-link" target="_blank">Detalhes Swipe Insight</a>
+    </div>
+
+    <div class="icp-card">
+      <span class="nicho-tag">Servicos Locais / Clinicas / Advogados</span>
+      <div class="queixa">"O custo por lead no Facebook esta a subir mas a qualidade cada vez pior."</div>
+      <div class="resposta">Problema recorrente em verticais como saude, juridico e servicos de emergencia. O CPL medio no Facebook para servicos juridicos e de cerca de $1,6, mas a saturacao de audiencias esta a aumentar. A solucao de mercado em 2026 e segmentar por area de pratica, usar criativos UGC com prova social especifica, e fechar o loop de qualidade enviando para a Meta os dados de CRM de quem realmente converteu (via CAPI). Para clinicas e advogados, Google Ads captura intent imediato (CPL ~$70) mas com taxa de fecho mais alta.</div>
+      <a href="https://www.theedigital.com/blog/facebook-ads-benchmarks" class="icp-link" target="_blank">Benchmarks Facebook Ads 2026</a>
+    </div>
+
+    <div class="icp-card">
+      <span class="nicho-tag">Coaches / Formacao / Infoprodutos</span>
+      <div class="queixa">"Os meus leads sao baratos mas nao compram. Como melhoro a qualidade?"</div>
+      <div class="resposta">O CPL medio em educacao e formacao no Facebook e de ~19$ (EUA), cerca de 54% abaixo da media geral, mas a qualidade ressente-se. A mudanca de atribuicao da Meta (so cliques em links contam no click-through) pode estar a distorcer os numeros. As melhores praticas em 2026: usar formularios de lead com 2-3 perguntas de qualificacao, ativar CAPI com dados de CRM para ensinar ao algoritmo quem e cliente real, e responder ao lead em menos de 5 minutos (perda de 80% de conversao apos esse tempo).</div>
+      <a href="https://www.emailvendorselection.com/lead-generation-statistics/" class="icp-link" target="_blank">Lead Gen Stats 2026</a>
+    </div>
+
+    <div class="icp-card">
+      <span class="nicho-tag">Imobiliario</span>
+      <div class="queixa">"Quero gerar leads de vendedor, nao so de comprador. O que funciona em 2026?"</div>
+      <div class="resposta">Os dados de mercado (maioritariamente EUA) apontam para video-first como formato principal: 67% dos compradores assistem a videos antes de contactar um agente. Para leads de vendedor, os anuncios de avaliacao de imovel (Home Value Leads) continuam a ter alto volume mas qualidade variavel. A tendencia em 2026 e hiperlocalizacao por micro-bairro e conteudo autentico de agente local. Qualidade acima de volume e o tema dominante no setor.</div>
+      <a href="https://agentroof.com/us/blogs/details/2026-real-estate-marketing-trends-what-buyers-expect-and-realtors-cant-afford-to-miss" class="icp-link" target="_blank">Real Estate Trends 2026</a>
+    </div>
+
+    <div class="icp-card">
+      <span class="nicho-tag">B2B / SaaS / Servicos Profissionais</span>
+      <div class="queixa">"Devo apostar em Google Ads ou Facebook? Onde esta o melhor ROI para servicos?"</div>
+      <div class="resposta">A divisao mais clara em 2026: Google para captar intent imediato (ROI de 200-600% quando otimizado, CPL ~$70); Facebook para criar procura e retargeting (CPL ~$28 mas com ciclo de venda mais longo). A estrategia de maior ROI combina Google para captura de intent + retargeting no Meta para acompanhar o ciclo de decisao. Para B2B, LinkedIn Ads tem CPL mais alto mas taxa de fecho maior. A integracao CRM e essencial para medir o custo por cliente real, nao so por lead.</div>
+      <a href="https://www.swydo.com/blog/google-ads-vs-facebook-ads/" class="icp-link" target="_blank">Google Ads vs Facebook Ads 2026</a>
+    </div>
+
+  </div>
+
+  <!-- E: FOCO EUA -->
+  <div class="section">
+    <div class="section-title"><span class="emoji">🇺🇸</span> Foco EUA</div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Mercado americano: 54% das PME ja usam IA e CTV ads crescem 16% em 2026</div>
+        <span class="badge badge-update">Tendencia</span>
+      </div>
+      <div class="card-why">
+        Dois sinais relevantes para quem quer penetrar o mercado americano: (1) 54% dos donos de PME ja usam ferramentas de IA para marketing, o que eleva a fasquia de qualidade dos criativos e da personalizacao; (2) a publicidade em <strong>Connected TV (CTV)</strong> vai atingir $33,35 mil milhoes em 2026 (+16% YoY), com PME a adotar o formato massivamente. Para agencias portuguesas com clientes no mercado americano, o posicionamento em nichos hiper-locais (imobiliario, clinicas, servicos legais) com video autentico e IA continua a ser a janela de entrada mais acessivel.
+      </div>
+      <a href="https://localiq.com/blog/small-business-marketing-trends-report-2026/" class="card-link" target="_blank">LocaliQ Small Biz Report 2026</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Real estate EUA: qualidade de lead acima de volume, video domina, hyper-local e obrigatorio</div>
+        <span class="badge badge-update">Imobiliario</span>
+      </div>
+      <div class="card-why">
+        O mercado imobiliario americano em 2026 consolida tres tendencias accionaveis: (1) 67% dos compradores veem video antes de contactar um agente, (2) pesquisas "real estate agent near me" e "houses for sale near me" batem recordes, e (3) os agentes de topo usam conteudo por micro-bairro em vez de campanhas genericas de cidade. Para gestores de trafego com clientes imobiliarios, a proposta de valor clara e: video autentico de agente local + targeting hiper-local + CRM fechado com CAPI.
+      </div>
+      <a href="https://www.homevalueleads.com/real-estate-marketing-trends/" class="card-link" target="_blank">Real Estate Marketing Trends 2026</a>
+    </div>
+
+  </div>
+
+  <!-- I: FERRAMENTAS & AUTOMACAO -->
+  <div class="section">
+    <div class="section-title"><span class="emoji">🛠️</span> Ferramentas &amp; Automacao</div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Stape: server-side tracking recupera ate 162% mais conversoes (caso de estudo 2026)</div>
+        <span class="badge badge-new">Case study</span>
+      </div>
+      <div class="card-why">
+        A Stape publicou casos de estudo recentes mostrando que a migracao de tracking browser-only para server-side com sGTM recuperou ate <strong>162% mais conversoes rastreadas</strong>, 58% de reducao no custo por compra e 100% de tracking de encomendas em algumas plataformas. Com os third-party cookies eliminados e o Consent Mode obrigatorio, o sGTM passou de "nice to have" para infraestrutura essencial. A Stape tem planos acessiveis para PME e criou o Setup Assistant para reduzir o trabalho de configuracao das agencias.
+      </div>
+      <a href="https://www.issuewire.com/stape-case-studies-show-server-side-tracking-clients-recovering-up-to-162-more-conversions-and-cutting-ad-costs-1862637209779452" class="card-link" target="_blank">Caso de estudo Stape</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">n8n 2.0 com 70+ nos de IA: automacao de leads e reporting de agencias sem codigo</div>
+        <span class="badge badge-update">Automacao</span>
+      </div>
+      <div class="card-why">
+        O n8n 2.0 lançou integracao nativa com LangChain e mais de 70 nos de IA, tornando-o o hub de automacao mais poderoso para agencias de marketing digital sem necessidade de codigo. Casos de uso diretos para gestao de trafego: qualificacao automatica de leads via IA, routing para comercial com base em score, notificacoes de performance de campanha, e reports automaticos para clientes. Uma agencia consegue montar o stack completo de automacao em 2-4 semanas.
+      </div>
+      <a href="https://marketingagent.blog/2026/01/22/n8n-for-marketing-in-2026-the-automation-fabric-behind-ai-first-growth-with-real-workflow-examples/" class="card-link" target="_blank">n8n para Marketing 2026</a>
+    </div>
+
+    <div class="card">
+      <div class="card-header">
+        <div class="card-title">Google Ads: retencao de dados historicos limitada a 37 meses a partir de HOJE</div>
+        <span class="badge badge-deadline">Hoje</span>
+      </div>
+      <div class="card-why">
+        A partir de 1 de junho de 2026 (hoje), o Google Ads e APIs associadas passam a aplicar uma politica de retencao de dados granulares de <strong>37 meses</strong>. Dados de performance anteriores a esse horizonte deixam de estar disponiveis. Agencias com clientes de longa data devem exportar e arquivar historico antes de ser eliminado automaticamente. Afeta comparacoes year-over-year em contas com mais de 3 anos de historial.
+      </div>
+      <a href="https://support.google.com/google-ads/announcements/9048695?hl=en" class="card-link" target="_blank">Anuncios Google Ads</a>
+    </div>
+
+  </div>
+
+  <div class="footer">
+    Briefing gerado a 01/06/2026. Fontes: Meta for Business, Google Ads Blog, Social Media Today, OpenAI, Axios, Stape, AlmCorp, Swipe Insight, DataSlayer, Techwyse, LocaliQ. Uso interno.
+  </div>
+
+</div>
+</body>
+</html>
