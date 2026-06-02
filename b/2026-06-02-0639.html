@@ -1,0 +1,472 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing de Tráfego, 02/06/2026</title>
+<style>
+:root {
+  --accent: #2563EB;
+  --accent-dark: #1D4ED8;
+  --accent-light: #EFF6FF;
+  --danger: #DC2626;
+  --danger-light: #FEF2F2;
+  --warning: #D97706;
+  --warning-light: #FFFBEB;
+  --success: #16A34A;
+  --success-light: #F0FDF4;
+  --text: #1E293B;
+  --muted: #64748B;
+  --border: #E2E8F0;
+  --bg: #FFFFFF;
+  --card-bg: #F8FAFC;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, sans-serif;
+  background: #F1F5F9;
+  color: var(--text);
+  line-height: 1.65;
+  font-size: 16px;
+}
+.container {
+  max-width: 860px;
+  margin: 0 auto;
+  padding: 20px 16px 48px;
+}
+header {
+  background: var(--accent);
+  color: #fff;
+  padding: 24px 28px 20px;
+  border-radius: 10px;
+  margin-bottom: 20px;
+}
+header .eyebrow {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  opacity: 0.8;
+  margin-bottom: 6px;
+}
+header h1 {
+  font-size: 1.65rem;
+  font-weight: 800;
+  line-height: 1.2;
+  margin-bottom: 4px;
+}
+header .meta {
+  font-size: 0.85rem;
+  opacity: 0.75;
+  margin-top: 6px;
+}
+.tldr {
+  background: #FFFFFF;
+  border: 2px solid var(--accent);
+  border-radius: 10px;
+  padding: 18px 22px;
+  margin-bottom: 22px;
+}
+.tldr-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+.tldr-header span.label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  background: var(--accent-light);
+  padding: 3px 10px;
+  border-radius: 20px;
+}
+.tldr ul {
+  list-style: none;
+  padding: 0;
+}
+.tldr ul li {
+  padding: 5px 0;
+  font-size: 0.95rem;
+  line-height: 1.55;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+}
+.tldr ul li::before {
+  content: "►";
+  color: var(--accent);
+  font-size: 0.65rem;
+  margin-top: 5px;
+  flex-shrink: 0;
+}
+section {
+  background: #FFFFFF;
+  border-radius: 10px;
+  padding: 20px 22px;
+  margin-bottom: 18px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.06);
+}
+section h2 {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin-bottom: 14px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid var(--border);
+  color: var(--text);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.card {
+  background: var(--card-bg);
+  border: 1px solid var(--border);
+  border-left: 4px solid var(--accent);
+  border-radius: 7px;
+  padding: 13px 15px;
+  margin-bottom: 11px;
+}
+.card:last-child { margin-bottom: 0; }
+.card.urgent {
+  border-left-color: var(--danger);
+  background: var(--danger-light);
+}
+.card.warning {
+  border-left-color: var(--warning);
+  background: var(--warning-light);
+}
+.card.positive {
+  border-left-color: var(--success);
+  background: var(--success-light);
+}
+.card-top {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: 8px;
+  margin-bottom: 5px;
+}
+.card h3 {
+  font-size: 0.95rem;
+  font-weight: 700;
+  color: var(--text);
+  line-height: 1.35;
+}
+.badge {
+  display: inline-block;
+  font-size: 0.65rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.05em;
+  padding: 2px 8px;
+  border-radius: 20px;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+.badge-urgent { background: #FEE2E2; color: var(--danger); }
+.badge-warning { background: #FEF3C7; color: var(--warning); }
+.badge-new { background: #DCFCE7; color: var(--success); }
+.badge-info { background: #E0E7FF; color: #4338CA; }
+.card p.why {
+  font-size: 0.88rem;
+  color: #374151;
+  margin: 5px 0 8px;
+  line-height: 1.55;
+}
+.card a.src {
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 0.78rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 500;
+  word-break: break-all;
+}
+.card a.src:hover { text-decoration: underline; }
+.card a.src::before {
+  content: "↗";
+  font-size: 0.8rem;
+}
+footer {
+  text-align: center;
+  font-size: 0.78rem;
+  color: var(--muted);
+  margin-top: 30px;
+  padding: 16px;
+  border-top: 1px solid var(--border);
+}
+@media (max-width: 600px) {
+  header h1 { font-size: 1.3rem; }
+  section { padding: 16px 14px; }
+  .card { padding: 11px 12px; }
+  .card h3 { font-size: 0.9rem; }
+  .card-top { flex-direction: column; gap: 4px; }
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <!-- CABEÇALHO -->
+  <header>
+    <div class="eyebrow">Inteligência de Marketing</div>
+    <h1>Briefing de Tráfego</h1>
+    <div class="meta">02 de junho de 2026 &nbsp;·&nbsp; Preparado para Elisabete Silva, Gestora de Tráfego Pago</div>
+  </header>
+
+  <!-- TL;DR -->
+  <div class="tldr">
+    <div class="tldr-header">
+      <span class="label">TL;DR — O mais importante de hoje</span>
+    </div>
+    <ul>
+      <li>Dupla urgência Google em junho: Consent Mode v2 tem deadline a 15 de junho (ad_storage passa a ser o único master para dados de anúncios) e a migração de Conversões Offline para a Data Manager API fecha também a 15 de junho. Contas sem configuração correta perdem atribuição de um dia para o outro.</li>
+      <li>Stands auto têm até 22 de junho para substituir DMA Nielsen por Comscore Markets IDs nos feeds do Meta. Após essa data, as campanhas de veículos pausam automaticamente sem aviso.</li>
+      <li>ChatGPT Ads abriu o self-serve Ads Manager a qualquer empresa desde 5 de maio (sem mínimo de investimento). O Google apresentou Business Agent for Leads em piloto no AI Mode (responde a perguntas do prospect dentro do anúncio).</li>
+    </ul>
+  </div>
+
+  <!-- A: PLATAFORMAS & ALGORITMOS -->
+  <section>
+    <h2>⚡ Plataformas &amp; Algoritmos</h2>
+
+    <div class="card urgent">
+      <div class="card-top">
+        <h3>Meta Automotive: fim do DMA Nielsen a 22 de junho (campanhas pausam)</h3>
+        <span class="badge badge-urgent">Urgente · 20 dias</span>
+      </div>
+      <p class="why">Stands auto com vehicle catalog ads no Meta têm de atualizar os feeds substituindo dma_code por comscore_market_codes antes de 22 de junho. Feeds não atualizados implicam pausa automática de campanhas. A Meta emite avisos desde 20 de abril.</p>
+      <a class="src" href="https://www.socialmediatoday.com/news/meta-switches-to-comscore-markets-data-for-auto-ads/814886/" target="_blank">Social Media Today — Meta switches to Comscore Markets data for auto ads</a>
+    </div>
+
+    <div class="card warning">
+      <div class="card-top">
+        <h3>Google Ads: YouTube auto-ligação a contas de anúncios após 10 de junho</h3>
+        <span class="badge badge-warning">Atenção · 8 dias</span>
+      </div>
+      <p class="why">O Google passa a ligar automaticamente os canais YouTube às contas Google Ads após 10 de junho. Se não quiseres este comportamento, tens de agir antes dessa data nas definições de ligação de conta.</p>
+      <a class="src" href="https://support.google.com/google-ads/announcements/9048695" target="_blank">Google Ads Help — New features &amp; announcements</a>
+    </div>
+
+    <div class="card positive">
+      <div class="card-top">
+        <h3>Google Enhanced Conversions: fusão web + leads numa única funcionalidade</h3>
+        <span class="badge badge-new">Novo · Junho 2026</span>
+      </div>
+      <p class="why">A Google simplificou as Enhanced Conversions: web e leads passam a ser um único on/off. A conta aceita simultaneamente dados de tags e de API, sem escolher um único método. Menos fricção de setup, mais sinal de conversão.</p>
+      <a class="src" href="https://support.google.com/google-ads/announcements/9048695" target="_blank">Google Ads Help — New features &amp; announcements (Enhanced Conversions)</a>
+    </div>
+
+    <div class="card warning">
+      <div class="card-top">
+        <h3>Meta: taxa DST de até 5% em anúncios entregues em Espanha, Reino Unido, Itália, França, Áustria e Turquia</h3>
+        <span class="badge badge-warning">Atenção · Meados 2026</span>
+      </div>
+      <p class="why">A Meta começa a aplicar sobretaxa de serviços digitais (até 5%) em anúncios entregues nesses seis países. Portugal não está na lista. Quem faz targeting pan-europeu deve rever CPLs esperados e orçamentos.</p>
+      <a class="src" href="https://admanage.ai/blog/meta-ads-update" target="_blank">AdManage.ai — Meta Ads Updates: What Changed This Month (2026)</a>
+    </div>
+  </section>
+
+  <!-- B: TRACKING & PRIVACIDADE -->
+  <section>
+    <h2>🎯 Tracking &amp; Privacidade</h2>
+
+    <div class="card urgent">
+      <div class="card-top">
+        <h3>Google Consent Mode: deadline 15 de junho — ad_storage torna-se o único master para Google Ads</h3>
+        <span class="badge badge-urgent">Urgente · 13 dias</span>
+      </div>
+      <p class="why">A partir de 15 de junho, o Google Ads ignora as definições do Google Analytics e depende exclusivamente do sinal ad_storage enviado pelo CMP. Contas com Consent Mode incompleto ou ausente perdem dados de atribuição e ficam expostas a lacunas de compliance. Contas com Google Signals ativo mas sem Consent Mode v2 são as mais afetadas.</p>
+      <a class="src" href="https://www.uniconsent.com/blog/google-ads-consent-mode-change-2026" target="_blank">UniConsent — Google Consent Mode June 2026 Update: Unified Control for All Google Ads Data</a>
+    </div>
+
+    <div class="card positive">
+      <div class="card-top">
+        <h3>Meta CAPI One-Click: setup server-side sem código (abril 2026)</h3>
+        <span class="badge badge-new">Novo</span>
+      </div>
+      <p class="why">O novo setup de um clique da CAPI deixa a Meta gerir toda a infraestrutura server-side. Sem configuração de servidor, sem manutenção. A Meta indica que anunciantes com CAPI têm, em média, 17,8% menor custo por resultado face a quem não tem. Não cobre eventos customizados nem conversões offline.</p>
+      <a class="src" href="https://www.adexchanger.com/platforms/meta-is-launching-an-easy-button-for-capi/" target="_blank">AdExchanger — Meta Is Launching An Easy Button For CAPI</a>
+    </div>
+  </section>
+
+  <!-- C: GERAÇÃO DE LEADS -->
+  <section>
+    <h2>🧲 Geração de Leads</h2>
+
+    <div class="card positive">
+      <div class="card-top">
+        <h3>Google Business Agent for Leads: o prospect faz perguntas dentro do anúncio</h3>
+        <span class="badge badge-new">Piloto · EUA</span>
+      </div>
+      <p class="why">Em piloto para educação, automotive e imobiliário, este formato de anúncio do Google AI Mode permite ao utilizador fazer perguntas específicas e recebe respostas geradas a partir do site do anunciante. A Google indica que captura leads mesmo quando a equipa está offline e filtra intenção antes do contacto. Potencial elevado para serviços de ticket médio alto.</p>
+      <a class="src" href="https://ppc.land/googles-42-gml-2026-lead-gen-launches-what-marketers-need-to-know/" target="_blank">PPC Land — Google's 42 GML 2026 lead gen launches: what marketers need to know</a>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>CPL sobe 8% yoy: Meta forms $30-65 (B2B), Google Ads média $70</h3>
+        <span class="badge badge-info">Benchmark 2026</span>
+      </div>
+      <p class="why">O custo por lead aumentou 8% face a 2025 em todas as plataformas principais. Segundo benchmarks independentes: Meta Lead Forms em B2B = $30-65 (30-50% mais barato que tráfego para landing page); Google Ads = $70 de média. Contexto essencial para propostas e relatórios de clientes.</p>
+      <a class="src" href="https://owlclaw.com/benchmarks/b2b-lead-generation-benchmarks/" target="_blank">OwlClaw — B2B Lead Generation Benchmarks 2026: CPL, CVR &amp; MQL Standards</a>
+    </div>
+  </section>
+
+  <!-- D: PULSO DO ICP -->
+  <section>
+    <h2>👥 Pulso do ICP</h2>
+
+    <div class="card urgent">
+      <div class="card-top">
+        <h3>STANDS AUTO: a queixa mais premente — "as campanhas pararam sem aviso"</h3>
+        <span class="badge badge-urgent">Urgente · 20 dias</span>
+      </div>
+      <p class="why">O DMA Nielsen fecha a 22 de junho no Meta. Qualquer stand com vehicle catalog campaigns que não atualize o feed vai ver as campanhas pausadas automaticamente. A queixa típica já está a aparecer: campanhas paradas sem razão aparente. Oportunidade para antecipar o problema com clientes e prospects neste nicho.</p>
+      <a class="src" href="https://business.daily.dev/resources/meta-drops-nielsen-dma-targeting-automotive-ads-comscore-markets/" target="_blank">daily.dev Ads — Meta discontinues Nielsen DMA targeting for automotive ads, adopts Comscore Markets</a>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>COACHES &amp; INFOPRODUTOS: "é message fatigue, não creative fatigue"</h3>
+        <span class="badge badge-info">Sinal de mercado</span>
+      </div>
+      <p class="why">O Meta lê agora o conteúdo e a mensagem do anúncio, não só o visual. Coaches e criadores com a mesma promessa repetida estão a ver o alcance limitado e o CPL a subir. A solução não é um criativo novo com o mesmo ângulo; é um ângulo de mensagem diferente. Pergunta a fazer ao prospect: "há quanto tempo estão a usar o mesmo ângulo de promessa?"</p>
+      <a class="src" href="https://www.clickfunnels.com/blog/lead-generation-for-coaches/" target="_blank">ClickFunnels — Lead Generation for Coaches: How to Get High-Quality Clients on Autopilot in 2026</a>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>ADVOGADOS &amp; CLÍNICAS: "o lead barato é muitas vezes o mais caro"</h3>
+        <span class="badge badge-info">Sinal de mercado</span>
+      </div>
+      <p class="why">A principal queixa de advogados, clínicas e serviços locais em 2026: leads com CPL baixo mas qualidade fraca. A maioria não precisa de mais leads, precisa de parar de desperdiçar os que já tem. A auditoria de atribuição (do clique ao caso fechado) é o ângulo certo para uma conversa de avença nestes nichos.</p>
+      <a class="src" href="https://webris.org/facebook-ads-lawyers/" target="_blank">Webris — 8 Facebook Ad Tips For Lawyers (To Get Signed Cases)</a>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>PMES GERAIS: 66% apontam incerteza económica como maior desafio para publicidade em 2026</h3>
+        <span class="badge badge-info">Contexto de mercado</span>
+      </div>
+      <p class="why">Segundo a LocaliQ, 66% das PMEs americanas referem incerteza económica como desafio crescente (vs. 48% em 2025). Em Portugal, o clima é semelhante. Oportunidade de posicionamento: publicidade paga é a alavanca mais controlável e mensurável quando o orçamento está sob pressão.</p>
+      <a class="src" href="https://www.marketingprofs.com/charts/2026/54347/more-spend-more-time-small-business-marketing-trends-for-2026" target="_blank">MarketingProfs — More Spend, More Time: Small Business Marketing Trends for 2026</a>
+    </div>
+  </section>
+
+  <!-- E: FOCO EUA -->
+  <section>
+    <h2>🇺🇸 Foco EUA</h2>
+
+    <div class="card positive">
+      <div class="card-top">
+        <h3>Dealers EUA: conversões +37,3% e CPL -14,8% em abril com AI marketing</h3>
+        <span class="badge badge-new">Dados de abril 2026</span>
+      </div>
+      <p class="why">As concessionárias americanas que adotaram AI marketing cedo estão a ver resultados tangíveis: tráfego de fontes de AI chat cresceu 34,5% em março, conversões subiram 37,3% em abril face ao ano anterior e o CPL caiu 14,8% para o valor mais baixo em 12 meses. Sinal claro para o nicho auto e para o argumento de venda da gestão de tráfego com IA integrada.</p>
+      <a class="src" href="https://news.dealershipguy.com/p/ai-powered-digital-marketing-is-driving-higher-dealer-conversions-at-lower-cost-report-finds" target="_blank">DealershipGuy — AI-powered digital marketing is driving higher dealer conversions at lower cost, report finds</a>
+    </div>
+  </section>
+
+  <!-- F: IA & BUSCA GENERATIVA -->
+  <section>
+    <h2>🤖 IA &amp; Busca Generativa</h2>
+
+    <div class="card positive">
+      <div class="card-top">
+        <h3>ChatGPT Ads: self-serve Ads Manager aberto desde 5 de maio (sem mínimo de investimento)</h3>
+        <span class="badge badge-new">Novo canal</span>
+      </div>
+      <p class="why">Qualquer empresa pode agora anunciar no ChatGPT sem mínimo de budget. Os anúncios aparecem em blocos rotulados no fim das respostas, com targeting contextual (conversa atual + histórico). CPC e CPM disponíveis. A OpenAI projeta $2,5 mil milhões em receita publicitária para 2026. Canal novo com concorrência ainda baixa, ideal para experimentação antes de saturar.</p>
+      <a class="src" href="https://www.openai.com/index/our-approach-to-advertising-and-expanding-access/" target="_blank">OpenAI — Our approach to advertising and expanding access to ChatGPT</a>
+    </div>
+
+    <div class="card positive">
+      <div class="card-top">
+        <h3>Google AI Mode Ads: Conversational Discovery Ads e Business Agent for Leads (GML 2026, 20 maio)</h3>
+        <span class="badge badge-new">Novo formato</span>
+      </div>
+      <p class="why">No Google Marketing Live (20 maio), o Google apresentou anúncios conversacionais integrados no AI Mode. O Conversational Discovery gera criativo via Gemini adaptado à pergunta do utilizador. O Business Agent for Leads responde a perguntas do prospect dentro do anúncio com base no site do anunciante. Em teste nos EUA (mobile e desktop).</p>
+      <a class="src" href="https://blog.google/products/ads-commerce/google-marketing-live-2026-collection/" target="_blank">Google Blog — Google Marketing Live 2026: News and announcements</a>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Perplexity abandona modelo publicitário (fevereiro 2026) e aposta em subscriptions</h3>
+        <span class="badge badge-info">Paisagem AI Search</span>
+      </div>
+      <p class="why">A Perplexity saiu definitivamente da corrida dos anúncios em AI search em fevereiro, citando risco para a confiança dos utilizadores. O terreno em AI search fica para ChatGPT, Google e players menores. Para as marcas: não há plano de regresso, o investimento faz-se em ChatGPT e Google AI Mode.</p>
+      <a class="src" href="https://searchengineland.com/perplexity-stops-testing-advertising-469452" target="_blank">Search Engine Land — Perplexity stops testing advertising</a>
+    </div>
+  </section>
+
+  <!-- G: CRIATIVOS & ÂNGULOS -->
+  <section>
+    <h2>🎨 Criativos &amp; Ângulos</h2>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>UGC nativo supera UGC scripted: skits, expert commentary e street interviews a converter em 2026</h3>
+        <span class="badge badge-info">Tendência</span>
+      </div>
+      <p class="why">O UGC de testemunho "clássico" está a tornar-se previsível. O que está a converter são formatos que parecem totalmente orgânicos: skits, commentary de especialista e street interviews. Os primeiros 3 segundos continuam a ser o único criativo que importa. UGC em geral: 10,38x mais conversões vs. criativos de estúdio, CTR 4x superior.</p>
+      <a class="src" href="https://ugcslalom.com/en/blog/tendencias-ugc" target="_blank">UGC Slalom — 10 UGC trends in 2026: AI, short-form video, and micro-creators</a>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Imagens estáticas: ainda representam 60-70% das conversões no Meta</h3>
+        <span class="badge badge-info">Dado de referência</span>
+      </div>
+      <p class="why">Num mercado obcecado com vídeo, o formato estático continua a ser o de maior volume de conversão no Meta. Investir tempo em creative estático antes de escalar para vídeo ainda faz sentido, sobretudo para serviços locais e B2B com equipas de criação limitadas.</p>
+      <a class="src" href="https://adligator.com/blog/facebook-ad-creative-trends-2026" target="_blank">Adligator — Facebook Ad Creative Trends 2026: Formats, Hooks &amp; CTAs That Win</a>
+    </div>
+  </section>
+
+  <!-- H: WHATSAPP & CTWA -->
+  <section>
+    <h2>💬 WhatsApp &amp; CTWA</h2>
+
+    <div class="card positive">
+      <div class="card-top">
+        <h3>CTWA: canal de aquisição mais rápido a crescer em 2026, janela de 72h gratuita por conversa</h3>
+        <span class="badge badge-new">Tendência forte</span>
+      </div>
+      <p class="why">As conversas geradas por Click-to-WhatsApp Ads não são cobradas durante 72 horas. Em mercados onde o WhatsApp é dominante (Portugal incluído), o CPL pode ser significativamente mais baixo do que com landing pages. A otimização recomendada é via objetivo Engagement + Conversations como evento de otimização, deixando o algoritmo do Meta encontrar quem tem maior probabilidade de iniciar conversa.</p>
+      <a class="src" href="https://www.go4whatsup.com/guides/click-to-whatsapp-ads/" target="_blank">Go4WhatsUp — Click-to-WhatsApp Ads: The 2026 Campaign Playbook</a>
+    </div>
+  </section>
+
+  <!-- I: FERRAMENTAS & AUTOMAÇÃO -->
+  <section>
+    <h2>🛠️ Ferramentas &amp; Automação</h2>
+
+    <div class="card positive">
+      <div class="card-top">
+        <h3>n8n 2.0: LangChain nativo, 70+ AI nodes e memória persistente para agentes de marketing</h3>
+        <span class="badge badge-new">Lançamento Jan 2026</span>
+      </div>
+      <p class="why">O n8n 2.0 (janeiro 2026) trouxe integração nativa com LangChain, execução em sandbox e memória persistente entre execuções. Para agências de tráfego, é a plataforma mais potente para automatizar relatórios de campanha, notificações de alerta e qualificação de leads com IA, mantendo os dados no próprio servidor (self-hosted).</p>
+      <a class="src" href="https://hatchworks.com/blog/ai-agents/n8n-guide/" target="_blank">Hatchworks — n8n Guide 2026: Features &amp; Workflow Automation Deep Dive</a>
+    </div>
+
+    <div class="card">
+      <div class="card-top">
+        <h3>Stape: Website Tracking Checker, Setup Assistant e GTM Helper Chrome Extension</h3>
+        <span class="badge badge-info">Ferramentas</span>
+      </div>
+      <p class="why">O Stape lançou um conjunto de ferramentas gratuitas para agências: auditoria de tracking, geração automática de containers GTM e uma extensão Chrome para debug de server-side tracking. Úteis para auditorias de novos clientes e para demonstrar problemas de perda de dados no momento da prospeção.</p>
+      <a class="src" href="https://stape.io/blog/server-side-tracking-for-agencies" target="_blank">Stape — Server-Side Tracking for Agencies</a>
+    </div>
+  </section>
+
+  <footer>
+    Briefing gerado a 02/06/2026 &nbsp;·&nbsp; Fontes verificadas em 2+ domínios independentes &nbsp;·&nbsp; Para uso interno de Elisabete Silva
+  </footer>
+
+</div>
+</body>
+</html>
