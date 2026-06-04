@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="pt-PT">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Briefing de Tráfego, 04/06/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #f0f4f8;
+      color: #1a1a2e;
+      line-height: 1.65;
+      padding-bottom: 48px;
+    }
+    a { color: #2563eb; text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    /* HEADER */
+    .header {
+      background: linear-gradient(135deg, #1e3a5f 0%, #1d4ed8 100%);
+      color: #fff;
+      padding: 32px 20px 28px;
+      text-align: center;
+    }
+    .header .label {
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      opacity: 0.75;
+      margin-bottom: 8px;
+    }
+    .header h1 {
+      font-size: clamp(1.5rem, 4.5vw, 2.1rem);
+      font-weight: 800;
+      letter-spacing: -0.02em;
+    }
+    .header .subtitle {
+      font-size: 0.88rem;
+      opacity: 0.72;
+      margin-top: 7px;
+    }
+
+    /* CONTAINER */
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 0 16px;
+    }
+
+    /* TL;DR */
+    .tldr {
+      background: #fffbeb;
+      border-left: 5px solid #f59e0b;
+      border-radius: 10px;
+      padding: 20px 22px;
+      margin: 28px 0 24px;
+      box-shadow: 0 2px 8px rgba(245,158,11,.10);
+    }
+    .tldr-label {
+      font-size: 0.68rem;
+      font-weight: 800;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
+      color: #92400e;
+      margin-bottom: 10px;
+    }
+    .tldr ul { list-style: none; }
+    .tldr li {
+      font-size: 0.93rem;
+      color: #44403c;
+      padding: 5px 0 5px 22px;
+      position: relative;
+    }
+    .tldr li::before {
+      content: "▶";
+      font-size: 0.58rem;
+      color: #f59e0b;
+      position: absolute;
+      left: 2px;
+      top: 9px;
+    }
+
+    /* SECTION */
+    .section { margin-bottom: 30px; }
+    .section-title {
+      font-size: 0.78rem;
+      font-weight: 800;
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+      color: #4b5563;
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      border-bottom: 2px solid #d1d5db;
+      padding-bottom: 7px;
+      margin-bottom: 13px;
+    }
+
+    /* CARDS */
+    .cards-grid { display: grid; gap: 12px; }
+    .card {
+      background: #fff;
+      border-radius: 10px;
+      padding: 17px 20px;
+      border: 1px solid #e2e8f0;
+      box-shadow: 0 1px 4px rgba(0,0,0,.06);
+    }
+    .card.urgent { border-left: 4px solid #ef4444; }
+    .card-head {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      margin-bottom: 6px;
+      flex-wrap: wrap;
+    }
+    .card-title {
+      font-size: 0.96rem;
+      font-weight: 700;
+      color: #1e3a5f;
+      flex: 1 1 200px;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.62rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      padding: 3px 8px;
+      border-radius: 4px;
+      white-space: nowrap;
+      flex-shrink: 0;
+    }
+    .badge-red { background: #fee2e2; color: #b91c1c; }
+    .card-why {
+      font-size: 0.87rem;
+      color: #374151;
+      margin-bottom: 9px;
+    }
+    .card-source {
+      font-size: 0.77rem;
+      color: #6b7280;
+    }
+    .card-source a { color: #2563eb; font-weight: 600; }
+
+    /* FOOTER */
+    .footer {
+      text-align: center;
+      font-size: 0.75rem;
+      color: #9ca3af;
+      margin-top: 36px;
+      padding-top: 20px;
+      border-top: 1px solid #e5e7eb;
+    }
+
+    @media (min-width: 580px) {
+      .cards-grid.two { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="header">
+  <div class="label">Inteligência de Marketing</div>
+  <h1>Briefing de Tráfego</h1>
+  <div class="subtitle">04 de junho de 2026 &nbsp;|&nbsp; Geração de Leads &amp; Tráfego Pago</div>
+</div>
+
+<div class="container">
+
+  <!-- TL;DR -->
+  <div class="tldr">
+    <div class="tldr-label">TL;DR — O mais importante de hoje</div>
+    <ul>
+      <li><strong>Dois prazos a contar os dias:</strong> o Google Consent Mode muda a 15/06 (ad_storage fica como único controlo de dados de Ads) e a Meta elimina o targeting Nielsen DMA para stands auto a 22/06, pausando campanhas sem migração para Comscore.</li>
+      <li><strong>Google lança "Business Agent for Leads"</strong> em open beta nos EUA: agente Gemini dentro de anúncios lead gen substitui formulários estáticos nas verticais auto, imobiliário e educação.</li>
+      <li><strong>CPL em Lead Ads sobe 21% face a 2025</strong> para $27,66 em media; a queixa real dos donos de negocio e "os leads chegam mas nao convertem", e a causa e objetivo errado mais ausencia de ligacao CRM-CAPI.</li>
+    </ul>
+  </div>
+
+  <!-- PLATAFORMAS & ALGORITMOS -->
+  <div class="section">
+    <div class="section-title"><span>⚡</span> Plataformas &amp; Algoritmos</div>
+    <div class="cards-grid">
+
+      <div class="card urgent">
+        <div class="card-head">
+          <div class="card-title">Meta elimina targeting Nielsen DMA para auto a 22/06</div>
+          <span class="badge badge-red">Urgente — 18 dias</span>
+        </div>
+        <div class="card-why">Qualquer stand automóvel com campanhas de Catalogo a usar DMA codes vai ter os anuncios pausados a 22 de junho se nao migrar para Comscore Market IDs. A mudanca foi anunciada no blog oficial de developers da Meta a 13/03/2026. Acao: aceder ao Catalog Manager e atualizar o campo comscore_market_codes antes do prazo.</div>
+        <div class="card-source">Fonte primaria: <a href="https://developers.facebook.com/blog/post/2026/03/13/transitioning-from-nielsen-dma-to-comscore-markets-for-automotive-model-ads/" target="_blank">Meta for Developers (blog oficial)</a> &mdash; confirmado: <a href="https://www.socialmediatoday.com/news/meta-switches-to-comscore-markets-data-for-auto-ads/814886/" target="_blank">Social Media Today</a></div>
+      </div>
+
+      <div class="card urgent">
+        <div class="card-head">
+          <div class="card-title">Google Consent Mode: mudanca de controlo a 15/06</div>
+          <span class="badge badge-red">Urgente — 11 dias</span>
+        </div>
+        <div class="card-why">A partir de 15 de junho de 2026, o Google Analytics deixa de poder sobrepor as definicoes de Ads. O parametro ad_storage (enviado pelo CMP) torna-se o unico controlo de dados publicitarios nas contas Google Ads ligadas. Prazo duro confirmado pela Google em abril. Se a configuracao CMP nao estiver correta, os dados de conversao para Ads sao afetados diretamente.</div>
+        <div class="card-source">Fonte: <a href="https://www.uniconsent.com/blog/google-ads-consent-mode-change-2026" target="_blank">UniConsent</a> &mdash; confirmado: <a href="https://ceaksan.com/en/google-analytics-data-controls-consolidation-june-2026" target="_blank">Ceaksan</a> e <a href="https://www.cookiehub.com/blog/google-analytics-google-ads-consent-mode-v2-2026" target="_blank">CookieHub</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Meta GEM: criativo e o novo targeting</div>
+        </div>
+        <div class="card-why">O modelo Generative Ads Recommendation Model (GEM) da Meta e 4x mais eficiente que os anteriores modelos de ranking e o algoritmo Andromeda penaliza alta Creative Similarity: criativos repetitivos = CPMs mais altos. A Meta indica (dados internos) +5% conversoes no Instagram e +3% no Facebook Feed desde o deploy de GEM. Variedade criativa deixou de ser "nice to have".</div>
+        <div class="card-source">Fonte: <a href="https://wallaroomedia.com/meta-gem-algorithm/" target="_blank">Wallaroo Media</a> &mdash; confirmado: <a href="https://www.nicedigitals.com/meta-ads-algorithm-changes-2026/" target="_blank">Nice Digitals</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Google "Business Agent for Leads" em open beta (EUA)</div>
+        </div>
+        <div class="card-why">Anunciado no Google Marketing Live 2026 (maio), o Business Agent for Leads e um agente Gemini dentro de anuncios de lead gen que substitui formularios estaticos por conversacao. O utilizador interage diretamente com um agente treinado no site do anunciante. Disponivel em AI Max e Performance Max; verticais: educacao, automovel e imobiliario. Apenas EUA (ingles) por agora.</div>
+        <div class="card-source">Fonte: <a href="https://ppcnewsfeed.com/ppc-news/2026-05/gml-2026-business-agent-leads-ai-mode/" target="_blank">PPC News Feed</a> &mdash; confirmado: <a href="https://searchengineland.com/google-tests-new-conversational-ad-formats-in-ai-mode-and-search-478115" target="_blank">Search Engine Land</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- TRACKING & PRIVACIDADE -->
+  <div class="section">
+    <div class="section-title"><span>🎯</span> Tracking &amp; Privacidade</div>
+    <div class="cards-grid two">
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Meta CAPI com setup de 1 clique (desde abril 2026)</div>
+        </div>
+        <div class="card-why">Em abril 2026, a Meta lancou implementacao CAPI com 1 clique no Events Manager, sem servidor nem apoio tecnico. Disponivel para anunciantes com baixa cobertura de eventos. A Meta indica (dados internos, ainda por confirmar de forma independente) reducao media de 17,8% no custo por resultado para quem usa CAPI.</div>
+        <div class="card-source">Fonte: <a href="https://www.adexchanger.com/platforms/meta-is-launching-an-easy-button-for-capi/" target="_blank">AdExchanger</a> &mdash; confirmado: <a href="https://segwise.ai/blog/meta-pixel-conversions-api-ai-updates-2026" target="_blank">Segwise.ai</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">iOS 26: remocao automatica de fbclid e gclid em Safari e Mail</div>
+        </div>
+        <div class="card-why">O iOS 26, anunciado na WWDC, expande a Link Tracking Protection com remocao automatica de parametros de tracking (fbclid, gclid) em Safari, Mail e Mensagens. Mais dados de atribuicao perdidos por browser. Tracking server-side (CAPI, sGTM) torna-se ainda mais critico para manter sinais limpos.</div>
+        <div class="card-source">Fonte: <a href="https://eagleeyet.net/blog/apple/ios-26-and-the-future-of-ad-tracking-what-apples-new-privacy-update-means-for-marketers/" target="_blank">Eagle Eye Technology</a> &mdash; confirmado: <a href="https://www.optizent.com/blog/ios-26-and-safari-tracking-changes-what-it-means-for-google-ads-meta-server-side-tracking/" target="_blank">Optizent</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- GERAÇÃO DE LEADS -->
+  <div class="section">
+    <div class="section-title"><span>🧲</span> Geracao de Leads</div>
+    <div class="cards-grid two">
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">CPL no Facebook Lead Ads sobe 21% YoY para $27,66</div>
+        </div>
+        <div class="card-why">Dados de 2026 apontam para um aumento de 20,94% no custo por lead em Lead Ads (media $27,66), com taxa de conversao a cair de 8,67% para 7,72%. Dentistas: $76,71 CPL; servicos juridicos: $72,40. A resposta nao e gastar mais mas ligar o CRM ao CAPI para o algoritmo otimizar para leads que realmente convertem. (Dado de fonte unica: leadgen-economy.com; benchmarks gerais confirmados em theedigital.com.)</div>
+        <div class="card-source">Fonte: <a href="https://www.leadgen-economy.com/blog/facebook-lead-ads-quality-collapse-cpl/" target="_blank">LeadGen Economy</a> &mdash; benchmarks: <a href="https://www.theedigital.com/blog/facebook-ads-benchmarks" target="_blank">The Edigital 2026</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Speed-to-lead: 5 minutos = 21x mais conversao</div>
+        </div>
+        <div class="card-why">Contactar um lead nos primeiros 5 minutos aumenta a probabilidade de conversao em 21x face a contactar apos 30 minutos. Com formularios instantaneos Meta e Google, a janela de resposta e o maior alavanca de ROI para qualquer dono de negocio com equipa comercial. Automatizacoes WhatsApp/CRM sao a solucao mais acessivel para garantir este tempo de resposta.</div>
+        <div class="card-source">Fonte: <a href="https://leadsync.me/blog/meta-ads-best-practices/" target="_blank">LeadSync Best Practices 2026</a> &mdash; confirmado: <a href="https://www.edgedigital.net/optimising-conversion-rates/" target="_blank">Edge Digital</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- PULSO DO ICP -->
+  <div class="section">
+    <div class="section-title"><span>👥</span> Pulso do ICP</div>
+    <div class="cards-grid">
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Clinicas, advogados, dentistas: "os leads chegam mas nao convertem"</div>
+        </div>
+        <div class="card-why">A queixa mais documentada de negocios locais em 2026 e esta: "fizemos anuncios, vieram leads, mas nenhum virou cliente." A raiz e tecnica: objetivo otimizado para volume (cliques) em vez de qualidade, sem ligacao CRM-CAPI que ensine o algoritmo a encontrar quem realmente compra. CPL medio de dentistas nos EUA: $76,71; advogados: $72,40. Em PT os valores sao geralmente mais baixos, mas a dinamica e a mesma.</div>
+        <div class="card-source">Fonte: <a href="https://www.digitaljournal.com/pr/news/winston-news-wire/why-small-businesses-struggle-facebook-1292648951.html" target="_blank">Digital Journal</a> &mdash; benchmarks: <a href="https://www.adamigo.ai/blog/meta-ads-cost-per-lead-benchmarks-industry-2026" target="_blank">AdAmigo.ai 2026</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Stand auto EUA: CPL caiu 14,8% em abril com AI marketing</div>
+        </div>
+        <div class="card-why">Dados de abril 2026 mostram que stands americanos com IA no marketing viram conversoes subir 37,3% e CPL cair 14,8% para o minimo de 1 ano. O trafego de ChatGPT para sites de concessionarios subiu 34,5% em marco. Sinal para stands PT: quem adotar IA no marketing agora sai na frente antes do mercado local saturar a mesma abordagem.</div>
+        <div class="card-source">Fonte: <a href="https://news.dealershipguy.com/p/ai-powered-digital-marketing-is-driving-higher-dealer-conversions-at-lower-cost-report-finds" target="_blank">Dealership Guy News</a> &mdash; confirmado: <a href="https://www.purecars.com/resources/purecars-reveals-top-5-digital-marketing-trends-shaping-dealership-growth-in-2026" target="_blank">PureCars Report 2026</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Imobiliario: 39% dos agentes dizem que redes sociais geram os melhores leads</div>
+        </div>
+        <div class="card-why">Dados de mercado imobiliario EUA 2026: 95% dos compradores comecam a pesquisa online; 39% dos agentes identificam social media como fonte de leads de maior qualidade (CRM em 23%). Video gera 403% mais pedidos de informacao que imagens estaticas. Oportunidade clara para imobiliarias PT ainda a apostar principalmente em portais e nao a trabalhar social ads com video.</div>
+        <div class="card-source">Fonte: <a href="https://searchlab.nl/en/statistics/real-estate-marketing-statistics-2026" target="_blank">Searchlab Real Estate Stats 2026</a> &mdash; confirmado: <a href="https://wavecnct.com/blogs/news/real-estate-lead-generation-strategies" target="_blank">Wave Connect</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOCO EUA -->
+  <div class="section">
+    <div class="section-title"><span>🇺🇸</span> Foco EUA</div>
+    <div class="cards-grid">
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Stands auto EUA: $10,7 mil milhoes em publicidade em 2026, 2/3 em digital</div>
+        </div>
+        <div class="card-why">O mercado automovel americano e o maior segmento de publicidade local: $10,7 mil milhoes previstos em 2026, com dois teros em canais digitais. Google Search representa 64% do investimento digital dos stands. O trafego de LLMs (ChatGPT, Gemini) cresceu 34,5% em marco, sinalizando que o buyer journey automovel esta a migrar para motores conversacionais. Gestores PT com experiencia em auto tem argumento diferenciador real para o mercado EUA.</div>
+        <div class="card-source">Fonte: <a href="https://digitaldealer.com/news/the-future-of-dealership-marketing-2026-trends-from-purecars/169762" target="_blank">Digital Dealer (PureCars)</a> &mdash; confirmado: <a href="https://news.dealershipguy.com/p/dealer-ad-spend-nears-10-billion-as-digital-marketing-dominates" target="_blank">Dealership Guy News</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- IA & BUSCA GENERATIVA -->
+  <div class="section">
+    <div class="section-title"><span>🤖</span> IA &amp; Busca Generativa</div>
+    <div class="cards-grid">
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">ChatGPT Ads abre plataforma self-serve para qualquer negocio</div>
+        </div>
+        <div class="card-why">Apos lancar em fevereiro 2026 com minimo de $200.000, a OpenAI abriu o ChatGPT Ads a qualquer negocio via plataforma self-serve. CPM aproximado: $60 (cerca de 3x Meta, segundo Adventure PPC). O AI Mode do Google ja tem mais de 1 mil milhao de utilizadores mensais com queries a duplicar por trimestre. O trafego publicitario esta a migrar para motores conversacionais e quem ainda nao testou esta a perder dados de audiencia.</div>
+        <div class="card-source">Fonte: <a href="https://www.adventureppc.com/blog/chatgpt-ads-vs-perplexity-ads-2026-ai-search-advertising-comparison" target="_blank">Adventure PPC</a> &mdash; confirmado: <a href="https://www.2pointagency.com/guides/chatgpt-advertising-the-complete-2026-guide-to-openais-revolutionary-ad-platform/" target="_blank">2Point Agency</a></div>
+      </div>
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Perplexity abandona anuncios por questoes de confianca</div>
+        </div>
+        <div class="card-why">Em fevereiro 2026, o Perplexity removeu todos os anuncios. Um executivo afirmou: "o utilizador precisa de acreditar que a resposta e a melhor possivel." Modelo agora 100% subscricoes (alvo: $500M ARR). Resultado: audiencia do Perplexity (tecnica, alto rendimento) fica fora de alcance pago. ChatGPT e Google AI Mode ficam como os dois grandes canais de AI Search com anuncios.</div>
+        <div class="card-source">Fonte: <a href="https://gizmodo.com/perplexity-executives-think-ads-will-butcher-trust-in-ai-2000723366" target="_blank">Gizmodo</a> &mdash; confirmado: <a href="https://www.tomsguide.com/ai/perplexity-just-removed-ads-to-protect-trust-heres-why-chatgpt-should-do-the-same" target="_blank">Tom's Guide</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- CRIATIVOS & ÂNGULOS -->
+  <div class="section">
+    <div class="section-title"><span>🎨</span> Criativos &amp; Angulos</div>
+    <div class="cards-grid">
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Video vertical 15-30s e UGC dominam; Andromeda penaliza criatividade repetida</div>
+        </div>
+        <div class="card-why">Em 2026, o algoritmo Andromeda da Meta penaliza contas com alta Creative Similarity: criativos repetitivos = CPMs mais elevados. Video curto vertical (15-30s) estilo UGC ou confessional continua a superar producoes polidas. Hooks mais eficazes: resultado primeiro (before/after), confessional em camara direta, pattern interrupt visual nos primeiros 3 segundos. Statics ainda representam 60-70% das conversoes totais.</div>
+        <div class="card-source">Fonte: <a href="https://adligator.com/blog/facebook-ad-creative-trends-2026" target="_blank">Adligator Creative Trends 2026</a> &mdash; confirmado: <a href="https://www.socialmediaexaminer.com/facebook-ad-algorithm-changes-for-2026-what-marketers-need-to-know/" target="_blank">Social Media Examiner</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- WHATSAPP & CTWA -->
+  <div class="section">
+    <div class="section-title"><span>💬</span> WhatsApp &amp; CTWA</div>
+    <div class="cards-grid">
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">CTWA: janela de 72h de mensagens gratuitas e CPL ate 92% mais baixo</div>
+        </div>
+        <div class="card-why">Click-to-WhatsApp Ads (disponivel via Meta Ads em PT e EU) abre uma janela de 72 horas de mensagens de marketing gratuitas apos o primeiro clique. Um estudo Forrester (encomendado pela Meta, 2025-2026) indica 92% de reducao de CPL e 94% mais conversoes vs. destino landing page em mercados emergentes (atribuicao da propria Meta, ler com precaucao). Anuncios nativos dentro do WhatsApp ainda limitados na EU por regulacao, mas CTWA via Facebook/Instagram funciona normalmente em PT.</div>
+        <div class="card-source">Fonte: <a href="https://www.go4whatsup.com/guides/click-to-whatsapp-ads/" target="_blank">Go4WhatsUp (guia CTWA 2026)</a> &mdash; confirmado: <a href="https://getkanal.com/blog/click-to-whatsapp-ads-guide-2026" target="_blank">GetKanal</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FERRAMENTAS & AUTOMAÇÃO -->
+  <div class="section">
+    <div class="section-title"><span>🛠️</span> Ferramentas &amp; Automacao</div>
+    <div class="cards-grid">
+
+      <div class="card">
+        <div class="card-head">
+          <div class="card-title">Stape lanca POAS Data Feed: otimiza por margem, nao por receita</div>
+        </div>
+        <div class="card-why">A Stape lancou (30/03/2026) o POAS Data Feed, que calcula e envia dados de lucro real via sGTM para plataformas de anuncios e analytics (disponivel em planos Pro e superior). Permite otimizar campanhas por margem de lucro em vez de receita bruta: especialmente relevante para e-commerce estabelecido e servicos com margens muito variaveis. Se o smart bidding esta a otimizar para os produtos/servicos errados, este feed e a correcao certa.</div>
+        <div class="card-source">Fonte: <a href="https://stape.io/news" target="_blank">Stape News (marco 2026)</a> &mdash; confirmado: <a href="https://www.cometly.com/post/top-server-side-tracking-tools" target="_blank">Cometly Server-Side Tracking 2026</a></div>
+      </div>
+
+    </div>
+  </div>
+
+  <div class="footer">
+    Briefing gerado a 04/06/2026 &nbsp;|&nbsp; Para uso interno de Elisabete Silva, Gestora de Trafego Pago &nbsp;|&nbsp; Fontes verificadas em multiplos dominios independentes
+  </div>
+
+</div>
+</body>
+</html>
