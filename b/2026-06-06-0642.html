@@ -1,0 +1,233 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Briefing de Tráfego, 06/06/2026</title>
+  <style>
+    *{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,Helvetica,sans-serif;background:#f0f2f5;color:#1a1a2e;line-height:1.65;padding:16px}
+    .container{max-width:740px;margin:0 auto}
+    header{background:linear-gradient(135deg,#1a1a2e 0%,#16213e 100%);color:#fff;border-radius:14px;padding:28px 28px 20px;margin-bottom:18px}
+    header h1{font-size:21px;font-weight:700;letter-spacing:-0.3px;color:#fff}
+    header p{font-size:11px;color:rgba(255,255,255,0.5);margin-top:6px;text-transform:uppercase;letter-spacing:0.07em}
+    .tldr{background:#f5a623;border-radius:12px;padding:20px 22px;margin-bottom:20px}
+    .tldr .label{font-size:10px;font-weight:800;text-transform:uppercase;letter-spacing:0.12em;color:rgba(0,0,0,0.5);margin-bottom:8px}
+    .tldr p{font-size:15px;line-height:1.6;color:#1a1a2e;font-weight:500}
+    .section{margin-bottom:22px}
+    .section-header{font-size:11px;font-weight:700;text-transform:uppercase;letter-spacing:0.1em;color:#6b7280;margin-bottom:10px;padding:0 2px}
+    .card{background:#fff;border-radius:10px;padding:16px 18px;margin-bottom:8px;box-shadow:0 1px 3px rgba(0,0,0,0.06);border-left:3px solid transparent}
+    .card.urgent{border-left-color:#ef4444}
+    .card.info{border-left-color:#3b82f6}
+    .badge{display:inline-block;font-size:10px;font-weight:700;text-transform:uppercase;letter-spacing:0.08em;background:#ef4444;color:#fff;border-radius:4px;padding:2px 8px;margin-bottom:8px}
+    .badge.blue{background:#3b82f6}
+    .card h3{font-size:14px;font-weight:600;color:#1a1a2e;margin-bottom:6px;line-height:1.4}
+    .card .why{font-size:13px;color:#374151;margin-bottom:10px;line-height:1.55}
+    .card a{font-size:12px;color:#3b82f6;text-decoration:none;font-weight:500}
+    .card a:hover{text-decoration:underline}
+    footer{text-align:center;padding:20px 0 10px;font-size:11px;color:#9ca3af}
+    @media(max-width:500px){body{padding:10px}header{padding:18px 16px 14px}header h1{font-size:18px}.tldr p{font-size:14px}.card{padding:14px}}
+  </style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <h1>Briefing de Tráfego, 06/06/2026</h1>
+    <p>Inteligência diária para gestores de tráfego pago &bull; Foco: geração de leads</p>
+  </header>
+
+  <div class="tldr">
+    <div class="label">TL;DR</div>
+    <p>Tres deadlines a nao perder: a <strong>15 de junho</strong> (9 dias), o Google separa o controlo do GA4 do Google Ads e o tracking mal configurado parte silenciosamente; a <strong>22 de junho</strong>, campanhas Meta de automovel pausam automaticamente se nao migrarem de Nielsen DMA para Comscore Markets; a <strong>1 de julho</strong>, a Meta começa a cobrar taxa extra de 2 a 5% em fatura por impressoes no Reino Unido, Espanha, Franca, Italia, Austria e Turquia. Em paralelo: ChatGPT Ads atinge 100M USD/ano em receita anualizada e o CPL medio sobe 8% face ao ano anterior.</p>
+  </div>
+
+  <!-- A: PLATAFORMAS & ALGORITMOS -->
+  <div class="section">
+    <div class="section-header">&#9889; Plataformas &amp; Algoritmos</div>
+
+    <div class="card urgent">
+      <span class="badge">Urgente, 22 Jun</span>
+      <h3>Meta troca Nielsen DMA por Comscore Markets em anuncios de automovel</h3>
+      <p class="why">A partir de 22 de junho, campanhas de Vehicle Ads na Meta que ainda usem Nielsen's DMA sao automaticamente pausadas. A migracao exige atualizar os feeds de veiculos com Comscore Market IDs via Catalog Manager ou API. Os IDs ficaram disponiveis em marco, nao ha desculpa para adiar.</p>
+      <a href="https://socialbee.com/blog/facebook-updates/" target="_blank">Fonte: SocialBee &#8594;</a>
+    </div>
+
+    <div class="card urgent">
+      <span class="badge">Urgente, 1 Jul</span>
+      <h3>Meta aplica taxa de localizacao de 2 a 5% em 6 paises europeus a partir de 1 de julho</h3>
+      <p class="why">A Meta passa a cobrar uma taxa adicional sobre impressoes entregues no Reino Unido (2%), Espanha, Franca e Italia (3%), Austria e Turquia (5%). A taxa aparece em linha separada na fatura, nao sai do orcamento de campanha, mas aumenta o custo efetivo total. Quem faz campanhas para esses mercados deve rever margens e CPL-alvo antes do fim do mes.</p>
+      <a href="https://almcorp.com/blog/meta-location-fees-2026-ad-price-increase-six-countries/" target="_blank">Fonte: ALM Corp &#8594;</a>
+    </div>
+
+    <div class="card">
+      <h3>Meta Andromeda: o criativo substitui o targeting manual como alavanca principal</h3>
+      <p class="why">O sistema de IA da Meta (Andromeda) le o conteudo do criativo para prever correspondencia com audiencias, substituindo a segmentacao manual. O targeting estreito esta a perder relevancia: a qualidade e clareza da mensagem criativa passam a determinar a quem o anuncio chega, o que reposiciona o criativo como a principal variavel de otimizacao.</p>
+      <a href="https://jetfuel.agency/metas-2026-algorithm-update-what-andromeda-changed-and-how-to-adapt-your-ads/" target="_blank">Fonte: JetFuel Agency &#8594;</a>
+    </div>
+
+    <div class="card">
+      <h3>Google Marketing Live 2026: Gemini torna-se agente permanente no Google Ads</h3>
+      <p class="why">O Google apresentou "Ask Advisor", agente baseado em Gemini que abrange Google Ads, Analytics, Merchant Center e GMP. O Asset Studio passou a ser multimodal. A pressao para criar ativos de campanha via IA e crescente; gestores que nao dominarem estas ferramentas ficam em desvantagem competitiva.</p>
+      <a href="https://blog.google/products/ads-commerce/google-marketing-live-2026-collection/" target="_blank">Fonte: Google Blog Oficial &#8594;</a>
+    </div>
+
+    <div class="card">
+      <h3>Meta: click-through attribution conta apenas cliques diretos em links desde marco</h3>
+      <p class="why">Desde 3 de marco de 2026, apenas cliques diretos num link contam para atribuicao click-through. Interacoes com o anuncio que nao fossem clique em link ja nao geram conversao atribuida. Pode explicar quedas repentinas nos leads reportados do Ads Manager sem diminuicao real do volume de conversoes no negocio.</p>
+      <a href="https://www.socialmediaexaminer.com/facebook-ad-algorithm-changes-for-2026-what-marketers-need-to-know/" target="_blank">Fonte: Social Media Examiner &#8594;</a>
+    </div>
+  </div>
+
+  <!-- B: TRACKING & PRIVACIDADE -->
+  <div class="section">
+    <div class="section-header">&#127919; Tracking &amp; Privacidade</div>
+
+    <div class="card urgent">
+      <span class="badge">Urgente, 15 Jun (9 dias)</span>
+      <h3>CRITICO: Google remove override do GA4 sobre Google Ads em Consent Mode</h3>
+      <p class="why">Apos 15 de junho, o Google Ads ignora completamente as definicoes de Google Signals no GA4 e obedece exclusivamente ao codigo de Consent Mode instalado no site. Se o banner de consentimento nao estiver corretamente configurado, o tracking de conversoes, a construcao de audiencias e a medicao de ROAS podem quebrar silenciosamente, sem qualquer aviso no dashboard do Ads Manager.</p>
+      <a href="https://searchengineland.com/google-simplifies-analytics-and-ads-consent-rules-474206" target="_blank">Fonte: Search Engine Land &#8594;</a>
+    </div>
+
+    <div class="card info">
+      <span class="badge blue">Disponivel agora</span>
+      <h3>Meta CAPI one-click: configuracao sem programador, desde abril de 2026</h3>
+      <p class="why">A Meta disponibilizou uma opcao de Conversions API com um clique dentro do Events Manager, sem necessidade de servidor ou programador. Cobre eventos web standard (page views, leads, purchases). A Meta indica uma reducao de 17,8% no custo por resultado com CAPI ativo. Muito relevante para clientes sem recursos tecnicos que ainda dependem apenas do Pixel.</p>
+      <a href="https://ppc.land/metas-free-one-click-conversions-api-is-now-live-no-developer-needed/" target="_blank">Fonte: PPC Land &#8594;</a>
+    </div>
+
+    <div class="card">
+      <h3>67% das implementacoes de Consent Mode v2 estao em incumprimento</h3>
+      <p class="why">Apesar de mais de 90% dos anunciantes na EEA terem adotado Consent Mode v2, dois teros definem o consentimento como "granted" antes de o utilizador escolher, violando os principios do RGPD. Alem do risco legal, isto significa dados de conversao inflacionados e audiencias contaminadas com utilizadores que nao consentiram.</p>
+      <a href="https://secureprivacy.ai/blog/global-cookie-consent-trends-2026" target="_blank">Fonte: Secure Privacy &#8594;</a>
+    </div>
+  </div>
+
+  <!-- H: WHATSAPP & CTWA -->
+  <div class="section">
+    <div class="section-header">&#128172; WhatsApp &amp; CTWA</div>
+
+    <div class="card">
+      <h3>WhatsApp BSUID: novo identificador para utilizadores com username (junho 2026)</h3>
+      <p class="why">A partir deste mes, utilizadores WhatsApp com username podem contactar empresas sem revelar o numero de telefone. A API gera um BSUID (Business-Scoped User ID) estavel por par utilizador-empresa. Campanhas CTWA com integracoes de CRM ou atribuicao por numero de telefone precisam de ser atualizadas para lidar com este novo identificador, evitando duplicacao de perfis no CRM.</p>
+      <a href="https://www.cm.com/blog/whatsapp-usernames-for-business-what-you-need-to-know/" target="_blank">Fonte: CM.com &#8594;</a>
+    </div>
+  </div>
+
+  <!-- C: GERACAO DE LEADS -->
+  <div class="section">
+    <div class="section-header">&#129522; Geracao de Leads</div>
+
+    <div class="card">
+      <h3>CPL sobe 8% YoY: multi-canal tem CPL 24% mais baixo que canal unico</h3>
+      <p class="why">Segundo benchmarks da OwlClaw e Prospeo, o custo por lead esta a subir 8% ao ano por aumento de competicao. Google Ads tem CPL medio de 70 USD. Meta Lead Forms para B2B/SaaS apresenta CPL entre 30 e 65 USD. Estrategias multi-canal (Meta + Google) registam CPL 24% mais baixo do que campanhas em canal unico, reforçando o modelo combinado.</p>
+      <a href="https://owlclaw.com/benchmarks/b2b-lead-generation-benchmarks/" target="_blank">Fonte: OwlClaw Benchmarks &#8594;</a>
+    </div>
+
+    <div class="card">
+      <h3>O maior alavanca de ROI em 2026 e a qualificacao do lead apos a captura</h3>
+      <p class="why">Com leads a custos mais altos, a Prospeo destaca que o ROI incremental maior nao vem de melhores lances ou criativos, mas de verificar e qualificar os leads antes do contacto de vendas. Fechar o ciclo entre qualidade de lead e dados de CRM para otimizacao de campanhas e o proximo passo obrigatorio para quem quer melhorar o CAC.</p>
+      <a href="https://prospeo.io/s/lead-generation-advertising" target="_blank">Fonte: Prospeo &#8594;</a>
+    </div>
+  </div>
+
+  <!-- D: PULSO DO ICP -->
+  <div class="section">
+    <div class="section-header">&#128101; Pulso do ICP</div>
+
+    <div class="card urgent">
+      <span class="badge">Stands Auto, Urgente</span>
+      <h3>"As nossas campanhas de catalogo auto vao pausar a 22 de junho?"</h3>
+      <p class="why">A duvida mais urgente nos stands auto com campanhas Meta esta semana: a migracao de Nielsen DMA para Comscore Markets exige acao tecnica no feed de veiculos antes de 22 de junho, ou as campanhas param automaticamente. Qualquer stand sem gestor de trafego ativo ou sem acompanhamento desta deadline esta em risco de perder leads no pico de fim de mes.</p>
+      <a href="https://socialbee.com/blog/facebook-updates/" target="_blank">Fonte: SocialBee &#8594;</a>
+    </div>
+
+    <div class="card">
+      <h3>"Os meus leads do Meta nao convertem, ninguem atende o telefone"</h3>
+      <p class="why">A queixa mais recorrente de donos de negocios locais (clinicas, servicos, imobiliario) em 2026: leads baratos mas sem qualificacao real. As principais causas identificadas: landing pages fracas, objetivos de campanha errados (alcance em vez de conversao) e ausencia de CAPI, que faz o algoritmo otimizar para os eventos errados. Contas com CAPI bem configurado registam em media 18 a 20% mais ROAS, segundo dados da Meta.</p>
+      <a href="https://www.digitaljournal.com/pr/news/winston-news-wire/why-small-businesses-struggle-facebook-1292648951.html" target="_blank">Fonte: Digital Journal &#8594;</a>
+    </div>
+
+    <div class="card">
+      <h3>Advogados e coaches perdidos com Performance Max: 45% das conversoes Google ja vem de PMax</h3>
+      <p class="why">No nicho juridico, educacao e coaching, 45% das conversoes no Google Ads passam por campanhas Performance Max em 2026. Quem gere campanhas manualmente paga mais por menos resultados. A vantagem competitiva esta em alimentar o PMax com dados de qualidade (conversoes offline, sinais de CRM), algo que a maioria dos concorrentes ainda nao faz.</p>
+      <a href="https://chatjuridico.com.br/tendencias-google-ads-advogados-2026" target="_blank">Fonte: ChatJuridico (mercado ibero-americano) &#8594;</a>
+    </div>
+  </div>
+
+  <!-- E: FOCO EUA -->
+  <div class="section">
+    <div class="section-header">&#127482;&#127480; Foco EUA</div>
+
+    <div class="card">
+      <h3>Stands auto EUA: 73% do orcamento e digital e KPI muda para qualidade de leads</h3>
+      <p class="why">Dados NADA 2026: a concessionaria americana media gasta 543.000 USD/ano em publicidade, com 73% em canais digitais (vs. 65% em 2023). O KPI esta a migrar de "volume de leads" para "taxa de marcacao + visitas a loja + margem bruta por veiculo". Portugal costuma seguir este sinal com 18 a 24 meses de desfasamento.</p>
+      <a href="https://c-4analytics.com/insights/2026-dealer-digital-marketing-trends-report/" target="_blank">Fonte: C-4 Analytics &#8594;</a>
+    </div>
+
+    <div class="card">
+      <h3>PMEs EUA: 54% ja usam IA em marketing e investimento em video sobe para 53%</h3>
+      <p class="why">Estudo LocaliQ: 54% dos donos de PME americanas ja usam ferramentas de IA (ChatGPT, Gemini, Jasper) para marketing; 53% planeiam investir mais em video. Investimento em TikTok cai de 34% para 22%. Social media e o canal de maior valor esperado em 2026. O cliente de avenca americano esta a profissionalizar-se rapidamente, o que eleva a exigencia de quem presta servicos de trafego pago.</p>
+      <a href="https://localiq.com/blog/small-business-marketing-trends-report-2026/" target="_blank">Fonte: LocaliQ &#8594;</a>
+    </div>
+  </div>
+
+  <!-- F: IA & BUSCA GENERATIVA -->
+  <div class="section">
+    <div class="section-header">&#129302; IA &amp; Busca Generativa</div>
+
+    <div class="card">
+      <h3>ChatGPT Ads: 100M USD/ano em receita, CPM de 60 USD, 800M utilizadores semanais</h3>
+      <p class="why">O piloto publicitario da OpenAI (lancado em fevereiro de 2026) ja gera 100M USD anualizados. Os anuncios aparecem em caixas claramente separadas abaixo das respostas e nao influenciam as respostas organicas. CPM de 60 USD. Com 800M utilizadores semanais, e a plataforma de anuncios com crescimento mais rapido desde o TikTok. Acesso ainda limitado, mas a estar a alargar-se.</p>
+      <a href="https://www.adventureppc.com/blog/chatgpt-ads-vs-perplexity-ads-2026-ai-search-advertising-comparison" target="_blank">Fonte: Adventure PPC &#8594;</a>
+    </div>
+
+    <div class="card">
+      <h3>Google AI Mode: anuncios ja aparecem em 25% das respostas de AI Overview</h3>
+      <p class="why">De 5% no inicio de 2025 para 25% em meados de 2026: o Google monetiza pesquisa por IA ao mesmo ritmo que a pesquisa tradicional. Shopping ads com Direct Offers ja estao dentro do AI Mode. Quem anuncia no Google Ads beneficia automaticamente, mas criativos precisam de ser relevantes em contexto conversacional para manter a qualidade do anuncio.</p>
+      <a href="https://www.getpassionfruit.com/blog/google-ai-mode-ads-conversational-discovery-and-highlighted-answers-explained" target="_blank">Fonte: Passionfruit &#8594;</a>
+    </div>
+
+    <div class="card">
+      <h3>Perplexity abandona publicidade e aposta em subscricoes (alvo: 500M USD/ano)</h3>
+      <p class="why">Depois de testar sponsored follow-up questions, a Perplexity retirou toda a publicidade por razoes de confianca do utilizador, apontando para 500M USD em receita de subscricoes. Fica como o grande motor de pesquisa por IA sem anuncios. Para estrategia de GEO/AEO, mantem relevancia como fonte organica mas sai do radar de paid media.</p>
+      <a href="https://almcorp.com/blog/perplexity-ai-abandons-advertising-2026-analysis/" target="_blank">Fonte: ALM Corp &#8594;</a>
+    </div>
+  </div>
+
+  <!-- G: CRIATIVOS & ANGULOS -->
+  <div class="section">
+    <div class="section-header">&#127912; Criativos &amp; Angulos</div>
+
+    <div class="card">
+      <h3>UGC + video vertical de 15 a 30 segundos: formato dominante de conversao em 2026</h3>
+      <p class="why">Conteudo UGC (estilo utilizador comum, nao producao polida) continua a superar criativos de estudio na Meta. Video vertical short-form (Reels, ate 30 segundos), desenhado para funcionar sem som (85% dos videos sao vistos em silencio). Hook Rate acima de 30% e o KPI de referencia: mede se os primeiros 2 a 3 segundos reteem atencao suficiente para continuar a ver.</p>
+      <a href="https://adligator.com/blog/facebook-ad-creative-trends-2026" target="_blank">Fonte: Adligator &#8594;</a>
+    </div>
+
+    <div class="card">
+      <h3>Os 3 hooks com maior taxa de conversao: resultado em primeiro, pattern interrupt, controversia</h3>
+      <p class="why">Segundo analise da Trendtrack em 2026: (1) mostrar o resultado final desde os primeiros frames (antes/depois, numero, transformacao), (2) interrupcao visual inesperada nos primeiros 2 segundos, (3) posicao contraria ("Para de fazer X"). Para nichos de geracao de leads como clinicas, coaches e imobiliario, mostrar a transformacao do cliente logo no inicio e o que mais para o scroll.</p>
+      <a href="https://www.trendtrack.io/blog-post/best-performing-ad-hooks" target="_blank">Fonte: Trendtrack &#8594;</a>
+    </div>
+  </div>
+
+  <!-- I: FERRAMENTAS & AUTOMACAO -->
+  <div class="section">
+    <div class="section-header">&#128295; Ferramentas &amp; Automacao</div>
+
+    <div class="card">
+      <h3>Server-side tracking obrigatorio em 2026: top 3 solucoes para agencias</h3>
+      <p class="why">Com cookies de terceiros eliminados nos principais browsers, o server-side GTM deixou de ser opcional. O top 3 em 2026: ServerTrack.io (setup em 60 segundos), Taggrs (integracao GTM nativa), Stape (mais flexibilidade tecnica, desde 20 USD/mes, com auditoria gratuita e templates GTM pre-configurados). Quem ainda nao tem server-side esta a perder dados e a otimizar campanhas com informacao incompleta.</p>
+      <a href="https://servertrack.io/news/top-3-server-side-tracking-companies-in-2026-best-stape-alternatives" target="_blank">Fonte: ServerTrack.io &#8594;</a>
+    </div>
+  </div>
+
+  <footer>
+    Briefing gerado automaticamente com base em pesquisa de fontes publicas &bull; 06/06/2026 &bull; Para a Elisabete Silva, Gestora de Trafego Pago
+  </footer>
+
+</div>
+</body>
+</html>
