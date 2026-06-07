@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing de Tráfego — 07/06/2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: #f5f6fa;
+    color: #1a1a2e;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .container {
+    max-width: 740px;
+    margin: 0 auto;
+    padding: 28px 16px 56px;
+  }
+  header { margin-bottom: 28px; }
+  header .label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.6px;
+    color: #8a96a8;
+    margin-bottom: 6px;
+  }
+  header h1 {
+    font-size: 22px;
+    font-weight: 800;
+    color: #1a1a2e;
+    line-height: 1.3;
+  }
+  .tldr {
+    background: #1a1a2e;
+    color: #dce8ff;
+    border-radius: 14px;
+    padding: 22px 26px;
+    margin-bottom: 36px;
+  }
+  .tldr .tldr-label {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.4px;
+    color: #7eb3ff;
+    margin-bottom: 10px;
+  }
+  .tldr p {
+    font-size: 14.5px;
+    line-height: 1.7;
+    color: #d6e6ff;
+  }
+  .tldr p + p { margin-top: 8px; }
+  section { margin-bottom: 32px; }
+  section h2 {
+    font-size: 12.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: #8a96a8;
+    border-bottom: 2px solid #e2e8f0;
+    padding-bottom: 8px;
+    margin-bottom: 14px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 18px 20px 16px;
+    margin-bottom: 12px;
+    border-left: 4px solid #4a6cf7;
+    box-shadow: 0 1px 5px rgba(0,0,0,0.06);
+  }
+  .card.plat   { border-left-color: #4a6cf7; }
+  .card.urgente { border-left-color: #e74c3c; }
+  .card.privacy { border-left-color: #e67e22; }
+  .card.icp    { border-left-color: #27ae60; }
+  .card.usa    { border-left-color: #2980b9; }
+  .card.ia     { border-left-color: #8e44ad; }
+  .card.tools  { border-left-color: #16a085; }
+  .badge {
+    display: inline-block;
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    padding: 3px 9px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+  }
+  .badge.red   { background: #fdecea; color: #c0392b; }
+  .badge.green { background: #eafbf0; color: #1e8449; }
+  .badge.amber { background: #fef9e7; color: #b7770d; }
+  .card-title {
+    font-size: 15px;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 7px;
+    line-height: 1.4;
+  }
+  .card-why {
+    font-size: 13.5px;
+    color: #3d4a5c;
+    margin-bottom: 12px;
+    line-height: 1.6;
+  }
+  .card a {
+    display: inline-block;
+    font-size: 12px;
+    font-weight: 600;
+    color: #4a6cf7;
+    text-decoration: none;
+    background: #eef1fe;
+    padding: 4px 11px;
+    border-radius: 6px;
+    transition: background 0.15s;
+  }
+  .card a:hover { background: #d8dcfa; }
+  footer {
+    margin-top: 40px;
+    padding: 14px 18px;
+    background: #fff;
+    border-radius: 10px;
+    border-left: 4px solid #b0bec5;
+    box-shadow: 0 1px 4px rgba(0,0,0,0.05);
+    font-size: 13px;
+    color: #5a6778;
+    line-height: 1.7;
+  }
+  footer strong { color: #3d4a5c; }
+  @media (max-width: 500px) {
+    header h1 { font-size: 19px; }
+    .tldr { padding: 18px 18px; }
+    .card { padding: 16px 15px 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="label">Briefing de Tráfego Pago</div>
+    <h1>Briefing de Tr&#225;fego &#8212; 07/06/2026</h1>
+  </header>
+
+  <div class="tldr">
+    <div class="tldr-label">&#9749; TL;DR do dia</div>
+    <p>Em 3 dias (10 junho), o Google liga automaticamente contas de Ads a canais YouTube eleg&#237;veis, com janela de opt-out que fecha quando a liga&#231;&#227;o for criada. A&#231;&#227;o imediata necess&#225;ria nas contas dos clientes que t&#234;m canal YouTube.</p>
+    <p>Novo prazo a gerir: 30 de junho &#233; o deadline da Amazon Ads para consent signal no EEA e Reino Unido. Quem tem clientes com Amazon Ads e tr&#225;fego europeu precisa de verificar a integra&#231;&#227;o com a CMP antes dessa data.</p>
+    <p>O May Core Update do Google concluiu a 2 de junho e separou definitivamente ranking de cita&#231;&#227;o em IA: estar no top 10 j&#225; n&#227;o garante aparecimento nas respostas de AI Overview.</p>
+  </div>
+
+  <section>
+    <h2>&#9889; Plataformas &amp; Algoritmos</h2>
+
+    <div class="card urgente">
+      <div class="badge red">&#9888; A&#231;&#227;o at&#233; 10 jun</div>
+      <div class="card-title">Google Ads vai auto-ligar contas ao YouTube a partir de 10 de junho</div>
+      <div class="card-why">Em 3 dias, o Google cria automaticamente a liga&#231;&#227;o entre contas de Google Ads e canais YouTube onde deteta elevada confian&#231;a de posse partilhada (logins comuns, padr&#245;es de atividade cruzada). A liga&#231;&#227;o ativa segmentos de audi&#234;ncia baseados em visualiza&#231;&#245;es e intera&#231;&#245;es com o canal, &#250;teis para retargeting. O anunciante &#233; notificado por email com antec&#234;dncia e pode rejeitar a liga&#231;&#227;o antes de ela ser criada. Quem n&#227;o quiser a liga&#231;&#227;o autom&#225;tica precisa de agir ANTES de 10 de junho. Confirma as contas dos clientes que tenham canal YouTube ativo.</div>
+      <a href="https://searchengineland.com/google-ads-to-auto-link-youtube-channels-starting-june-10-477094" target="_blank">Search Engine Land</a>
+    </div>
+
+    <div class="card plat">
+      <div class="badge green">Ferramenta j&#225; dispon&#237;vel</div>
+      <div class="card-title">Google lança ferramenta de migração Display para Demand Gen</div>
+      <div class="card-why">A ferramenta de migra&#231;&#227;o de campanhas Display standalone para Demand Gen est&#225; agora acess&#237;vel no painel de Google Ads. As campanhas Display v&#227;o acabar progressivamente (migra&#231;&#227;o autom&#225;tica prevista para 2027), mas migrar agora preserva o hist&#243;rico de desempenho dos &#250;ltimos 42 dias e evita o cold start. A Google indica 9,5% de melhoria m&#233;dia no ROI ap&#243;s migra&#231;&#227;o (dado interno global da Google). A&#231;&#227;o: identificar as campanhas Display com hist&#243;rico s&#243;lido e usar a ferramenta de migra&#231;&#227;o antes de a migra&#231;&#227;o autom&#225;tica ser for&#231;ada em 2027.</div>
+      <a href="https://support.google.com/google-ads/answer/17051545" target="_blank">Google Ads Help (oficial)</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>&#127919; Tracking &amp; Privacidade</h2>
+
+    <div class="card privacy">
+      <div class="badge amber">Prazo: 30 jun</div>
+      <div class="card-title">Amazon Ads: 30 de junho é o deadline para consent signal no EEA e Reino Unido</div>
+      <div class="card-why">A partir de 30 de junho, a Amazon n&#227;o processa dados pessoais de utilizadores do EEA ou UK sem consent signal v&#225;lido (IAB TCF, Global Privacy Protocol ou Amazon Consent Signal pr&#243;prio). Afeta o Amazon Ad Tag (AAT), a Conversions API (CAPI) e a Events API. Sem integra&#231;&#227;o com a CMP, as convers&#245;es perdem-se, a atribui&#231;&#227;o fica cega e as audi&#234;ncias end&#234;re&#231;&#225;veis reduzem-se. Se algum cliente teu usa Amazon Ads com tr&#225;fego europeu, verifica a integra&#231;&#227;o da CMP antes desta data. Confirmado na p&#225;gina oficial de pol&#237;tica Amazon Ads e em ppc.land.</div>
+      <a href="https://advertising.amazon.com/resources/ad-policy/consent-signal-requirements" target="_blank">Amazon Ads (oficial)</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>&#129535; Gera&#231;&#227;o de Leads</h2>
+
+    <div class="card icp">
+      <div class="badge green">Benchmark 2026</div>
+      <div class="card-title">MQL-to-SQL cai de 13% para 9,8%: o lead chega mas não fecha</div>
+      <div class="card-why">Segundo dados Forrester e Demand Gen Report para 2026, a taxa m&#233;dia de convers&#227;o de MQL para SQL desceu de 13% em 2024 para 9,8% este ano. A causa identificada n&#227;o &#233; a qualidade dos an&#250;ncios, mas sim o processo p&#243;s-captura: 60 a 70% dos leads B2B nunca s&#227;o contactados pela equipa comercial, e 41% das empresas citam a lentid&#227;o no follow-up como o principal bloqueio. Para o ICP com equipa comercial organizada (consultores, advogados, forma&#231;&#227;o, servi&#231;os locais), isto &#233; um argumento de venda direto: o problema de receita n&#227;o est&#225; nos an&#250;ncios, est&#225; no processo a seguir ao lead.</div>
+      <a href="https://martal.ca/lead-generation-statistics-lb/" target="_blank">Martal / Forrester 2026</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>&#128101; Pulso do ICP</h2>
+
+    <div class="card icp">
+      <div class="card-title">Coaches, nutricionistas e formadores: "os anúncios funcionavam e de repente parou"</div>
+      <div class="card-why">Queixa crescente no nicho de infoprodutos e servi&#231;os de sa&#250;de em 2026: a campanha deixa de converter sem motivo aparente. A causa mais documentada &#233; o cansa&#231;o criativo a chegar 40% mais depressa do que em 2024 (toler&#226;ncia de frequ&#234;ncia em retargeting desce de 5,2 para 3,8 neste ano), combinado com o limiar de 50 convers&#245;es por semana que o Meta precisa por conjunto de an&#250;ncios para otimizar. Para servi&#231;os de ticket elevado com volume baixo (consultas, programas, forma&#231;&#245;es), o criativo esgota antes de o algoritmo ter dados suficientes. Solu&#231;&#227;o: rota&#231;&#227;o de criativos a cada 7 a 10 dias, m&#237;nimo de 5 varia&#231;&#245;es de hook por conceito, e separar claramente a fase de prospe&#231;&#227;o da de retargeting.</div>
+      <a href="https://www.get-ryze.ai/blog/meta-ads-retargeting-not-converting-fix-2026" target="_blank">Get Ryze (an&#225;lise 2026)</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>&#127482;&#127480; Foco EUA</h2>
+
+    <div class="card usa">
+      <div class="card-title">Meta prevista a ultrapassar Google em receita publicitária digital pela primeira vez (eMarketer)</div>
+      <div class="card-why">A eMarketer projeta a Meta a gerar 243,5 mil milh&#245;es USD em receita de publicidade em 2026, superando os 239,5 mil milh&#245;es da Google, crescendo 24,1% YoY face a 11,9% da Google. O crescimento &#233; puxado por Advantage+ automatizado, IA generativa em criativos e Instagram Reels. Para PME americanas (e para prospe&#231;&#227;o de novos clientes), este sinal quer dizer que o Meta est&#225; a absorver quota de or&#231;amento que antes ia para Google. Argumento a usar: auditar a distribui&#231;&#227;o Google vs. Meta dos clientes e ajustar onde a efici&#234;ncia &#233; maior, em vez de dividir or&#231;amento por h&#225;bito.</div>
+      <a href="https://thenextweb.com/news/meta-surpass-google-digital-ad-revenue-emarketer-2026" target="_blank">The Next Web / eMarketer</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>&#129302; IA &amp; Busca Generativa</h2>
+
+    <div class="card ia">
+      <div class="card-title">Google May 2026 Core Update concluído: ranking alto já não garante citação em IA</div>
+      <div class="card-why">O May 2026 Core Update completou-se a 2 de junho (iniciado a 21 de maio). A mudan&#231;a mais relevante: a rela&#231;&#227;o entre ranking tradicional e cita&#231;&#227;o em AI Overview est&#225; a desligar-se. P&#225;ginas no top 10 podem n&#227;o aparecer nas respostas de IA, enquanto p&#225;ginas de ranking mais baixo s&#227;o citadas se o conte&#250;do for mais relevante e bem estruturado. A earned media authority (men&#231;&#245;es em meios externos) surge como sinal de cita&#231;&#227;o em IA. Para clientes com tr&#225;fego org&#226;nico relevante, SEO e GEO (Generative Engine Optimization) passam a ser estrat&#233;gias distintas a gerir em paralelo, n&#227;o a mesma coisa.</div>
+      <a href="https://searchengineland.com/google-may-2026-core-update-rollout-is-now-complete-479119" target="_blank">Search Engine Land</a>
+    </div>
+  </section>
+
+  <section>
+    <h2>&#128295; Ferramentas &amp; Automa&#231;&#227;o</h2>
+
+    <div class="card tools">
+      <div class="badge green">Dispon&#237;vel para todos</div>
+      <div class="card-title">Google Tag Gateway agora grátis para todos: first-party tracking sem servidor próprio</div>
+      <div class="card-why">O Google tag gateway para anunciantes (antes chamado "first-party mode") passou a estar dispon&#237;vel para qualquer conta, sem necessidade de servidor GTM dedicado. A atualiza&#231;&#227;o de 3 de junho adiciona integra&#231;&#227;o nativa com Google Cloud Platform (GCP) e suporte completo a tags client-side e server-side. Serve os scripts do Google tag a partir do dom&#237;nio pr&#243;prio do anunciante, dificultando o bloqueio por ad blockers e melhorando a qualidade do sinal. A Google indica +11% de m&#233;dia nas convers&#245;es reportadas. &#218;til para ag&#234;ncias que querem melhorar o sinal de convers&#227;o sem implementar server-side GTM completo.</div>
+      <a href="https://developers.google.com/tag-platform/tag-manager/gateway" target="_blank">Google Developers (oficial)</a>
+    </div>
+  </section>
+
+  <footer>
+    <strong>&#9203; Prazos a contar:</strong> Consent Mode Google (ad_storage &#250;nico controlo) 15&nbsp;jun &nbsp;&#183;&nbsp; Google Ads API offline conversions (novos utilizadores) 15&nbsp;jun &nbsp;&#183;&nbsp; Meta auto &#8594; Comscore (cat&#225;logo auto) 22&nbsp;jun &nbsp;&#183;&nbsp; Amazon Ads consent signal EEA/UK 30&nbsp;jun &nbsp;&#183;&nbsp; Taxa Meta localiza&#231;&#227;o UE 1&nbsp;jul
+  </footer>
+
+</div>
+</body>
+</html>
