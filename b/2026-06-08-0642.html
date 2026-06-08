@@ -1,0 +1,256 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing de Tráfego — 08/06/2026</title>
+<style>
+  :root {
+    --primary: #1a1a2e;
+    --accent: #4f46e5;
+    --accent-light: #ede9fe;
+    --warn: #d97706;
+    --warn-light: #fef3c7;
+    --green: #059669;
+    --green-light: #d1fae5;
+    --red: #dc2626;
+    --red-light: #fee2e2;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --bg: #f9fafb;
+    --card-bg: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 1rem;
+  }
+  .container { max-width: 720px; margin: 0 auto; }
+  header {
+    background: var(--primary);
+    color: white;
+    padding: 1.5rem 1.25rem 1.25rem;
+    border-radius: 12px;
+    margin-bottom: 1.25rem;
+  }
+  header .label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #a5b4fc;
+    margin-bottom: 0.3rem;
+  }
+  header h1 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  header .meta {
+    font-size: 0.78rem;
+    color: #c7d2fe;
+    margin-top: 0.4rem;
+  }
+
+  .tldr {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+  .tldr .tldr-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .tldr p { font-size: 0.92rem; color: var(--text); }
+
+  section { margin-bottom: 1.75rem; }
+  .section-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .section-title span { color: var(--text); font-size: 1rem; }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    margin-bottom: 0.75rem;
+    transition: box-shadow 0.15s;
+  }
+  .card:hover { box-shadow: 0 2px 10px rgba(0,0,0,0.07); }
+
+  .card-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    margin-bottom: 0.5rem;
+  }
+  .badge-urgente { background: var(--red-light); color: var(--red); }
+  .badge-plataforma { background: var(--accent-light); color: var(--accent); }
+  .badge-icp { background: var(--green-light); color: var(--green); }
+  .badge-alerta { background: var(--warn-light); color: var(--warn); }
+
+  .card h3 {
+    font-size: 0.97rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+    line-height: 1.4;
+  }
+  .card .why {
+    font-size: 0.84rem;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+  }
+  .card a {
+    font-size: 0.78rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .card a:hover { text-decoration: underline; }
+
+  .prazos-footer {
+    background: #f1f5f9;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.85rem 1.1rem;
+    margin-top: 2rem;
+  }
+  .prazos-footer .pf-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+  .prazos-footer .pf-line {
+    font-size: 0.82rem;
+    color: var(--text);
+  }
+  .prazos-footer .pf-line .dot { color: var(--muted); margin: 0 0.3rem; }
+  .prazos-footer .pf-line strong { color: var(--warn); }
+
+  footer {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.72rem;
+    color: var(--muted);
+    padding-bottom: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    header h1 { font-size: 1.1rem; }
+    .card h3 { font-size: 0.9rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="label">Inteligência de Marketing</div>
+    <h1>Briefing de Tráfego — 08/06/2026</h1>
+    <div class="meta">Para: Elisabete Silva · Gestora de Tráfego Pago · Geração de Leads</div>
+  </header>
+
+  <!-- TL;DR -->
+  <div class="tldr">
+    <div class="tldr-label">TL;DR — O mais importante de hoje</div>
+    <p>Dois relógios a correr no Google esta semana: a ligação automática YouTube-Ads ativa-se a <strong>10 de junho</strong> (48 horas, atua já) e a ferramenta de migração Display para Demand Gen já está disponível nas contas. Em setembro, os Dynamic Search Ads desaparecem e são substituídos por AI Max sem possibilidade de recusar. No ICP: para coaches de saúde e consultores financeiros, o breakage mais caro não está nos anúncios, está no targeting demasiado amplo e na demora a responder ao lead.</p>
+  </div>
+
+  <!-- SECÇÃO A: PLATAFORMAS -->
+  <section>
+    <div class="section-title"><span>⚡</span> Plataformas &amp; Algoritmos</div>
+
+    <div class="card">
+      <span class="card-badge badge-urgente">Urgente · 10 jun</span>
+      <h3>Google liga automaticamente YouTube ao Google Ads a partir de quinta-feira</h3>
+      <p class="why">Contas Google Ads com canal YouTube do mesmo proprietário ficam ligadas de forma automática em 10/06. Isso abre segmentos de audiência de visualizadores e subscritores para targeting, o que é positivo, mas a ligação acontece sem ação do anunciante. Se não quiseres a ligação, tens de agir antes de quinta: verifica o e-mail da Google com a notificação e submete o opt-out via qualquer admin da conta Ads ou do canal YouTube.</p>
+      <a href="https://searchengineland.com/google-ads-to-auto-link-youtube-channels-starting-june-10-477094" target="_blank">Search Engine Land →</a>
+    </div>
+
+    <div class="card">
+      <span class="card-badge badge-plataforma">Google · Junho 2026</span>
+      <h3>Campanhas Display retiradas como tipo autónomo: ferramenta de migração para Demand Gen já disponível</h3>
+      <p class="why">O inventário Google Display Network passa a viver dentro de campanhas Demand Gen (ao lado de YouTube, Discover, Gmail e Maps). A ferramenta de migração já aparece nas contas elegíveis este mês e porta o histórico dos últimos 42 dias, minimizando o período de aprendizagem para 1 a 2 dias. Quem não migrar antes de 2027 será migrado automaticamente, sem controlo sobre a configuração. É o momento de auditar campanhas Display ativas e migrar de forma controlada.</p>
+      <a href="https://www.searchenginejournal.com/google-is-retiring-standalone-display-campaigns-in-favor-of-demand-gen/575889/" target="_blank">Search Engine Journal →</a>
+    </div>
+
+    <div class="card">
+      <span class="card-badge badge-alerta">Deadline · Set/2026</span>
+      <h3>Google AI Max substitui Dynamic Search Ads em setembro sem opt-out</h3>
+      <p class="why">Os DSA (Dynamic Search Ads) são descontinuados em setembro de 2026. A partir dessa data, toda a campanha DSA remanescente é convertida para AI Max de forma forçada, sem exceções e sem forma de criar novas campanhas DSA depois. As ferramentas de upgrade estão a ser lançadas agora nas contas. Se tens DSA ativos com histórico de conversões valioso, migra de forma controlada agora, antes de o Google o fazer sem o teu input.</p>
+      <a href="https://blog.google/products/ads-commerce/dsa-upgrade-to-ai-max-2026/" target="_blank">Google Official Blog →</a>
+    </div>
+  </section>
+
+  <!-- SECÇÃO D: PULSO DO ICP -->
+  <section>
+    <div class="section-title"><span>👥</span> Pulso do ICP</div>
+
+    <div class="card">
+      <span class="card-badge badge-icp">Nicho · Saúde e Coaching</span>
+      <h3>Coaches de saúde e fitness: o targeting em "Fitness" a frio é a causa número 1 de budget queimado</h3>
+      <p class="why">A sequência que falha repetidamente em 2026: anúncio genérico, interesse amplo "saúde" ou "fitness", landing page de discovery call, 300 a 500 euros gastos, zero leads qualificados. O problema não é o Meta, é mandar tráfego frio direto para uma oferta de alta consideração. A correção é uma sequência por temperatura: tráfego frio recebe valor primeiro (conteúdo, lead magnet), retargeting recebe prova de transformação, e só audiência quente recebe a oferta direta. Oportunidade de posicionamento: podes ser o gestor que explica isso ao dono da clínica ou ao coach.</p>
+      <a href="https://adlibrary.com/posts/meta-ads-for-fitness-coaches" target="_blank">Meta Ads for Fitness Coaches 2026 →</a>
+    </div>
+
+    <div class="card">
+      <span class="card-badge badge-icp">Nicho · Serviços Financeiros</span>
+      <h3>Consultores financeiros e de seguros: 1ª hora após o lead é a janela crítica que a maioria perde</h3>
+      <p class="why">Leads de serviços financeiros não convertem sobretudo por velocidade de resposta: a maioria dos consultores espera até ao fim do dia ou envia apenas um e-mail. Os dados mostram que a probabilidade de conversão cai de forma abrupta após a primeira hora do preenchimento do formulário. Um sistema de resposta imediata (automação de WhatsApp ou SMS no primeiro minuto, chamada nos 15 minutos seguintes) vale mais do que qualquer otimização do anúncio. Se o teu cliente tem este problema, o bloqueio não é o anúncio, é o processo comercial.</p>
+      <a href="https://revenx.com/why-financial-advisor-leads-dont-convert-into-booked-appointments/" target="_blank">Revenx: Why Leads Don't Convert →</a>
+    </div>
+  </section>
+
+  <!-- PRAZOS A CONTAR -->
+  <div class="prazos-footer">
+    <div class="pf-label">⏳ Prazos a contar (já anunciados)</div>
+    <div class="pf-line">
+      <strong>Consent Mode (ad_storage) 15/jun</strong>
+      <span class="dot">·</span>
+      <strong>Google Ads API offline convs. 15/jun</strong>
+      <span class="dot">·</span>
+      <strong>Meta Comscore Markets (auto) 22/jun</strong>
+      <span class="dot">·</span>
+      <strong>DSA → AI Max set/2026</strong>
+      <span class="dot">·</span>
+      <strong>Meta taxa UE 1/jul</strong>
+    </div>
+  </div>
+
+  <footer>
+    Briefing gerado a 08/06/2026 · Elisabete Silva · Gestora de Tráfego Pago
+  </footer>
+
+</div>
+</body>
+</html>
