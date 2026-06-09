@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing de Tráfego — 09/06/2026</title>
+<style>
+  :root {
+    --primary: #1a1a2e;
+    --accent: #4f46e5;
+    --accent-light: #ede9fe;
+    --warn: #d97706;
+    --warn-light: #fef3c7;
+    --green: #059669;
+    --green-light: #d1fae5;
+    --red: #dc2626;
+    --red-light: #fee2e2;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --bg: #f9fafb;
+    --card-bg: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 1rem;
+  }
+  .container { max-width: 720px; margin: 0 auto; }
+  header {
+    background: var(--primary);
+    color: white;
+    padding: 1.5rem 1.25rem 1.25rem;
+    border-radius: 12px;
+    margin-bottom: 1.25rem;
+  }
+  header .label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #a5b4fc;
+    margin-bottom: 0.3rem;
+  }
+  header h1 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  header .meta {
+    font-size: 0.78rem;
+    color: #c7d2fe;
+    margin-top: 0.4rem;
+  }
+
+  .tldr {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+  .tldr .tldr-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .tldr p { font-size: 0.92rem; color: var(--text); }
+
+  section { margin-bottom: 1.75rem; }
+  .section-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .section-title span { color: var(--text); font-size: 1rem; }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    margin-bottom: 0.75rem;
+    transition: box-shadow 0.15s;
+  }
+  .card:hover { box-shadow: 0 2px 10px rgba(0,0,0,0.07); }
+
+  .card-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    margin-bottom: 0.5rem;
+  }
+  .badge-urgente { background: var(--red-light); color: var(--red); }
+  .badge-plataforma { background: var(--accent-light); color: var(--accent); }
+  .badge-icp { background: var(--green-light); color: var(--green); }
+  .badge-alerta { background: var(--warn-light); color: var(--warn); }
+
+  .card h3 {
+    font-size: 0.97rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+    line-height: 1.4;
+  }
+  .card .why {
+    font-size: 0.84rem;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+    line-height: 1.5;
+  }
+  .card a {
+    font-size: 0.78rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .card a:hover { text-decoration: underline; }
+
+  .prazos-footer {
+    background: #f1f5f9;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.85rem 1.1rem;
+    margin-top: 2rem;
+  }
+  .prazos-footer .pf-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+  .prazos-footer .pf-line {
+    font-size: 0.82rem;
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .prazos-footer .pf-line .dot { color: var(--muted); margin: 0 0.3rem; }
+  .prazos-footer .pf-line strong { color: var(--warn); }
+
+  footer {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.72rem;
+    color: var(--muted);
+    padding-bottom: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    header h1 { font-size: 1.1rem; }
+    .card h3 { font-size: 0.9rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="label">Inteligência de Marketing</div>
+    <h1>Briefing de Tráfego — 09/06/2026</h1>
+    <div class="meta">Para: Elisabete Silva · Gestora de Tráfego Pago · Geração de Leads</div>
+  </header>
+
+  <!-- TL;DR -->
+  <div class="tldr">
+    <div class="tldr-label">TL;DR — O mais importante de hoje</div>
+    <p>A Meta vai deprecar as métricas clássicas de Reach e Impressões na sua API a <strong>15 de junho</strong> (6 dias): dashboards de reporting de clientes que puxam dados via Graph API precisam migrar já para Media Views. A OpenAI acelerou os ChatGPT Ads com otimização de conversão em beta desde 5 de junho e está a testar unidades multi-anunciante, tornando o canal estruturalmente mais próximo de Google e Meta. No front criativo, a combinação IA + estética UGC tornou-se o modelo de produção dominante em 2026: mais variações, menos custo, resultados comparáveis a vídeo profissional em campanhas de geração de leads.</p>
+  </div>
+
+  <!-- SECÇÃO A: PLATAFORMAS -->
+  <section>
+    <div class="section-title"><span>⚡</span> Plataformas &amp; Algoritmos</div>
+
+    <div class="card">
+      <span class="card-badge badge-plataforma">Meta · Advantage+</span>
+      <h3>Advantage+ Creative gera vídeo a partir de imagens estáticas — sem custo de produção adicional</h3>
+      <p class="why">O Advantage+ Creative passou a gerar automaticamente variações em vídeo curto a partir das imagens estáticas já existentes na conta, com múltiplas versões de headline e texto otimizadas por placement. O limiar de conversões baixou para 25/semana (antes eram 50), abrindo o formato Advantage+ Leads a mais anunciantes. Para campanhas de geração de leads, isto significa mais creative velocity sem budget de produção extra — a Meta indica redução de custos de produção até 40% nos primeiros testes.</p>
+      <a href="https://benly.ai/learn/meta-ads/advantage-plus-updates-2026" target="_blank">Benly AI — Advantage+ 2026 Updates →</a>
+    </div>
+  </section>
+
+  <!-- SECÇÃO B: TRACKING & PRIVACIDADE -->
+  <section>
+    <div class="section-title"><span>🎯</span> Tracking &amp; Privacidade</div>
+
+    <div class="card">
+      <span class="card-badge badge-urgente">Ação imediata · 15/jun</span>
+      <h3>Meta Graph API v25: métricas de Reach, Impressões e visualizações de 3s desaparecem em 6 dias</h3>
+      <p class="why">A 15 de junho, a Meta depreca definitivamente Page Reach, Video Impressions, Story Impressions e 3-second video viewers em todas as versões da sua API. Qualquer ferramenta de terceiros que puxe estes campos (dashboards Looker Studio, relatórios automáticos, ferramentas de social analytics) irá quebrar ou devolver erros. A substituição é para Media Views e Media Viewers, que funcionam de forma consistente entre Facebook e Instagram. Com 6 dias de margem, vale confirmar com cada cliente que utiliza relatórios automatizados se as integrações já foram atualizadas ou estão em risco.</p>
+      <a href="https://www.socialmediatoday.com/news/meta-updates-marketing-api-to-align-with-latest-ad-shifts/812648/" target="_blank">Social Media Today →</a>
+    </div>
+  </section>
+
+  <!-- SECÇÃO F: IA & BUSCA GENERATIVA -->
+  <section>
+    <div class="section-title"><span>🤖</span> IA &amp; Busca Generativa</div>
+
+    <div class="card">
+      <span class="card-badge badge-plataforma">OpenAI · ChatGPT Ads</span>
+      <h3>ChatGPT Ads em beta de conversão desde 5/jun e a testar multi-advertiser por placement</h3>
+      <p class="why">A OpenAI abriu conversion-optimized campaigns no ChatGPT Ads Manager Beta a 5 de junho para contas com Pixel ou CAPI configurados antes de 1/jun. Em simultâneo, está a testar unidades multi-anunciante (vários anunciantes no mesmo espaço publicitário, modelo de second-price auction) e novos formatos com CTA personalizável: "book now", "sign up", "learn more". O canal, que estreou em fevereiro sem mínimo de investimento, está a ganhar a estrutura de compra de uma plataforma madura. Para nichos como educação, serviços financeiros e imobiliário, vale monitorizar — a intenção de utilizador no ChatGPT é tipicamente mais qualificada do que em feeds sociais.</p>
+      <a href="https://searchengineland.com/openai-to-expand-chatgpt-ads-to-new-markets-test-multi-advertiser-placements-479656" target="_blank">Search Engine Land →</a>
+    </div>
+  </section>
+
+  <!-- SECÇÃO G: CRIATIVOS & ÂNGULOS -->
+  <section>
+    <div class="section-title"><span>🎨</span> Criativos &amp; Ângulos</div>
+
+    <div class="card">
+      <span class="card-badge badge-plataforma">Tendência 2026</span>
+      <h3>AI + UGC híbrido: o modelo de produção criativa que está a dominar — 15-30 variações por semana</h3>
+      <p class="why">A tendência com maior tração em 2026 não é UGC puro nem vídeo polido, mas a fusão: IA para script, storyboard e edição, criador real para a gravação, mantendo a estética autêntica do UGC. O resultado prático: 15-30 variações de anúncio por semana em vez de 2-3 com produção tradicional, com performance dentro de 5-15% de vídeo profissional em campanhas de leads. Para os nichos âncora como imobiliário, saúde e educação, o modelo reduz custo de produção até 40% sem sacrificar a conversão. O argumento para propor a clientes que resistem a vídeo: não precisam de estúdio, precisam de um telemóvel e de um bom script.</p>
+      <a href="https://reloop.so/blog/article/ugc-advertising/" target="_blank">Reloop — UGC Advertising 2026 →</a>
+    </div>
+  </section>
+
+  <!-- SECÇÃO D: PULSO DO ICP -->
+  <section>
+    <div class="section-title"><span>👥</span> Pulso do ICP</div>
+
+    <div class="card">
+      <span class="card-badge badge-icp">Nicho · Clínicas &amp; Saúde</span>
+      <h3>Clínicas: leads de social convertem menos de 5% em pacientes reais; Google Search chega a 31%</h3>
+      <p class="why">Clínicas que usam Meta para geração de leads médicos deparam-se com uma diferença brutal: leads vindos de redes sociais têm taxa de conversão em paciente real inferior a 5%, enquanto contactos gerados por Google Ads Search com intenção ativa ("clínica de X perto de mim") convertem 31% dos contactos em pacientes reais. Para clínicas como ICP, o argumento de venda é direto: Google Ads captura intenção, Meta captura atenção. Misturá-los no mesmo KPI de CPL cria uma ilusão de eficiência que esconde o problema real de qualidade de lead. A conversa com o cliente dono de clínica começa em distinguir os dois números.</p>
+      <a href="https://www.patientgain.com/facebook-vs-google-advertising-for-doctors" target="_blank">PatientGain — Facebook vs Google para Clínicas →</a>
+    </div>
+
+    <div class="card">
+      <span class="card-badge badge-icp">Nicho · Advogados</span>
+      <h3>Escritórios de advogados: CPL de $200-800 no Google Ads, mas o KPI correto é custo por caso assinado</h3>
+      <p class="why">Em áreas como acidentes/lesões pessoais, os CPLs no Google Ads variam entre $200 e $800 por contacto qualificado, um número que faz a maioria dos advogados abandonar a plataforma. O problema está na comparação errada: o lifetime value de um caso de personal injury é $20k-$100k+, tornando CPLs de $800 num ROI de 25-125x. Para gestores de tráfego que trabalham com escritórios de advocacia, reposicionar o KPI de CPL para custo por caso assinado é o argumento que transforma o cliente mais cético num cliente de longo prazo. Família e imigração têm CPLs mais baixos ($20-80), mas o mesmo raciocínio de lifetime value aplica-se.</p>
+      <a href="https://groas.ai/post/google-ads-for-law-firms-2026-complete-strategy-high-cpc-legal-keywords-maximum-case-roi" target="_blank">Groas AI — Google Ads para Advogados 2026 →</a>
+    </div>
+  </section>
+
+  <!-- PRAZOS EM CONTAGEM -->
+  <div class="prazos-footer">
+    <div class="pf-label">⏳ Prazos a contar</div>
+    <div class="pf-line">
+      <strong>YouTube→Ads auto-link: 10/jun</strong>
+      <span class="dot">·</span>
+      Meta API reach→viewers: 15/jun
+      <span class="dot">·</span>
+      Consent Mode ad_storage: 15/jun
+      <span class="dot">·</span>
+      Google API offline imports: 15/jun
+      <span class="dot">·</span>
+      Meta Nielsen→Comscore (autos): 22/jun
+      <span class="dot">·</span>
+      Google Ads ToS (responsabilidade IA): 1/jul
+    </div>
+  </div>
+
+  <footer>
+    Briefing de Tráfego · 09/06/2026 · Para uso interno de Elisabete Silva
+  </footer>
+
+</div>
+</body>
+</html>
