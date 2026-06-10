@@ -1,0 +1,291 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing de Tráfego — 10/06/2026</title>
+<style>
+  :root {
+    --primary: #1a1a2e;
+    --accent: #4f46e5;
+    --accent-light: #ede9fe;
+    --warn: #d97706;
+    --warn-light: #fef3c7;
+    --green: #059669;
+    --green-light: #d1fae5;
+    --red: #dc2626;
+    --red-light: #fee2e2;
+    --text: #1f2937;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --bg: #f9fafb;
+    --card-bg: #ffffff;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 1rem;
+  }
+  .container { max-width: 720px; margin: 0 auto; }
+  header {
+    background: var(--primary);
+    color: white;
+    padding: 1.5rem 1.25rem 1.25rem;
+    border-radius: 12px;
+    margin-bottom: 1.25rem;
+  }
+  header .label {
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #a5b4fc;
+    margin-bottom: 0.3rem;
+  }
+  header h1 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+  }
+  header .meta {
+    font-size: 0.78rem;
+    color: #c7d2fe;
+    margin-top: 0.4rem;
+  }
+
+  .tldr {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    padding: 1rem 1.1rem;
+    margin-bottom: 1.5rem;
+  }
+  .tldr .tldr-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 0.4rem;
+  }
+  .tldr p { font-size: 0.92rem; color: var(--text); line-height: 1.65; }
+
+  section { margin-bottom: 1.75rem; }
+  .section-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.75rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .section-title span { color: var(--text); font-size: 1rem; }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 1rem 1.1rem;
+    margin-bottom: 0.75rem;
+    transition: box-shadow 0.15s;
+  }
+  .card:hover { box-shadow: 0 2px 10px rgba(0,0,0,0.07); }
+
+  .card-badge {
+    display: inline-block;
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    padding: 0.2rem 0.55rem;
+    border-radius: 999px;
+    margin-bottom: 0.5rem;
+  }
+  .badge-urgente { background: var(--red-light); color: var(--red); }
+  .badge-plataforma { background: var(--accent-light); color: var(--accent); }
+  .badge-icp { background: var(--green-light); color: var(--green); }
+  .badge-alerta { background: var(--warn-light); color: var(--warn); }
+
+  .card h3 {
+    font-size: 0.97rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 0.4rem;
+    line-height: 1.4;
+  }
+  .card .why {
+    font-size: 0.84rem;
+    color: var(--muted);
+    margin-bottom: 0.6rem;
+    line-height: 1.55;
+  }
+  .card a {
+    font-size: 0.78rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.25rem;
+  }
+  .card a:hover { text-decoration: underline; }
+
+  .prazos-footer {
+    background: #f1f5f9;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 0.85rem 1.1rem;
+    margin-top: 2rem;
+  }
+  .prazos-footer .pf-label {
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+  .prazos-footer .pf-line {
+    font-size: 0.82rem;
+    color: var(--text);
+    line-height: 1.7;
+  }
+  .prazos-footer .pf-line .dot { color: var(--muted); margin: 0 0.3rem; }
+  .prazos-footer .pf-line strong { color: var(--warn); }
+
+  footer {
+    margin-top: 2rem;
+    text-align: center;
+    font-size: 0.72rem;
+    color: var(--muted);
+    padding-bottom: 1.5rem;
+  }
+
+  @media (max-width: 480px) {
+    header h1 { font-size: 1.1rem; }
+    .card h3 { font-size: 0.9rem; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="label">Inteligência de Marketing</div>
+    <h1>Briefing de Tráfego — 10/06/2026</h1>
+    <div class="meta">Para: Elisabete Silva · Gestora de Tráfego Pago · Geração de Leads</div>
+  </header>
+
+  <!-- TL;DR -->
+  <div class="tldr">
+    <div class="tldr-label">TL;DR — O mais importante de hoje</div>
+    <p>Dois prazos críticos do Google chegam daqui a 5 dias (15/jun): o Consent Mode muda de estrutura e o ad_storage passa a ser o único parâmetro que controla o que chega ao Google Ads (o Google Signals perde este papel), e a API legacy de offline conversions fecha para novos adotantes. O Meta Business Agent ficou disponível globalmente no WhatsApp, Instagram e Messenger desde 3/jun, sem programador, pronto a qualificar leads em automático em contas CTWA. Para os EUA, o Google abriu o Business Agent for Leads em beta aberto nos setores auto, imobiliário e educação, um formato conversacional com Gemini dentro do anúncio que pré-qualifica o utilizador antes do formulário ser submetido.</p>
+  </div>
+
+  <!-- SECÇÃO A: PLATAFORMAS -->
+  <section>
+    <div class="section-title"><span>⚡</span> Plataformas &amp; Algoritmos</div>
+
+    <div class="card">
+      <span class="card-badge badge-plataforma">Meta · Partnership Ads</span>
+      <h3>Meta Partnership Ads API: a marca amplifica o conteúdo do criador em segundos, sem pedir permissão manual</h3>
+      <p class="why">O novo Partnership Ads Hub agrega automaticamente UGC, posts de afiliados e conteúdo de criadores que mencionem ou identifiquem a marca numa única feed, com métricas de vistas, interações e partilhas visíveis diretamente. A Partnership Ads API permite que agências e marcas transformem esses posts em anúncios pagos a grande escala sem o processo manual de permissões. Os perfis em Professional Mode passam a ser elegíveis como criadores parceiros, alargando o inventário disponível. A Meta indica 16% de redução no custo por alcance, 13% de ROAS mais elevado e 29% mais conversões face a anúncios standard em Reels com este formato.</p>
+      <a href="https://www.socialmediatoday.com/news/meta-expands-creator-partnership-opportunities-for-brands/807691/" target="_blank">Social Media Today →</a>
+    </div>
+
+    <div class="card">
+      <span class="card-badge badge-plataforma">Google · EUA · Beta Aberto</span>
+      <h3>Google Business Agent for Leads: Gemini conversa com o utilizador dentro do anúncio antes do formulário</h3>
+      <p class="why">Anunciado no Google Marketing Live (maio) e agora em beta aberto para anunciantes dos EUA, este formato coloca um agente Gemini diretamente no anúncio nos setores Automotive, Real Estate e Education, disponível via AI Max e Performance Max. O utilizador clica em "Chat", faz perguntas, recebe respostas baseadas no site do anunciante e, se quiser avançar, submete um formulário pré-preenchido. O lead que chega ao CRM já interagiu, leu o conteúdo e fez perguntas qualificantes, o que representa uma tipologia de lead diferente da do form passivo. Para a Elisabete, é o sinal de que o mercado americano nos nichos auto e imobiliário está a passar para formatos de pré-qualificação automática.</p>
+      <a href="https://searchengineland.com/google-tests-new-conversational-ad-formats-in-ai-mode-and-search-478115" target="_blank">Search Engine Land →</a>
+    </div>
+  </section>
+
+  <!-- SECÇÃO B: TRACKING & PRIVACIDADE -->
+  <section>
+    <div class="section-title"><span>🎯</span> Tracking &amp; Privacidade</div>
+
+    <div class="card">
+      <span class="card-badge badge-urgente">Urgente · 5 dias · 15/jun</span>
+      <h3>Google: ad_storage torna-se o único controlador dos dados que chegam ao Google Ads — o Google Signals perde este papel</h3>
+      <p class="why">Até agora, dois parâmetros controlavam em conjunto o que o Google Ads recebia: o Google Signals (configurado dentro do GA4) e o ad_storage no Consent Mode. A partir de 15/jun, o ad_storage passa a ser o único árbitro. Isto tem uma consequência crítica: desligar Google Signals (tática comum usada por equipas de privacidade para isolar dados analíticos dos dados publicitários) deixa de proteger o fluxo para o Google Ads. Se o ad_storage estiver ativo no banner de CMP, os dados chegam ao Google Ads independentemente de o Signals estar ligado ou desligado. Quem usa esta configuração como camada de compliance, especialmente em clientes com tráfego europeu, precisa de rever o setup da CMP antes de quinta-feira.</p>
+      <a href="https://ppc.land/google-strips-analytics-of-ad-data-authority-in-june-2026-consent-overhaul/" target="_blank">PPC Land →</a>
+    </div>
+
+    <div class="card">
+      <span class="card-badge badge-urgente">Técnico · 5 dias · 15/jun</span>
+      <h3>Google Ads API fecha importações offline para novos adotantes em 15/jun: Data Manager é o caminho obrigatório</h3>
+      <p class="why">A partir de 15/jun, a Google Ads API deixa de aceitar novos utilizadores para a importação de conversões offline (incluindo Enhanced Conversions for Leads via UploadClickConversions). Contas que já utilizem o workflow legado podem continuar temporariamente enquanto migram, mas qualquer conta que ainda não tenha começado fica bloqueada. O substituto oficial é o Data Manager API. Para clientes que usem ferramentas de CRM para devolver dados de leads qualificados ou vendas fechadas ao Google Ads, vale confirmar já se a integração está a correr via Data Manager ou se precisa de ser migrada antes do prazo.</p>
+      <a href="https://ppc.land/google-blocks-new-offline-conversion-imports-via-ads-api-from-june-15/" target="_blank">PPC Land →</a>
+    </div>
+  </section>
+
+  <!-- SECÇÃO D: PULSO DO ICP -->
+  <section>
+    <div class="section-title"><span>👥</span> Pulso do ICP</div>
+
+    <div class="card">
+      <span class="card-badge badge-icp">Nicho · Stands Auto</span>
+      <h3>Stands auto: o lead de 35 euros morre no nono toque de telefone sem resposta</h3>
+      <p class="why">O diagnóstico que se repete nos concessionários em 2026: o problema não está na geração de leads, está na infraestrutura de resposta. Num Google Vehicle Ads bem gerido, o custo por lead fica entre 25 e 45 dólares; o problema é que o comprador clica no anúncio, o telefone toca 8 vezes e vai para correio de voz, ou envia mensagem fora de horário e não recebe resposta até ao dia seguinte. O concessionário paga o lead e perde a venda antes de qualquer conversa. Em 2026, os stands que fecham mais negócios não têm necessariamente mais budget, têm sistemas de resposta mais rápidos e follow-up consistente. Para a Elisabete, é o argumento de valor acrescentado: ajudar o stand a fechar o ciclo lead-resposta-venda, e não apenas entregar o lead.</p>
+      <a href="https://clarityvoice.com/news/2026-auto-dealership-lead-generation/" target="_blank">Clarity Voice →</a>
+    </div>
+
+    <div class="card">
+      <span class="card-badge badge-icp">Nicho · Negócios Locais</span>
+      <h3>Dono de pequeno negócio em 2026: "os meus anúncios param sem aviso e não percebo porquê"</h3>
+      <p class="why">A queixa que domina as discussões de pequenos negócios: custos a subir, contas restritas sem explicação, campanhas que funcionavam e de repente param. A Meta em 2026 avalia a conta do anunciante (histórico, padrões de comportamento, qualidade da conta) e não apenas o criativo. Contas novas ou com histórico irregular têm entrega limitada e custos mais altos. O que está a funcionar para negócios locais: targeting amplo (apenas idade, género, localização) com vídeo nativo curto que parece um post orgânico. Em 2026, o anúncio É o targeting, não os interesses. Para a Elisabete, é o argumento para posicionar a avença como "construção do sistema de aquisição" e não só "gestão de campanhas".</p>
+      <a href="https://www.digitaljournal.com/pr/news/winston-news-wire/why-small-businesses-struggle-facebook-1292648951.html" target="_blank">Digital Journal →</a>
+    </div>
+  </section>
+
+  <!-- SECÇÃO F: IA & BUSCA GENERATIVA -->
+  <section>
+    <div class="section-title"><span>🤖</span> IA &amp; Busca Generativa</div>
+
+    <div class="card">
+      <span class="card-badge badge-plataforma">Google AI Mode · 2026</span>
+      <h3>Google AI Mode: anúncios em 25,5% dos resultados e Direct Offers a acelerar compras de alta intenção</h3>
+      <p class="why">Os anúncios no Google AI Mode passaram de 5,17% dos resultados no início de 2025 para 25,5% em 2026. Os Direct Offers, lançados em fevereiro, surgem quando a IA deteta intenção de compra forte, puxando de Merchant Center feeds e promoções de anunciantes. O custo por clique está (segundo dados internos da Google) 35% acima dos anúncios de pesquisa tradicional, mas com 18% de engagement superior. O Business Agent for Leads (ver Plataformas) é a extensão natural para quem gera leads em vez de vender diretamente: em vez de uma oferta, uma conversa com Gemini. O sinal claro é que o Google está a monetizar o AI Mode tão ou mais agressivamente do que a pesquisa tradicional.</p>
+      <a href="https://www.digitalapplied.com/blog/google-ai-mode-75m-users-ads-in-ai-results-2026" target="_blank">Digital Applied →</a>
+    </div>
+  </section>
+
+  <!-- SECÇÃO H: WHATSAPP & CTWA -->
+  <section>
+    <div class="section-title"><span>💬</span> WhatsApp &amp; CTWA</div>
+
+    <div class="card">
+      <span class="card-badge badge-plataforma">Meta · WhatsApp · 3/jun</span>
+      <h3>Meta Business Agent disponível globalmente no WhatsApp, Instagram e Messenger desde 3/jun</h3>
+      <p class="why">Anunciado na Conversations Conference em Londres, o Meta Business Agent está agora disponível a qualquer empresa, sem programador e sem desenvolvimento à medida. O agente responde a perguntas de clientes, recomenda produtos, marca consultas, qualifica leads e transfere para humano quando necessário, tudo dentro do WhatsApp, Instagram Direct e Messenger. Para negócios que usem Click-to-WhatsApp (CTWA) como funil principal de leads, este agente fecha o gap entre "o utilizador chegou ao WhatsApp" e "o lead qualificado no CRM" sem intervenção manual. Mais de um milhão de empresas já usavam versões anteriores em beta. A cobrança é por tier de WhatsApp Business Premium mais tokens para grandes volumes.</p>
+      <a href="https://ppc.land/meta-business-agent-brings-ai-customer-service-to-whatsapp-globally/" target="_blank">PPC Land →</a>
+    </div>
+  </section>
+
+  <!-- PRAZOS JÁ ANUNCIADOS (rodapé) -->
+  <div class="prazos-footer">
+    <div class="pf-label">⏳ Prazos a contar</div>
+    <div class="pf-line">
+      <strong>Meta API métricas (Reach/Impressões)</strong> 15/jun
+      <span class="dot">·</span>
+      <strong>Meta DMA→Comscore (auto)</strong> 22/jun
+      <span class="dot">·</span>
+      <strong>Amazon Ads consent EEA/UK</strong> 30/jun
+      <span class="dot">·</span>
+      <strong>Google AI Max substitui DSA</strong> Set/2026
+    </div>
+  </div>
+
+  <footer>
+    Briefing de Tráfego · 10/06/2026 · Inteligência de Marketing para Elisabete Silva
+  </footer>
+
+</div>
+</body>
+</html>
