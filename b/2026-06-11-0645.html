@@ -1,0 +1,274 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing de Tráfego — 11/06/2026</title>
+<style>
+  :root {
+    --bg: #f7f8fa;
+    --card: #ffffff;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --warn: #dc2626;
+    --warn-light: #fef2f2;
+    --muted: #6b7280;
+    --border: #e5e7eb;
+    --text: #111827;
+    --text2: #374151;
+    --green: #059669;
+    --green-light: #ecfdf5;
+    --amber: #d97706;
+    --amber-light: #fffbeb;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 0 0 3rem 0;
+  }
+  header {
+    background: var(--accent);
+    color: #fff;
+    padding: 1.25rem 1.5rem;
+  }
+  header h1 { font-size: 1.15rem; font-weight: 700; letter-spacing: -0.01em; }
+  header p { font-size: 0.82rem; opacity: 0.82; margin-top: 0.2rem; }
+
+  .tldr {
+    background: var(--accent-light);
+    border-left: 4px solid var(--accent);
+    margin: 1.25rem 1rem;
+    padding: 1rem 1.1rem;
+    border-radius: 0 8px 8px 0;
+  }
+  .tldr h2 { font-size: 0.72rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.08em; color: var(--accent); margin-bottom: 0.5rem; }
+  .tldr ul { list-style: none; padding: 0; }
+  .tldr ul li { font-size: 0.88rem; color: var(--text2); padding: 0.18rem 0; padding-left: 1rem; position: relative; }
+  .tldr ul li::before { content: "•"; position: absolute; left: 0; color: var(--accent); font-weight: 700; }
+
+  .section { margin: 1.5rem 1rem 0 1rem; }
+  .section-title {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--muted);
+    margin-bottom: 0.65rem;
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+  }
+  .section-title span { font-size: 1rem; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.95rem 1.05rem;
+    margin-bottom: 0.75rem;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  }
+  .card h3 { font-size: 0.92rem; font-weight: 700; color: var(--text); margin-bottom: 0.35rem; line-height: 1.35; }
+  .card p { font-size: 0.84rem; color: var(--text2); line-height: 1.55; }
+  .card p.why { margin-bottom: 0.5rem; }
+  .card a {
+    font-size: 0.78rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    word-break: break-all;
+  }
+  .card a:hover { text-decoration: underline; }
+
+  .card.urgent { border-left: 3px solid var(--warn); }
+  .card.action { border-left: 3px solid var(--amber); }
+  .card.positive { border-left: 3px solid var(--green); }
+
+  .prazos-footer {
+    margin: 2rem 1rem 0 1rem;
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 0.75rem 1rem;
+  }
+  .pf-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--muted);
+    margin-bottom: 0.4rem;
+  }
+  .pf-line {
+    font-size: 0.8rem;
+    color: var(--text2);
+    line-height: 1.7;
+    flex-wrap: wrap;
+  }
+  .pf-line .dot { color: var(--muted); margin: 0 0.3rem; }
+  .pf-line strong { color: var(--warn); }
+
+  footer.page-footer {
+    text-align: center;
+    font-size: 0.72rem;
+    color: var(--muted);
+    margin-top: 2rem;
+    padding: 0 1rem;
+  }
+
+  @media (min-width: 640px) {
+    body { max-width: 680px; margin: 0 auto; }
+    header { border-radius: 0 0 12px 12px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Briefing de Tráfego — 11/06/2026</h1>
+  <p>Inteligência de marketing para Elisabete Silva · Gestão de Tráfego Pago</p>
+</header>
+
+<!-- TL;DR -->
+<div class="tldr">
+  <h2>TL;DR — O mais importante hoje</h2>
+  <ul>
+    <li>Nova Iorque estreou a 9/jun a primeira lei de disclosure obrigatório para IA sintética em anúncios nos EUA: criativos com personas geradas por IA sem aviso visível arriscam coimas de $1.000 a $5.000 por infração.</li>
+    <li>WhatsApp começa a lançar usernames em junho: utilizadores que os adotem escondem o número nas conversas CTWA e o sistema passa a usar um BSUID; CRMs não preparados perdem leads silenciosamente.</li>
+    <li>Google lançou Asset Experiments para Performance Max (8/jun), com A/B controlado por grupo de criativos — pela primeira vez é possível testar assets do Asset Studio contra evergreen antes de escalar.</li>
+  </ul>
+</div>
+
+<!-- PLATAFORMAS & ALGORITMOS -->
+<div class="section">
+  <div class="section-title"><span>⚡</span> Plataformas &amp; Algoritmos</div>
+
+  <div class="card">
+    <h3>Meta Threads lança vídeo + carrossel estático em rollout global</h3>
+    <p class="why">Porquê importa: o inventário de Threads expande para além de imagem simples; com menos concorrência de anunciantes que Facebook/Instagram, os CPLs tendem a ser mais baixos nas primeiras semanas. Vale testar criativos de lead gen agora, antes do inventário encher.</p>
+    <a href="https://socialbee.com/blog/facebook-updates/" target="_blank">socialbee.com — Meta &amp; Facebook updates (jun 2026)</a>
+  </div>
+
+  <div class="card positive">
+    <h3>Google PMax: Asset Experiments em rollout — testes A/B de criativos em modo controlado</h3>
+    <p class="why">Porquê importa: anunciado a 8/jun, é a resposta à maior crítica ao Performance Max. Agora é possível comparar grupos de assets completos, avaliar o impacto de assets individuais e medir criativos sazonais versus evergreen, incluindo assets gerados no Asset Studio. Suporte a contas MCC via API em breve.</p>
+    <a href="https://searchengineland.com/google-adds-new-performance-max-asset-testing-tools-479667" target="_blank">Search Engine Land — Google adds new PMax asset testing tools (8/jun/2026)</a>
+  </div>
+
+  <div class="card action">
+    <h3>Meta retira placement "Caixa de entrada do Messenger" a 11/nov</h3>
+    <p class="why">Porquê importa: este placement deixará de existir em novembro. Quem o usa em campanhas ativas de lead gen tem janela para migrar antes que a Meta o desative automaticamente. Rever agora evita quebras de entrega no Q4.</p>
+    <a href="https://socialbee.com/blog/facebook-updates/" target="_blank">socialbee.com — Meta &amp; Facebook updates (jun 2026)</a>
+  </div>
+</div>
+
+<!-- TRACKING & PRIVACIDADE -->
+<div class="section">
+  <div class="section-title"><span>🎯</span> Tracking &amp; Privacidade</div>
+
+  <div class="card urgent">
+    <h3>Nova Iorque: lei de disclosure para IA sintética em vigor desde 9/jun — primeira lei do género nos EUA</h3>
+    <p class="why">Porquê importa: qualquer anúncio mostrado em Nova Iorque que inclua uma persona humana gerada por IA precisa de label visível e conspícuo; a coima é de $1.000 na primeira infração e $5.000 nas seguintes. Meta, Google e TikTok não fazem enforcement: a responsabilidade é do anunciante. Quem usa Midjourney, DALL-E ou similares para criar personas em criativos destinados ao mercado americano deve agir já.</p>
+    <a href="https://www.manatt.com/insights/newsletters/client-alert/new-york-synthetic-performer-law-what-advertisers-need-to-know" target="_blank">Manatt — New York Synthetic Performer Law (2026)</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.governor.ny.gov/news/governor-hochul-announces-first-nation-law-requiring-disclosure-when-advertisements-include-ai" target="_blank">Gov. Hochul press release — lei em vigor 9/jun/2026</a>
+  </div>
+</div>
+
+<!-- GERAÇÃO DE LEADS -->
+<div class="section">
+  <div class="section-title"><span>🧲</span> Geração de Leads</div>
+
+  <div class="card">
+    <h3>Imobiliário EUA: CPL sobe 12,3% para média de $503 em 2026 — a métrica que conta é custo por fecho</h3>
+    <p class="why">Porquê importa: o NAR inquiriu 5.400 profissionais imobiliários e o custo médio por lead atingiu $503 (era $448 em 2025). Mas o dado que importa é outro: um agente a converter 3% de 500 leads fecha mais negócios do que um a converter 0,5% de 2.000 leads ao triplo do custo. Quem não rastreia custo por fecho por canal não sabe qual está a ganhar e qual está a queimar orçamento.</p>
+    <a href="https://www.ylopo.com/blog/how-much-do-real-estate-leads-cost" target="_blank">Ylopo — Real estate lead costs 2026</a>
+    &nbsp;·&nbsp;
+    <a href="https://realestateagentleads.com/real-estate-lead-generation-statistics/" target="_blank">RealEstateAgentLeads — estatísticas 2026</a>
+  </div>
+</div>
+
+<!-- PULSO DO ICP -->
+<div class="section">
+  <div class="section-title"><span>👥</span> Pulso do ICP</div>
+
+  <div class="card">
+    <h3>B2B/SaaS: "Gasto $63 por lead no Google mas nenhum vira demo" — o problema é otimizar volume em vez de ICP match</h3>
+    <p class="why">Porquê importa: o CPL médio de search para SaaS B2B em 2026 é $63,40, mas leads qualificados para demo custam $150-250 e leads enterprise qualificados chegam a $350-550. A maioria dos fundadores que chegam à agência com esta queixa está a otimizar para volume no topo do funil em vez de taxa de qualificação. O KPI correto é pipeline velocity (custo por oportunidade aberta), não custo por lead — ao propor auditoria à qualidade dos leads, a agência tem um argumento imediato.</p>
+    <a href="https://groas.ai/post/google-ads-for-saas-2026-complete-strategy-guide-b2b-lead-generation-trial-acquisition" target="_blank">Groas.ai — Google Ads for SaaS 2026 benchmark data</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.gravitatedesign.com/blog/b2b-saas-lead-generation-guide/" target="_blank">Gravitate Design — B2B SaaS lead gen 2026</a>
+  </div>
+
+  <div class="card">
+    <h3>Imobiliário EUA: "Estou a pagar $503 por lead e não sei de onde vêm os que fecham"</h3>
+    <p class="why">Porquê importa: com o CPL imobiliário a subir 12,3% em 2026, agentes que não sabem o custo por fecho por canal estão a cortar nos canais errados. Leads de Facebook/Instagram custam $5-30 mas convertem muito menos; leads de Google Search custam $20-60 e chegam com intenção muito mais alta. A proposta de gestão com reporting de custo por fecho diferencia imediatamente face a quem só reporta CPL.</p>
+    <a href="https://realestateagentleads.com/real-estate-lead-generation-statistics/" target="_blank">RealEstateAgentLeads — 75+ estatísticas imobiliárias 2026</a>
+  </div>
+</div>
+
+<!-- IA & BUSCA GENERATIVA -->
+<div class="section">
+  <div class="section-title"><span>🤖</span> IA &amp; Busca Generativa</div>
+
+  <div class="card">
+    <h3>Google testa Conversational Discovery Ads e Highlighted Answers no AI Mode</h3>
+    <p class="why">Porquê importa: o Gemini gera criativo de anúncio dinamicamente para a query específica do utilizador dentro do AI Mode; os Highlighted Answers permitem que anúncios elegíveis entrem nas listas de recomendações geradas por IA. AI Mode já ultrapassou mil milhões de utilizadores mensais com queries a dobrar por trimestre. Para lead gen: campanhas com assets bem estruturados (texto + imagem + extensões) ficam com mais chances de entrar nestas posições quando o formato chegar a mais mercados.</p>
+    <a href="https://searchengineland.com/google-tests-new-conversational-ad-formats-in-ai-mode-and-search-478115" target="_blank">Search Engine Land — Google tests new conversational ad formats in AI Mode</a>
+  </div>
+</div>
+
+<!-- CRIATIVOS & ÂNGULOS -->
+<div class="section">
+  <div class="section-title"><span>🎨</span> Criativos &amp; Ângulos</div>
+
+  <div class="card">
+    <h3>Análise de 500+ criativos Meta 2026: 3 padrões que vencem em lead gen</h3>
+    <p class="why">Porquê importa: (1) hook nos primeiros 2 segundos, não 3 — a janela encolheu; (2) narrativa problema-solução-benefício concreto (não generic "saiba mais"); (3) CTA específico e único. Vídeo vertical 15-30s em formato 4:5, nativo e UGC-style, supera consistently criativo polished de estúdio na maioria dos nichos de serviços locais, imobiliário e B2B. Quem está a produzir criativos "bonitos" mas sem hook forte está a perder para operadores mais pequeños com telemóvel e autenticidade.</p>
+    <a href="https://brandsearch.co/blog/winning-meta-ad-patterns-2026" target="_blank">Brandsearch — Winning Meta ad patterns 2026 (500+ criativos)</a>
+    &nbsp;·&nbsp;
+    <a href="https://adligator.com/blog/facebook-ad-creative-trends-2026" target="_blank">Adligator — Facebook ad creative trends 2026</a>
+  </div>
+</div>
+
+<!-- WHATSAPP & CTWA -->
+<div class="section">
+  <div class="section-title"><span>💬</span> WhatsApp &amp; CTWA</div>
+
+  <div class="card urgent">
+    <h3>WhatsApp Usernames + BSUID: o rollout começa em junho e pode partir os flows CTWA sem aviso</h3>
+    <p class="why">Porquê importa: a partir de junho, utilizadores do WhatsApp podem adotar um username e esconder o número de telefone ao interagir com empresas. Quando clicam num anúncio CTWA, a conversa chega com um BSUID (identificador alfanumérico único por empresa) em vez do número. Plataformas de CRM e automação que não tenham sido atualizadas para aceitar o campo BSUID recebem a conversa mas não conseguem criar o contacto: o lead entra no WhatsApp e desaparece do CRM silenciosamente. Verificar urgentemente com o fornecedor de automação (ManyChat, Respond.io, etc.) se o BSUID já está suportado.</p>
+    <a href="https://www.twilio.com/en-us/changelog/whatsapp-usernames--new-business-scoped-user-id--bsuid--field-re" target="_blank">Twilio Changelog — WhatsApp BSUID rollout (jun 2026)</a>
+    &nbsp;·&nbsp;
+    <a href="https://www.hubtype.com/blog/whatsapp-usernames-bsuid-contact-center-2026" target="_blank">Hubtype — Como preparar antes de junho 2026</a>
+  </div>
+</div>
+
+<!-- PRAZOS A CONTAR -->
+<div class="prazos-footer">
+  <div class="pf-label">⏳ Prazos a contar</div>
+  <div class="pf-line">
+    <strong>Meta API métricas (Reach/Impressões)</strong> 15/jun
+    <span class="dot">·</span>
+    <strong>Meta DMA→Comscore (auto)</strong> 22/jun
+    <span class="dot">·</span>
+    <strong>Amazon Ads consent EEA/UK</strong> 30/jun
+    <span class="dot">·</span>
+    <strong>Meta DST/location fees UE</strong> 1/jul
+    <span class="dot">·</span>
+    <strong>Messenger inbox placement</strong> 11/nov
+    <span class="dot">·</span>
+    <strong>Google AI Max substitui DSA</strong> Set/2026
+  </div>
+</div>
+
+<footer class="page-footer">
+  Briefing de Tráfego · 11/06/2026 · Inteligência de Marketing para Elisabete Silva
+</footer>
+
+</body>
+</html>
