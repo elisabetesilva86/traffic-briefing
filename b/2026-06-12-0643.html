@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing de Tráfego — 12/06/2026</title>
+<style>
+  :root {
+    --bg: #f7f8fa;
+    --card: #ffffff;
+    --accent: #2563eb;
+    --accent2: #7c3aed;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --tldr-bg: #eff6ff;
+    --tldr-border: #93c5fd;
+    --tag-bg: #f1f5f9;
+    --deadline-bg: #fef3c7;
+    --deadline-border: #fbbf24;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 20px 16px 60px;
+  }
+  .container { max-width: 720px; margin: 0 auto; }
+
+  header {
+    margin-bottom: 24px;
+    border-bottom: 2px solid var(--border);
+    padding-bottom: 16px;
+  }
+  header .label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 4px;
+  }
+  header h1 {
+    font-size: 1.55rem;
+    font-weight: 800;
+    color: var(--text);
+    line-height: 1.2;
+  }
+  header .meta {
+    margin-top: 6px;
+    font-size: 0.82rem;
+    color: var(--muted);
+  }
+
+  .tldr {
+    background: var(--tldr-bg);
+    border-left: 4px solid var(--accent);
+    border-radius: 8px;
+    padding: 16px 20px;
+    margin-bottom: 32px;
+  }
+  .tldr h2 {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: .08em;
+    text-transform: uppercase;
+    color: var(--accent);
+    margin-bottom: 10px;
+  }
+  .tldr ul { padding-left: 18px; }
+  .tldr ul li { margin-bottom: 6px; font-size: 0.95rem; font-weight: 500; }
+  .tldr ul li:last-child { margin-bottom: 0; }
+
+  section { margin-bottom: 36px; }
+  .section-title {
+    font-size: 1.05rem;
+    font-weight: 800;
+    color: var(--text);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+  }
+  .section-title span.icon { font-size: 1.15rem; }
+
+  .card {
+    background: var(--card);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+    transition: box-shadow 0.15s;
+  }
+  .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.07); }
+  .card-title {
+    font-size: 0.97rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+    line-height: 1.35;
+  }
+  .card-why {
+    font-size: 0.88rem;
+    color: var(--muted);
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .card-link a {
+    font-size: 0.82rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card-link a:hover { text-decoration: underline; }
+  .card-link a::after { content: " →"; }
+
+  .badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    letter-spacing: .06em;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 4px;
+    margin-bottom: 8px;
+  }
+  .badge-platform { background: #dbeafe; color: #1d4ed8; }
+  .badge-tracking { background: #d1fae5; color: #065f46; }
+  .badge-leads { background: #fce7f3; color: #9d174d; }
+  .badge-icp { background: #f3e8ff; color: #6b21a8; }
+  .badge-usa { background: #fee2e2; color: #991b1b; }
+  .badge-ia { background: #fef3c7; color: #92400e; }
+  .badge-creative { background: #ffedd5; color: #9a3412; }
+  .badge-tool { background: #e0f2fe; color: #0c4a6e; }
+
+  .deadlines-footer {
+    background: var(--deadline-bg);
+    border: 1px solid var(--deadline-border);
+    border-radius: 8px;
+    padding: 14px 18px;
+    margin-top: 16px;
+  }
+  .deadlines-footer h3 {
+    font-size: 0.82rem;
+    font-weight: 700;
+    color: #78350f;
+    margin-bottom: 8px;
+  }
+  .deadlines-footer p {
+    font-size: 0.84rem;
+    color: #92400e;
+    line-height: 1.7;
+  }
+  .deadlines-footer .dl-item {
+    display: inline-block;
+    margin-right: 6px;
+  }
+  .deadlines-footer .dl-item::after {
+    content: " ·";
+    color: #d97706;
+  }
+  .deadlines-footer .dl-item:last-child::after { content: ""; }
+
+  .dl-urgent { font-weight: 700; color: #dc2626; }
+
+  footer-note {
+    display: block;
+    margin-top: 32px;
+    font-size: 0.75rem;
+    color: var(--muted);
+    text-align: center;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="label">Briefing de Tráfego Pago</div>
+    <h1>Briefing de Tráfego — 12/06/2026</h1>
+    <div class="meta">Para: Elisabete Silva · Gestora de Tráfego Pago · Geração de Leads</div>
+  </header>
+
+  <!-- TL;DR -->
+  <div class="tldr">
+    <h2>TL;DR — O mais importante hoje</h2>
+    <ul>
+      <li>Meta abre as campanhas ao Claude e ao ChatGPT via MCP: pela primeira vez é possível dar instruções em linguagem natural e executar alterações em tempo real sem entrar no Ads Manager.</li>
+      <li>Google AI Max passa a ter controlo de pesquisa de marca: o principal obstáculo à adoção fica resolvido, com opção de excluir pesquisas de marca do prospecting automatizado.</li>
+      <li>Google Demand Gen restringido em categorias sensíveis: clínicas, advogados e serviços financeiros que usam Demand Gen podem estar a perder alcance sem sequer receber alerta.</li>
+    </ul>
+  </div>
+
+  <!-- SECÇÃO A: PLATAFORMAS & ALGORITMOS -->
+  <section>
+    <div class="section-title"><span class="icon">⚡</span> Plataformas &amp; Algoritmos</div>
+
+    <div class="card">
+      <div class="badge badge-platform">Plataformas</div>
+      <div class="card-title">Meta Ads AI Connectors: gerir campanhas em linguagem natural via Claude e ChatGPT</div>
+      <div class="card-why">Desde 29 de abril (beta aberto), o MCP server da Meta em mcp.facebook.com/ads expõe 29 ferramentas — reporting, gestão de campanhas, catálogo e diagnóstico de sinais — a qualquer cliente MCP, incluindo Claude e ChatGPT. O acesso é por OAuth, sem API setup, e inclui escrita de campanha desde o dia 1. Para um gestor de tráfego, isto significa poder auditar conta, detectar anomalias e aplicar alterações numa única conversa com o assistente de IA, sem abrir o Ads Manager.</div>
+      <div class="card-link"><a href="https://ppc.land/meta-opens-its-ad-system-to-claude-and-chatgpt-with-new-ai-connectors/" target="_blank">ppc.land</a></div>
+    </div>
+
+    <div class="card">
+      <div class="badge badge-platform">Plataformas</div>
+      <div class="card-title">Google AI Max: controlo de pesquisa de marca em rollout desde 1 de junho</div>
+      <div class="card-why">O AI Max para Search passa a ter três opções de controlo de marca: todas as pesquisas relevantes, inclusions/exclusions de marca ou apenas pesquisas sem marca ("unbranded only"). Elimina o principal argumento contra o AI Max, que era a captura de tráfego de marca que já está coberto por campanhas dedicadas. Ainda em rollout limitado, nem todas as contas veem já a opção, mas a tendência é de expansão rápida.</div>
+      <div class="card-link"><a href="https://searchengineland.com/google-appears-to-be-testing-new-branded-search-controls-in-ai-max-campaigns-479088" target="_blank">Search Engine Land</a></div>
+    </div>
+
+  </section>
+
+  <!-- SECÇÃO B: TRACKING & PRIVACIDADE -->
+  <section>
+    <div class="section-title"><span class="icon">🎯</span> Tracking &amp; Privacidade</div>
+
+    <div class="card">
+      <div class="badge badge-tracking">Tracking</div>
+      <div class="card-title">Google Demand Gen restringido em categorias sensíveis: saúde, finanças e habitação em risco</div>
+      <div class="card-why">Clarificação publicada a 3 de junho no centro de políticas do Google: Demand Gen e Discovery campaigns podem ser bloqueados ou limitados quando promovem produtos ou serviços em categorias sensíveis (saúde, serviços financeiros, habitação, emprego). A restrição não é nova na política, mas a documentação explícita é. Para o ICP da Elisabete (clínicas, advogados, consultores financeiros), isto significa rever a estratégia de Demand Gen e confirmar se as campanhas estão a servir normalmente.</div>
+      <div class="card-link"><a href="https://searchengineland.com/google-clarifies-sensitive-audience-targeting-rules-for-demand-gen-campaigns-479622" target="_blank">Search Engine Land</a></div>
+    </div>
+
+  </section>
+
+  <!-- SECÇÃO D: PULSO DO ICP -->
+  <section>
+    <div class="section-title"><span class="icon">👥</span> Pulso do ICP</div>
+
+    <div class="card">
+      <div class="badge badge-icp">ICP · Stands Auto EUA</div>
+      <div class="card-title">Stands auto EUA: gasto em publicidade digital aproxima-se dos $10 mil milhões; social sobe de 12,7% para 14,2%</div>
+      <div class="card-why">A quota de social media no mix publicitário dos stands americanos cresceu 1,5 pp num ano, enquanto o digital já representa 74,9% do gasto total. A pergunta real que os donos de stand colocam: "como distribuo orçamento entre Google (intenção) e Meta (audiência) sem duplicar leads?". O sinal de mercado americano indica que Meta está a ganhar terreno sobre o Search nos nichos automóvel, e o mesmo padrão começa a emergir em Portugal.</div>
+      <div class="card-link"><a href="https://news.dealershipguy.com/p/dealer-ad-spend-nears-10-billion-as-digital-marketing-dominates" target="_blank">Dealership Guy Newsletter</a></div>
+    </div>
+
+    <div class="card">
+      <div class="badge badge-icp">ICP · Serviços Financeiros</div>
+      <div class="card-title">Serviços financeiros: o anúncio "marque uma consulta" converte mal, education-first supera em todas as métricas</div>
+      <div class="card-why">Consultores financeiros, mediadores de seguros e assessores de crédito com CPL de $650+ continuam a perder dinheiro em anúncios transacionais directos. A queixa recorrente: "gasto em leads que nunca atendem a chamada". A evidência de 2026 aponta para que campanhas que promovem um evento, webinar ou guia gratuito antes do agendamento produzam leads com 2-3x mais taxa de fecho. Para um potencial cliente neste nicho, a proposta de valor da Elisabete começa aqui: mudar o funil antes de mudar o orçamento.</div>
+      <div class="card-link"><a href="https://leadingresponse.com/blog/best-lead-generation-services-for-financial-advisors-in-2026-complete-guide/" target="_blank">Leading Response</a></div>
+    </div>
+
+    <div class="card">
+      <div class="badge badge-icp">ICP · Formação / Infoprodutos</div>
+      <div class="card-title">B2B e formação: CPL mediano subiu para $213 em 2026, mas existe um gap de 4,7x entre o quartil superior e o inferior</div>
+      <div class="card-why">Dados de benchmarking 2026 mostram que o CPL mediano B2B é de $213, mas equipas com targeting alinhado ao ICP real conseguem $84, enquanto equipas que otimizam volume ficam nos $397. A pergunta dos donos de cursos ou programas de formação: "porque é que o meu CPL não para de subir quando tenho os mesmos anúncios?". A resposta está no ICP match, não no criativo ou no orçamento. Fonte independente do vendedor (Prospeo/Martal).</div>
+      <div class="card-link"><a href="https://martal.ca/cost-per-lead-by-industry-lb/" target="_blank">Martal.ca — Cost Per Lead by Industry 2026</a></div>
+    </div>
+
+  </section>
+
+  <!-- SECÇÃO E: FOCO EUA -->
+  <section>
+    <div class="section-title"><span class="icon">🇺🇸</span> Foco EUA</div>
+
+    <div class="card">
+      <div class="badge badge-usa">EUA / Europa</div>
+      <div class="card-title">ChatGPT Ads ao vivo no Reino Unido: primeiro mercado europeu, Portugal na fila</div>
+      <div class="card-why">Desde 6 de junho, o Reino Unido é o primeiro mercado europeu com ChatGPT Ads, em modo managed-only com acesso mínimo estimado em $50-60 mil por marca. Nos EUA, o self-serve já está aberto sem mínimo, com CPC bidding a $3-5 por clique e pixel de conversão disponível. Para o mercado português, a relevância é de antecipação: perceber quais nichos de lead gen (imobiliário, seguros, formação) vão ter os primeiros resultados no UK e replicar as aprendizagens quando o acesso chegar à UE.</div>
+      <div class="card-link"><a href="https://ppc.land/chatgpt-ads-go-live-in-the-uk-as-openai-expands-pilot-beyond-us/" target="_blank">ppc.land</a></div>
+    </div>
+
+  </section>
+
+  <!-- SECÇÃO F: IA & BUSCA GENERATIVA -->
+  <section>
+    <div class="section-title"><span class="icon">🤖</span> IA &amp; Busca Generativa</div>
+
+    <div class="card">
+      <div class="badge badge-ia">IA</div>
+      <div class="card-title">Meta ultrapassa Google em receita publicitária digital em 2026, segundo a eMarketer</div>
+      <div class="card-why">Pela primeira vez na história do digital, a Meta vai superar o Google em receita de publicidade em 2026: $243 mil milhões vs. $239 mil milhões (projeção eMarketer, crescimento de 24,1% vs. 11,9%). O motor é o Advantage+ e as novas superfícies no WhatsApp e no Threads. Para gestores de tráfego, este sinal é estratégico: o inventário Meta está a tornar-se mais caro (CPMs +20% ano a ano) porque mais anunciantes o estão a escolher como plataforma principal de performance, e não apenas de topo de funil.</div>
+      <div class="card-link"><a href="https://www.emarketer.com/learningcenter/guides/meta-to-surpass-google-in-digital-ad-revenues-for-first-time-ever/" target="_blank">eMarketer</a></div>
+    </div>
+
+  </section>
+
+  <!-- SECÇÃO I: FERRAMENTAS & AUTOMAÇÃO -->
+  <section>
+    <div class="section-title"><span class="icon">🛠️</span> Ferramentas &amp; Automação</div>
+
+    <div class="card">
+      <div class="badge badge-tool">Ferramentas</div>
+      <div class="card-title">Google Ads ToS reformulada para a era da IA: outputs automáticos são responsabilidade do anunciante</div>
+      <div class="card-why">Em junho 2, o Google actualizou os seus Termos de Serviço pela primeira vez em 8 anos (efeito 1 de julho). A mudança central: tudo o que as ferramentas de IA do Google geram em nome do anunciante (criativos, landing pages, públicos) é da responsabilidade jurídica e ética do anunciante, sem possibilidade de opt-out da automação. Para clientes que delegam campanhas sem supervisão activa, isto é um risco a comunicar já. A automação que "corre sozinha" deixa de ser desculpa plausível perante uma reclamação de conformidade.</div>
+      <div class="card-link"><a href="https://zatomarketing.com/blog/google-ads-terms-of-service-update-july-2026-what-advertisers-need-to-know-about-automation-responsibility" target="_blank">ZATO PPC Marketing</a></div>
+    </div>
+
+  </section>
+
+  <!-- PRAZOS -->
+  <div class="deadlines-footer">
+    <h3>⏳ Prazos a contar</h3>
+    <p>
+      <span class="dl-item dl-urgent">Consent Mode 15/jun</span>
+      <span class="dl-item dl-urgent">Google offline imports 15/jun</span>
+      <span class="dl-item">Meta DMA→Comscore 22/jun</span>
+      <span class="dl-item">Google Ads ToS IA 1/jul</span>
+      <span class="dl-item">Meta DST/location fees UE 1/jul</span>
+      <span class="dl-item">Google AI Max substitui DSA set</span>
+      <span class="dl-item">Meta Messenger inbox placement 11/nov</span>
+    </p>
+  </div>
+
+  <footer-note>Briefing de Tráfego · 12/06/2026 · Preparado por IA para Elisabete Silva</footer-note>
+
+</div>
+</body>
+</html>
