@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing de Tráfego — 13/06/2026</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f4f6f9;
+    color: #1a1a2e;
+    line-height: 1.6;
+    font-size: 15px;
+  }
+  header {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #fff;
+    padding: 28px 20px 22px;
+    text-align: center;
+  }
+  header h1 { font-size: 1.45rem; font-weight: 700; letter-spacing: -0.3px; }
+  header p { font-size: 0.82rem; color: #9ba8c0; margin-top: 4px; }
+  .tldr {
+    background: #fff;
+    border-left: 4px solid #e74c3c;
+    margin: 18px 16px;
+    padding: 16px 18px;
+    border-radius: 0 8px 8px 0;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+  }
+  .tldr strong { color: #e74c3c; font-size: 0.75rem; text-transform: uppercase; letter-spacing: .6px; display: block; margin-bottom: 6px; }
+  .tldr p { font-size: 0.95rem; color: #2c3e50; }
+  .section { margin: 0 16px 22px; }
+  .section-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: .8px;
+    color: #7f8c9a;
+    margin-bottom: 10px;
+    padding-bottom: 5px;
+    border-bottom: 1px solid #e1e8f0;
+  }
+  .card {
+    background: #fff;
+    border-radius: 10px;
+    padding: 15px 16px;
+    margin-bottom: 10px;
+    box-shadow: 0 1px 4px rgba(0,0,0,.07);
+    border: 1px solid #eaf0f7;
+  }
+  .card h3 {
+    font-size: 0.97rem;
+    font-weight: 700;
+    color: #1a1a2e;
+    margin-bottom: 6px;
+    line-height: 1.35;
+  }
+  .why {
+    font-size: 0.88rem;
+    color: #3d5068;
+    margin-bottom: 8px;
+    line-height: 1.5;
+  }
+  .why strong { color: #1a1a2e; }
+  .tag {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 2px 8px;
+    border-radius: 20px;
+    margin-bottom: 7px;
+    text-transform: uppercase;
+    letter-spacing: .5px;
+  }
+  .tag-plat { background: #eaf3ff; color: #1a6fc4; }
+  .tag-track { background: #f0f7ea; color: #2d8653; }
+  .tag-icp { background: #fff3e8; color: #c46b1a; }
+  .tag-ctwa { background: #f0eaff; color: #6b1ac4; }
+  .source {
+    font-size: 0.78rem;
+    color: #7f8c9a;
+  }
+  .source a {
+    color: #1a6fc4;
+    text-decoration: none;
+    word-break: break-all;
+  }
+  .source a:hover { text-decoration: underline; }
+  .confirmed {
+    font-size: 0.75rem;
+    color: #27ae60;
+    margin-top: 3px;
+  }
+  footer {
+    background: #fff;
+    border-top: 1px solid #e1e8f0;
+    margin: 10px 16px 24px;
+    padding: 14px 16px;
+    border-radius: 8px;
+    box-shadow: 0 1px 3px rgba(0,0,0,.05);
+  }
+  footer .prazos-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: #7f8c9a;
+    text-transform: uppercase;
+    letter-spacing: .6px;
+    margin-bottom: 6px;
+  }
+  footer .prazos-line {
+    font-size: 0.85rem;
+    color: #3d5068;
+    line-height: 1.7;
+  }
+  footer .prazos-line span {
+    display: inline-block;
+    background: #f4f6f9;
+    border-radius: 4px;
+    padding: 1px 7px;
+    margin: 2px 3px 2px 0;
+    font-size: 0.82rem;
+    border: 1px solid #e1e8f0;
+    white-space: nowrap;
+  }
+  footer .prazos-line span.urgent { background: #fff0f0; border-color: #f5b8b8; color: #c0392b; font-weight: 600; }
+  .meta-info {
+    text-align: center;
+    font-size: 0.72rem;
+    color: #b0bec5;
+    padding: 10px 16px 20px;
+  }
+  @media (min-width: 640px) {
+    .tldr, .section, footer { margin-left: auto; margin-right: auto; max-width: 680px; }
+    body { font-size: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <h1>Briefing de Tráfego — 13/06/2026</h1>
+  <p>Preparado por IA para Elisabete Silva · Gestor de Tráfego Pago</p>
+</header>
+
+<!-- TL;DR -->
+<div class="tldr">
+  <strong>TL;DR — o mais importante hoje</strong>
+  <p>A Meta sofreu uma falha global a 12 de junho que bloqueou o Ads Manager durante horas, deixando anunciantes sem conseguir criar ou editar campanhas (entrega intermitente). O Google lança a migração voluntária de campanhas Display para Demand Gen, antecipando a descontinuação do formato standalone. A Meta vai ainda deprecar as métricas de Reach e Impressions na sua API até ao fim do mês: ferramentas de reporting externas precisam de ser atualizadas agora.</p>
+</div>
+
+<!-- PLATAFORMAS -->
+<div class="section">
+  <div class="section-title">⚡ Plataformas &amp; Algoritmos</div>
+
+  <div class="card">
+    <span class="tag tag-plat">Plataformas</span>
+    <h3>Meta falha global de 12/06: Ads Manager bloqueado e entrega intermitente</h3>
+    <p class="why">Uma falha de servidor causou logout forçado no Facebook e disrupções graves no Ads Manager (criação/edição de campanhas bloqueada durante a manhã ET de 12 de junho). O Messenger API e o WhatsApp Business Platform também foram afetados. As campanhas existentes continuaram a ser entregues mas com intermitência. A recuperação iniciou-se ~11h45 ET; problemas pontuais podiam persistir ainda hoje. <strong>Porquê importa:</strong> as métricas do dia 12/06 estão distorcidas em todos os clientes com Meta Ads. Verifica a entrega, confirma o orçamento consumido vs. entregue e evita otimizações baseadas nesse dia.</p>
+    <div class="source">Fonte: <a href="https://www.cnbc.com/2026/06/12/metas-social-networks-down-for-thousands-of-users.html" target="_blank">CNBC</a></div>
+    <div class="confirmed">Confirmado também: TechTimes, Tom's Guide, Gulf News, Yahoo Tech/IsDown</div>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-plat">Plataformas</span>
+    <h3>Google retira Display como campanha autónoma: migração para Demand Gen abre em junho</h3>
+    <p class="why">O Google lançou em junho 2026 a ferramenta de migração voluntária que move campanhas Display standalone para Demand Gen. O Google Display Network (GDN) passa a ser gerido dentro do Demand Gen, ao lado do YouTube, Discover, Gmail e Maps. A migração automática só acontece em 2027, mas quem migra agora beneficia de +9,5% ROI médio (a Google indica). <strong>Porquê importa:</strong> clientes com campanhas Display para geração de leads devem migrar de forma controlada agora e não esperar pela migração automática. O Demand Gen com GDN aumenta cobertura visual sem criar uma campanha de raiz.</p>
+    <div class="source">Fonte principal: <a href="https://www.searchenginejournal.com/google-is-retiring-standalone-display-campaigns-in-favor-of-demand-gen/575889/" target="_blank">Search Engine Journal</a></div>
+    <div class="confirmed">Confirmado: Google Blog oficial (<a href="https://blog.google/products/ads-commerce/google-display-ads-demand-gen/" target="_blank">blog.google</a>), PPC News Feed, TechWyse</div>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-plat">Plataformas</span>
+    <h3>Meta Marketing API: "Page Viewer" substitui Reach e Impressions — deadline fim de junho</h3>
+    <p class="why">A Meta vai deprecar as métricas Post/Page Reach, Video Impressions e Story Impressions do Graph API, substituindo-as pela "Page Viewer Metric", uma métrica unificada para Facebook e Instagram. Ferramentas externas de reporting (Supermetrics, Looker Studio via API, Power BI) que puxam estas métricas precisam de atualizar os campos da API antes do fim de junho para não quebrarem os dashboards dos clientes. <strong>Porquê importa:</strong> uma quebra silenciosa em métricas de alcance pode passar semanas sem ser detetada. Audita hoje os relatórios automáticos de todos os clientes.</p>
+    <div class="source">Fonte: <a href="https://www.socialmediatoday.com/news/meta-updates-marketing-api-to-align-with-latest-ad-shifts/812648/" target="_blank">Social Media Today</a></div>
+    <div class="confirmed">Confirmado: <a href="https://www.optimixed.com/meta-updates-marketing-api-to-align-with-latest-ad-shifts/" target="_blank">Optimixed</a>, FixFB, LuanWise</div>
+  </div>
+</div>
+
+<!-- TRACKING -->
+<div class="section">
+  <div class="section-title">🎯 Tracking &amp; Privacidade</div>
+
+  <div class="card">
+    <span class="tag tag-track">Tracking</span>
+    <h3>Meta elimina "Your activity off Meta technologies" e expande uso de dados partilhados por anunciantes</h3>
+    <p class="why">A 9 de junho, a Meta anunciou a remoção do controlo "Your activity off Meta technologies", substituindo-o pela definição expandida "Activity from other businesses". A novidade: os dados que as empresas já partilham via Pixel e CAPI (eventos de site, compras, leads) passam a alimentar não só os anúncios mas também a personalização do Feed e das respostas de IA do utilizador. A Meta afirma que não são recolhidos dados novos. <strong>Porquê importa:</strong> os custom audiences baseados em eventos CAPI ficam com sinal potencialmente mais forte. Contrapartida: utilizadores que façam opt-out desta nova definição excluem-se de personalização mais ampla, o que pode alterar o opt-out rate nos próximos meses.</p>
+    <div class="source">Fonte: <a href="https://about.fb.com/news/2026/06/better-personalization-and-changes-to-controls-for-your-activity-from-other-businesses/" target="_blank">Meta Newsroom (oficial)</a></div>
+  </div>
+</div>
+
+<!-- ICP -->
+<div class="section">
+  <div class="section-title">👥 Pulso do ICP</div>
+
+  <div class="card">
+    <span class="tag tag-icp">ICP · Coaches / Formação Online</span>
+    <h3>"Gero leads com Facebook mas ninguém converte — o meu anúncio está mau?"</h3>
+    <p class="why">Personal trainers, coaches e formadores online reportam esta queixa de forma consistente em 2026. A análise de mercado é clara: o problema raramente é o criativo ou o CPL. É o tempo de resposta pós-lead (resposta em menos de 5 minutos pós-preenchimento do formulário corresponde a manter a conversão; acima disso, a probabilidade de conversão cai mais de 80%) e a ausência de automação de nurture. <strong>Porquê importa:</strong> para um coach a 1.000€/mês de avença, o argumento de venda certo não é "vou baixar o teu CPL" mas "vou garantir que cada lead é contactada em menos de 2 minutos com automação de CRM", o que diferencia a proposta de qualquer freelancer de ads.</p>
+    <div class="source">Fonte: <a href="https://mypersonaltrainerwebsite.com/blog/facebook-ads-personal-trainers-guide" target="_blank">MyPersonalTrainerWebsite</a>, <a href="https://leadsync.me/blog/personal-trainer-lead-gen-ads/" target="_blank">LeadSync</a></div>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-icp">ICP · Qualquer Negócio de Serviços</span>
+    <h3>"As minhas campanhas pararam ontem sem aviso e não percebo porquê" — a falha Meta como argumento de diversificação</h3>
+    <p class="why">A falha de 12/06 na Meta deixou clínicas, coaches, stands e agências imobiliárias sem conseguir gerir as suas campanhas durante um dia. Negócios que tinham apenas Meta Ads ativo ficaram sem leads. Quem tinha Google Ads Search ativo em paralelo continuou a receber contactos sem interrupção. <strong>Porquê importa:</strong> tens hoje um argumento concreto e datado para propor diversificação de canal a clientes Meta-only. "A 12 de junho perdeste potencialmente um dia de leads por causa de uma falha que não controlaste" é uma frase que fecha conversas de upsell para Google Ads.</p>
+    <div class="source">Fonte: <a href="https://www.cnbc.com/2026/06/12/metas-social-networks-down-for-thousands-of-users.html" target="_blank">CNBC</a>, <a href="https://tech.yahoo.com/social-media/articles/meta-ads-manager-hit-high-143351547.html" target="_blank">Yahoo Tech</a></div>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-icp">ICP · Clínicas / Serviços Locais</span>
+    <h3>"O meu custo por lead está a subir mas não mudei nada nos anúncios" — o chatbot na landing pode ser a resposta</h3>
+    <p class="why">Dados de benchmarks de lead generation 2026: landing pages de serviços com chatbot conversacional têm taxa de conversão de 12% em média, vs. 8,3% sem chatbot, um ganho de 36%. Para uma clínica dentária ou de fisioterapia a gastar 500€/mês em Meta Ads, isso equivale a 10-15 leads adicionais por mês sem aumentar o orçamento. A resistência habitual ("não tenho quem gira o chatbot") foi eliminada por bots de IA treinados no FAQ do negócio em menos de uma hora. <strong>Porquê importa:</strong> upsell fácil de landing page + chatbot IA com ROI imediato mensurável para clientes de serviços locais.</p>
+    <div class="source">Fonte: <a href="https://www.callboxinc.com/blog/b2b-lead-generation-statistics/" target="_blank">Callbox Lead Generation Statistics 2026</a></div>
+  </div>
+</div>
+
+<!-- WHATSAPP -->
+<div class="section">
+  <div class="section-title">💬 WhatsApp &amp; CTWA</div>
+
+  <div class="card">
+    <span class="tag tag-ctwa">WhatsApp / CTWA</span>
+    <h3>CTWA vai ultrapassar click-to-Messenger em spend global no Q3 2026 — crescimento de +82% em 12 meses</h3>
+    <p class="why">O gasto em anúncios Click-to-WhatsApp cresceu 82% em termos homólogos (Q1 2025 vs. Q1 2026) e está projetado para ultrapassar o gasto em Click-to-Messenger globalmente no Q3 2026. Em mercados de WhatsApp dominante (LATAM, MENA, Sul da Europa), o CTWA entrega 30% a 50% menos CPA do que campanhas click-to-website equivalentes. Portugal enquadra-se neste perfil de mercado. <strong>Porquê importa:</strong> se ainda não tens propostas com CTWA para clientes de serviços locais, estes benchmarks dão-te argumentação quantitativa para a conversa de venda. O CTWA não é uma moda, é o formato de mais crescimento no Meta Ads em 2026.</p>
+    <div class="source">Fonte: <a href="https://getkanal.com/blog/click-to-whatsapp-ads-guide-2026" target="_blank">GetKanal CTWA Guide 2026</a>, <a href="https://asisteclick.com/en/blog/click-to-whatsapp-ads-ctwa-conversion-2026/" target="_blank">AsisteClick</a></div>
+  </div>
+</div>
+
+<!-- PRAZOS -->
+<footer>
+  <div class="prazos-label">⏳ Prazos a contar</div>
+  <div class="prazos-line">
+    <span class="urgent">Consent Mode · 15/jun</span>
+    <span class="urgent">Google offline imports API · 15/jun</span>
+    <span>Meta DMA→Comscore · 22/jun</span>
+    <span>Meta API Reach/Impressions · 30/jun</span>
+    <span>Google Ads ToS IA · 1/jul</span>
+    <span>Meta DST/location fees UE · 1/jul</span>
+    <span>Google AI Max substitui DSA · set</span>
+    <span>Meta Messenger inbox · 11/nov</span>
+  </div>
+</footer>
+
+<div class="meta-info">Briefing de Tráfego · 13/06/2026 · Preparado por IA para Elisabete Silva</div>
+
+</body>
+</html>
