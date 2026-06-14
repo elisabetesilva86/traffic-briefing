@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing de Tráfego — 14/06/2026</title>
+<style>
+:root {
+  --bg: #f7f8fa;
+  --card: #ffffff;
+  --accent: #2563eb;
+  --accent2: #7c3aed;
+  --text: #1e293b;
+  --muted: #64748b;
+  --border: #e2e8f0;
+  --tldr-bg: #eff6ff;
+  --tldr-border: #93c5fd;
+  --tag-bg: #f1f5f9;
+  --deadline-bg: #fef3c7;
+  --deadline-border: #fbbf24;
+  --urgent-bg: #fee2e2;
+  --urgent-border: #fca5a5;
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  line-height: 1.6;
+  padding: 20px 16px 60px;
+}
+.container { max-width: 720px; margin: 0 auto; }
+header {
+  margin-bottom: 24px;
+  border-bottom: 2px solid var(--border);
+  padding-bottom: 16px;
+}
+header .label {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 4px;
+}
+header h1 {
+  font-size: 1.55rem;
+  font-weight: 800;
+  color: var(--text);
+  line-height: 1.2;
+}
+header .meta {
+  margin-top: 6px;
+  font-size: 0.82rem;
+  color: var(--muted);
+}
+.tldr {
+  background: var(--tldr-bg);
+  border-left: 4px solid var(--accent);
+  border-radius: 8px;
+  padding: 16px 20px;
+  margin-bottom: 32px;
+}
+.tldr h2 {
+  font-size: 0.75rem;
+  font-weight: 700;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 10px;
+}
+.tldr ul { padding-left: 18px; }
+.tldr ul li {
+  margin-bottom: 6px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+.tldr ul li:last-child { margin-bottom: 0; }
+section { margin-bottom: 36px; }
+.section-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text);
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+.section-title span.icon { font-size: 1.15rem; }
+.card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 10px;
+  padding: 16px 18px;
+  margin-bottom: 12px;
+  transition: box-shadow 0.15s;
+}
+.card:hover { box-shadow: 0 4px 16px rgba(0,0,0,.07); }
+.card.urgent {
+  border-left: 4px solid #ef4444;
+}
+.card-title {
+  font-size: 0.97rem;
+  font-weight: 700;
+  color: var(--text);
+  margin-bottom: 6px;
+  line-height: 1.35;
+}
+.card-why {
+  font-size: 0.88rem;
+  color: var(--muted);
+  margin-bottom: 10px;
+  line-height: 1.5;
+}
+.card-link a {
+  font-size: 0.82rem;
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 600;
+  display: inline-flex;
+  align-items: center;
+  gap: 4px;
+}
+.card-link a:hover { text-decoration: underline; }
+.card-link a::after { content: " →"; }
+.badge {
+  display: inline-block;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: .06em;
+  text-transform: uppercase;
+  padding: 2px 7px;
+  border-radius: 4px;
+  margin-bottom: 8px;
+}
+.badge-platform { background: #dbeafe; color: #1d4ed8; }
+.badge-tracking { background: #d1fae5; color: #065f46; }
+.badge-leads { background: #fce7f3; color: #9d174d; }
+.badge-icp { background: #f3e8ff; color: #6b21a8; }
+.badge-usa { background: #fee2e2; color: #991b1b; }
+.badge-ia { background: #fef3c7; color: #92400e; }
+.badge-urgent { background: #fee2e2; color: #dc2626; }
+.deadlines-footer {
+  background: var(--deadline-bg);
+  border: 1px solid var(--deadline-border);
+  border-radius: 8px;
+  padding: 14px 18px;
+  margin-top: 16px;
+}
+.deadlines-footer h3 {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: #78350f;
+  margin-bottom: 8px;
+}
+.deadlines-footer p {
+  font-size: 0.84rem;
+  color: #92400e;
+  line-height: 1.7;
+}
+.dl-item {
+  display: inline-block;
+  margin-right: 6px;
+}
+.dl-item::after {
+  content: " ·";
+  color: #d97706;
+}
+.dl-item:last-child::after { content: ""; }
+.dl-urgent { font-weight: 700; color: #dc2626; }
+footer-note {
+  display: block;
+  margin-top: 32px;
+  font-size: 0.75rem;
+  color: var(--muted);
+  text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header>
+    <div class="label">Briefing de Tráfego Pago</div>
+    <h1>Briefing de Tráfego — 14/06/2026</h1>
+    <div class="meta">Para: Elisabete Silva · Gestora de Tráfego Pago · Geração de Leads</div>
+  </header>
+
+  <div class="tldr">
+    <h2>TL;DR — O mais importante hoje</h2>
+    <ul>
+      <li>Dois deadlines críticos <strong>amanhã (15/jun)</strong>: Google Ads API bloqueia novas importações de conversão offline e GA4 Measurement Protocol entra em maintenance mode — verificar hoje se alguma integração de cliente é afetada.</li>
+      <li>Meta confirma verificação SMS e email corporativo nas instant forms da Advantage+ Leads com CPL 14% mais baixo: para clientes com muitos leads incontactáveis, há solução nativa a ativar.</li>
+      <li>Google apaga dados históricos granulares com mais de 37 meses desde junho: quem usa benchmarks pré-2023 tem de exportar antes de perder o acesso permanente.</li>
+    </ul>
+  </div>
+
+  <!-- A: PLATAFORMAS -->
+  <section>
+    <div class="section-title"><span class="icon">⚡</span> Plataformas &amp; Algoritmos</div>
+
+    <div class="card">
+      <span class="badge badge-platform">Plataformas · Google</span>
+      <div class="card-title">Google Ads: dados históricos granulares limitados a 37 meses — acesso cortado permanentemente</div>
+      <div class="card-why">Desde junho de 2026, o Google eliminiu o acesso a dados de campanha com mais de 37 meses (dia, hora, semana) na interface, API, scripts e BigQuery. Dados de 2023 e anteriores deixam de estar acessíveis. Agências com histórico longo para benchmarks de sazonalidade devem exportar agora — o acesso não volta.</div>
+      <div class="card-link"><a href="https://ppc.land/google-ads-cuts-granular-data-access-to-37-months-starting-june-2026/" target="_blank">ppc.land</a></div>
+    </div>
+
+    <div class="card">
+      <span class="badge badge-platform">Plataformas · Google</span>
+      <div class="card-title">Google auto-ligou canais YouTube a contas Google Ads — audiências de canal disponíveis como sinal</div>
+      <div class="card-why">Desde 10 de junho, o Google ligou automaticamente canais YouTube a contas Google Ads com administradores partilhados. Desbloqueia segmentos de audiência baseados em visualizações e interações com o canal, métricas orgânicas de vídeo no Ads e ações de subscrição como conversões. Para clientes com canal ativo, confirmar o link e activar as audiências em RLSA e prospecting.</div>
+      <div class="card-link"><a href="https://searchengineland.com/google-ads-to-auto-link-youtube-channels-starting-june-10-477094" target="_blank">Search Engine Land</a></div>
+    </div>
+  </section>
+
+  <!-- B: TRACKING -->
+  <section>
+    <div class="section-title"><span class="icon">🎯</span> Tracking &amp; Privacidade</div>
+
+    <div class="card urgent">
+      <span class="badge badge-urgent">Urgente · Amanhã 15/jun</span>
+      <div class="card-title">Google Ads API bloqueia novas importações de conversão offline a partir de 15/jun — prazo a expirar amanhã</div>
+      <div class="card-why">A partir de amanhã, a Google Ads API (ConversionUploadService) deixa de aceitar <em>novas</em> implementações de importação de conversão offline e enhanced conversions for leads. Implementações já activas antes do corte continuam a funcionar. Quem tem integrações de CRM custom feitas depois de dezembro de 2025, ou não importou conversões entre dez/2025 e mai/2026, recebe erro a partir de amanhã. A solução para novas integrações é a Data Manager API.</div>
+      <div class="card-link"><a href="https://ppc.land/google-blocks-new-offline-conversion-imports-via-ads-api-from-june-15/" target="_blank">ppc.land</a></div>
+    </div>
+
+    <div class="card">
+      <span class="badge badge-tracking">Tracking · GA4</span>
+      <div class="card-title">GA4 Measurement Protocol em "maintenance mode" — sem novas funcionalidades, caminho é Data Manager API</div>
+      <div class="card-why">O Google colocou o GA4 Measurement Protocol em modo de manutenção: as implementações existentes não partem, mas não haverá desenvolvimento futuro. Quem usa Measurement Protocol para eventos offline ou server-side deve planear migração para a Data Manager API (suporte a encriptação, multi-destino num único pedido, sem API secret). Não é urgente, mas é o sinal de que o Measurement Protocol é uma dead end.</div>
+      <div class="card-link"><a href="https://ppc.land/ga4-measurement-protocol-enters-maintenance-mode-no-new-features-coming/" target="_blank">ppc.land</a></div>
+    </div>
+  </section>
+
+  <!-- C: GERAÇÃO DE LEADS -->
+  <section>
+    <div class="section-title"><span class="icon">🧲</span> Geração de Leads</div>
+
+    <div class="card">
+      <span class="badge badge-leads">Lead Gen · Meta</span>
+      <div class="card-title">Meta Advantage+ Leads: verificação SMS e email corporativo nas instant forms — CPL 14% mais baixo</div>
+      <div class="card-why">A Meta lançou verificação de qualidade integrada nas instant forms da Advantage+ Leads: o lead tem de confirmar o número de telemóvel por SMS ou usar um email de trabalho válido antes de submeter. Leads verificados mostram 14% de CPL mais baixo e 10% de redução no custo por lead qualificado (dados Meta). Para clientes com alto volume de leads incontactáveis — imobiliário, seguros, formação — ativar a verificação reduz volume mas melhora radicalmente o pipeline.</div>
+      <div class="card-link"><a href="https://www.socialmediatoday.com/news/meta-lead-gen-ad-updates-ai-targeting-verification-crm-expansion/804301/" target="_blank">Social Media Today</a></div>
+    </div>
+  </section>
+
+  <!-- D: PULSO DO ICP -->
+  <section>
+    <div class="section-title"><span class="icon">👥</span> Pulso do ICP</div>
+
+    <div class="card">
+      <span class="badge badge-icp">ICP · Stands Auto</span>
+      <div class="card-title">Stands auto: "não temos problema de leads, temos problema de fuga de leads" — velocidade de resposta é o verdadeiro CRO</div>
+      <div class="card-why">Padrão documentado em concessionários em 2026: $20-40 por lead, sem atribuição clara às vendas, gasto mensal de $2100+ sem ROI visível. A queixa real do dono do stand não é "preciso de mais leads", é "tenho leads mas não fecham". A causa está na resposta acima de 5 minutos — o lead vai ao próximo stand. Para a Elisabete, o argumento de venda muda: "não vou só gerar mais leads, vou parar a fuga dos que já tens".</div>
+      <div class="card-link"><a href="https://clarityvoice.com/news/2026-auto-dealership-lead-generation/" target="_blank">Clarity Voice</a></div>
+    </div>
+
+    <div class="card">
+      <span class="badge badge-icp">ICP · Seguros / Crédito</span>
+      <div class="card-title">Seguros e crédito: "pago $40 por lead e ninguém atende" — intenção de curiosidade vs intenção de compra</div>
+      <div class="card-why">Em seguros, crédito e mediação financeira, o lead de instant form tem "intenção de curiosidade" — viu o anúncio, clicou, preencheu a form em 10 segundos — e não "intenção de referência". O resultado: taxa de atendimento baixa, CPL inflacionado, ROI negativo. A solução não está na campanha: está em qualificar na form com 1-2 perguntas restritivas (ex: "qual é o valor do imóvel?") e em activar verificação SMS. Quem implementa as duas táticas reduz volume mas duplica a taxa de conversão.</div>
+      <div class="card-link"><a href="https://thenickberry.substack.com/p/lead-generation-tactics-for-insurance" target="_blank">The Nick Berry Letter</a></div>
+    </div>
+  </section>
+
+  <!-- E: FOCO EUA -->
+  <section>
+    <div class="section-title"><span class="icon">🇺🇸</span> Foco EUA</div>
+
+    <div class="card">
+      <span class="badge badge-usa">EUA · Nova Plataforma</span>
+      <div class="card-title">Reddit lança Lead Gen Ads em beta público global com integração Zapier — CPCs 70-85% abaixo do LinkedIn</div>
+      <div class="card-why">O Reddit lançou Lead Generation Ads com formulário nativo e envio automático de leads para CRM via Zapier. Em beta público global, com acesso direto ao Reddit Ads. LaunchDarkly reportou 30% de redução no CPL e 25% de aumento na taxa de submissão. Para nichos B2B, SaaS e formação nos EUA — onde o LinkedIn está a $5-15 por clique — o Reddit pode ser uma entrada com risco baixo. A integração Zapier elimina a fricção técnica.</div>
+      <div class="card-link"><a href="https://digimediamatters.com/news-and-updates/reddit-launches-lead-generation-ads-zapier-integration/" target="_blank">Digi Media Matters</a></div>
+    </div>
+  </section>
+
+  <!-- F: IA & BUSCA GENERATIVA -->
+  <section>
+    <div class="section-title"><span class="icon">🤖</span> IA &amp; Busca Generativa</div>
+
+    <div class="card">
+      <span class="badge badge-ia">IA · ChatGPT Ads</span>
+      <div class="card-title">Criteo corta mínimo de entrada em ChatGPT Ads de $50 000 para $10 000 — e iguala o investimento</div>
+      <div class="card-why">A Criteo reduziu o mínimo de acesso à inventário ChatGPT Ads de $50 000 para $10 000 e oferece match 1:1 do gasto (exposição efetiva de $20 000). Com 1 mil milhão de utilizadores mensais no ChatGPT, este é o canal de IA a testar antes que os mínimos de self-serve subam. Aviso: a medição ainda é fraca (descrito como "caixa negra") — ROI por confirmar. Relevante para clientes com budget de teste e perfil de produto a pesquisar activamente no ChatGPT (seguros, imobiliário, B2B).</div>
+      <div class="card-link"><a href="https://www.emarketer.com/content/criteo-lowers-chatgpt-spending-minimums--10-000--opening-door-smaller-brands" target="_blank">eMarketer</a></div>
+    </div>
+  </section>
+
+  <!-- PRAZOS A CONTAR -->
+  <div class="deadlines-footer">
+    <h3>⏳ Prazos a contar</h3>
+    <p>
+      <span class="dl-item dl-urgent">Consent Mode (GA4) · <strong>15/jun</strong> (amanhã)</span>
+      <span class="dl-item dl-urgent">Google Ads API offline import · <strong>15/jun</strong> (amanhã)</span>
+      <span class="dl-item">Meta API "Page Viewer" (Reach/Impressões) · fim/jun</span>
+      <span class="dl-item">Meta "Caixa de entrada Messenger" · 11/nov</span>
+    </p>
+  </div>
+
+</div>
+</body>
+</html>
