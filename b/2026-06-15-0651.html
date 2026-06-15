@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing de Tráfego — 15/06/2026</title>
+<style>
+  :root {
+    --bg: #f7f8fa;
+    --card-bg: #ffffff;
+    --border: #e4e7ec;
+    --text: #1a202c;
+    --muted: #6b7280;
+    --accent: #2563eb;
+    --accent-light: #eff6ff;
+    --tldr-bg: #0f172a;
+    --tldr-text: #e2e8f0;
+    --tag-bg: #f0f4ff;
+    --tag-text: #3b5bdb;
+    --urgent: #dc2626;
+    --urgent-bg: #fef2f2;
+    --radius: 10px;
+    --shadow: 0 1px 4px rgba(0,0,0,0.07);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    font-size: 15px;
+    line-height: 1.6;
+    padding: 0 0 48px;
+  }
+  header {
+    background: var(--tldr-bg);
+    color: #f1f5f9;
+    padding: 28px 24px 20px;
+  }
+  header .label {
+    font-size: 11px;
+    letter-spacing: 1.2px;
+    text-transform: uppercase;
+    color: #94a3b8;
+    margin-bottom: 6px;
+  }
+  header h1 {
+    font-size: 1.35rem;
+    font-weight: 700;
+    color: #f8fafc;
+    line-height: 1.3;
+  }
+  header .date {
+    font-size: 12px;
+    color: #64748b;
+    margin-top: 4px;
+  }
+
+  .tldr {
+    background: #1e293b;
+    border-left: 4px solid #3b82f6;
+    padding: 18px 24px;
+    margin: 0;
+  }
+  .tldr .tldr-label {
+    font-size: 10px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: #3b82f6;
+    font-weight: 700;
+    margin-bottom: 10px;
+  }
+  .tldr ul {
+    list-style: none;
+    padding: 0;
+  }
+  .tldr li {
+    color: #cbd5e1;
+    font-size: 14px;
+    line-height: 1.6;
+    padding-left: 18px;
+    position: relative;
+    margin-bottom: 6px;
+  }
+  .tldr li::before {
+    content: "•";
+    color: #3b82f6;
+    position: absolute;
+    left: 0;
+    font-weight: 700;
+  }
+  .tldr li:last-child { margin-bottom: 0; }
+
+  .container {
+    max-width: 720px;
+    margin: 0 auto;
+    padding: 24px 16px 0;
+  }
+
+  .section {
+    margin-bottom: 28px;
+  }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border);
+  }
+  .section-icon { font-size: 1.1rem; }
+  .section-title {
+    font-size: 0.85rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    color: var(--muted);
+  }
+
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 10px;
+    box-shadow: var(--shadow);
+  }
+  .card:last-child { margin-bottom: 0; }
+  .card-title {
+    font-weight: 700;
+    font-size: 0.95rem;
+    color: var(--text);
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  .card-why {
+    font-size: 0.88rem;
+    color: #374151;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .card-link a {
+    font-size: 0.8rem;
+    color: var(--accent);
+    text-decoration: none;
+    font-weight: 500;
+    word-break: break-all;
+  }
+  .card-link a:hover { text-decoration: underline; }
+
+  .badge {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    padding: 2px 7px;
+    border-radius: 20px;
+    margin-bottom: 6px;
+  }
+  .badge-hot {
+    background: #fef2f2;
+    color: #b91c1c;
+    border: 1px solid #fecaca;
+  }
+  .badge-new {
+    background: #ecfdf5;
+    color: #065f46;
+    border: 1px solid #a7f3d0;
+  }
+  .badge-usa {
+    background: #fef9c3;
+    color: #854d0e;
+    border: 1px solid #fde68a;
+  }
+  .badge-live {
+    background: #fff7ed;
+    color: #9a3412;
+    border: 1px solid #fed7aa;
+  }
+
+  footer {
+    max-width: 720px;
+    margin: 32px auto 0;
+    padding: 14px 16px;
+    border-top: 1px solid var(--border);
+  }
+  .prazos-label {
+    font-size: 11px;
+    font-weight: 700;
+    color: var(--muted);
+    text-transform: uppercase;
+    letter-spacing: 0.7px;
+    margin-bottom: 6px;
+  }
+  .prazos-line {
+    font-size: 13px;
+    color: #374151;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    align-items: center;
+  }
+  .prazos-line .prazo-item {
+    background: #f3f4f6;
+    border: 1px solid var(--border);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #374151;
+  }
+  .prazos-line .prazo-item.near {
+    background: #fff7ed;
+    border-color: #fed7aa;
+    color: #9a3412;
+  }
+
+  @media (max-width: 480px) {
+    header { padding: 20px 16px 16px; }
+    header h1 { font-size: 1.1rem; }
+    .container { padding: 16px 12px 0; }
+    .card { padding: 14px 14px; }
+    .tldr { padding: 16px; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="label">Briefing Diário</div>
+  <h1>Briefing de Tráfego</h1>
+  <div class="date">15 de junho de 2026 — Plataformas, Tracking, Leads e ICP</div>
+</header>
+
+<div class="tldr">
+  <div class="tldr-label">TL;DR — O mais importante hoje</div>
+  <ul>
+    <li>Google adiou a migração automática de DSAs para AI Max até fevereiro de 2027 e restaurou a criação de campanhas DSA a partir de hoje — fôlego para quem não estava pronto para migrar.</li>
+    <li>O Consent Mode entrou em vigor esta manhã: ad_storage é agora o único controlo entre GA4 e Google Ads. Quem tem o CMP mal configurado pode estar a perder atribuição de chamadas telefónicas agora mesmo, sem qualquer aviso no dashboard.</li>
+    <li>Meta Business Agent para WhatsApp está disponível globalmente (1M+ negócios activos) e o Meta testa agente similar no Messenger para qualificar e agendar leads de anúncios sem intervenção humana.</li>
+  </ul>
+</div>
+
+<div class="container">
+
+  <!-- PLATAFORMAS & ALGORITMOS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">⚡</span>
+      <span class="section-title">Plataformas &amp; Algoritmos</span>
+    </div>
+
+    <div class="card">
+      <span class="badge badge-hot">Hoje</span>
+      <div class="card-title">Google adia migração DSA para AI Max até fevereiro de 2027 e restaura criação de DSAs a partir de hoje</div>
+      <div class="card-why">A automigração automática de campanhas Dynamic Search Ads para AI Max foi adiada de setembro de 2026 para fevereiro de 2027, em resposta a feedback de anunciantes que pediam mais tempo. A partir de hoje (15/jun), a criação e edição de novas DSAs está restaurada — o bloqueio que existia foi revertido. Atenção: os "Automatically Created Assets" e a transição para broad match continuam em setembro 2026 conforme planeado. Há tempo até janeiro de 2027 para migrar voluntariamente; em fevereiro começa a automigração dos que ficarem para trás.</div>
+      <div class="card-link"><a href="https://ads-developers.googleblog.com/2026/06/dynamic-search-ads-dsa-automigration.html" target="_blank">Google Ads Developer Blog — DSA Automigration Update</a></div>
+    </div>
+
+    <div class="card">
+      <span class="badge badge-new">Novo</span>
+      <div class="card-title">Meta Threads: vídeo e carousel estático em rollout global esta semana</div>
+      <div class="card-why">Os dois novos formatos — vídeo e carousel estático — estão a ser lançados globalmente no Threads esta semana (após anúncio de "a partir da próxima semana" datado de 5/jun). A plataforma tem 400 milhões de utilizadores mensais com CPMs a partir de $3, o que a torna um inventário extremamente barato para testar criativos de serviços e geração de leads. Acessível a todos os anunciantes via Ads Manager, sem necessidade de perfil próprio no Threads.</div>
+      <div class="card-link"><a href="https://www.campaignlive.com/article/meta-rolls-ads-threads-globally-introduces-new-ad-formats/1946019" target="_blank">Campaign US — Meta Rolls Out Ads on Threads Globally</a></div>
+    </div>
+  </div>
+
+  <!-- TRACKING & PRIVACIDADE -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🎯</span>
+      <span class="section-title">Tracking &amp; Privacidade</span>
+    </div>
+
+    <div class="card">
+      <span class="badge badge-live">Activo hoje</span>
+      <div class="card-title">GA4 Consent Mode entra em vigor: ad_storage é agora o único controlo entre GA4 e Google Ads</div>
+      <div class="card-why">Até ontem, dois sinais tinham de estar alinhados para dados fluírem da GA4 para o Google Ads: o toggle Google Signals dentro da GA4 e o parâmetro ad_storage do Consent Mode. A partir de hoje, apenas ad_storage conta. Google Signals perde a sua função de co-controlo. O risco prático: quem tem o CMP a negar ou não a definir ad_storage correctamente começa a perder conversões, audiências e sinais de Smart Bidding agora mesmo — sem qualquer alerta no dashboard. O grupo de maior risco são campanhas com call extensions para clínicas, advogados e stands auto onde a atribuição de chamadas passa por cookies. Acção imediata: verificar no CMP se ad_storage está a ser granted correctamente; não basta ter Consent Mode implementado — tem de estar a disparar o sinal certo.</div>
+      <div class="card-link"><a href="https://simplee.digital/news/google-consent-mode-june-15-2026-ad-storage-sole-control-google-ads" target="_blank">Simplee Digital — Consent Mode June 15 Change</a> · <a href="https://www.invoca.com/blog/how-googles-june-2026-privacy-update-will-affect-phone-call-conversion-attribution" target="_blank">Invoca — Phone Call Attribution Impact</a></div>
+    </div>
+  </div>
+
+  <!-- GERAÇÃO DE LEADS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🧲</span>
+      <span class="section-title">Geração de Leads</span>
+    </div>
+
+    <div class="card">
+      <span class="badge badge-new">Em teste</span>
+      <div class="card-title">Meta testa agente automático de Messenger para responder e qualificar leads de anúncios</div>
+      <div class="card-why">O Meta está a testar um agente de IA integrado no Messenger que responde automaticamente a leads captados por instant forms: recolhe disponibilidade, faz perguntas de qualificação e agenda o acompanhamento de uma chamada — sem intervenção humana. O tempo de resposta cai de horas para segundos, que é o principal ponto de fuga em clínicas, imobiliário e serviços. Funcionalidade em teste; compatível com templates de parceiros como Manychat e Botcake para personalização adicional.</div>
+      <div class="card-link"><a href="https://www.socialmediatoday.com/news/meta-lead-gen-ad-updates-ai-targeting-verification-crm-expansion/804301/" target="_blank">Social Media Today — Meta Adds AI-Powered Updates to Lead Gen Ads</a></div>
+    </div>
+  </div>
+
+  <!-- PULSO DO ICP -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">👥</span>
+      <span class="section-title">Pulso do ICP</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">"O meu custo por lead desceu mas as consultas também" — clínicas, coaches e B2B</div>
+      <div class="card-why">Análise de 2026 mostra que o CPL médio das Meta Lead Ads subiu 21% para $27,66 enquanto a conversion rate caiu de 8,67% para 7,72%. O paradoxo: quando o otimizador não recebe sinal downstream do CRM via CAPI, aprende a encher formulários com leads curiosos em vez de compradores. A campanha parece eficiente (CPL aceitável) mas o pipeline está vazio. O fix não é mudar o anúncio — é ligar o CRM ao CAPI para fechar o loop de aprendizagem. Para clientes que dizem "os leads não prestam": antes de mudar criativo ou targeting, auditoria ao Event Match Quality e ao fluxo CAPI.</div>
+      <div class="card-link"><a href="https://www.leadgen-economy.com/blog/facebook-lead-ads-quality-collapse-cpl/" target="_blank">LeadGen Economy — Facebook Lead Ads Quality Collapse 2026</a></div>
+    </div>
+
+    <div class="card">
+      <div class="card-title">"Estamos a gastar mais mas não conseguimos escalar" — stands auto e imobiliário</div>
+      <div class="card-why">Com o algoritmo Andromeda instalado, o criativo é responsável por 56% dos resultados da campanha — mais do que targeting, budget, placement e timing combinados, segundo a equipa de data science da Meta. Quem continua a usar interest stacks, lookalikes sobrepostos e exclusões de idade/género está a comprar posição num leilão que já não funciona assim. O Andromeda lê o criativo para decidir a quem entrega o anúncio: o criativo é o targeting. A resposta não é gastar mais — é ter 15 a 20 variantes activas com hooks e ângulos diferentes, e deixar o algoritmo escolher.</div>
+      <div class="card-link"><a href="https://jetfuel.agency/metas-2026-algorithm-update-what-andromeda-changed-and-how-to-adapt-your-ads/" target="_blank">Jetfuel Agency — Meta Andromeda Update Explained 2026</a></div>
+    </div>
+  </div>
+
+  <!-- FOCO EUA -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🇺🇸</span>
+      <span class="section-title">Foco EUA</span>
+    </div>
+
+    <div class="card">
+      <span class="badge badge-usa">Beta EUA</span>
+      <div class="card-title">Google "Business Agent for Leads": formulário de lead substituído por chat Gemini dentro do anúncio — beta aberto nos EUA</div>
+      <div class="card-why">O Business Agent for Leads coloca uma interface de chat Gemini directamente dentro do anúncio na SERP. O utilizador faz perguntas, recebe respostas em tempo real a partir do conteúdo do site e é qualificado — sem sair da página de resultados. Conversational Discovery Ads e Highlighted Answers também em teste no mobile e desktop dos EUA. Para os nichos âncora do ICP americano (serviços locais, educação, saúde, serviços financeiros), este formato aumenta a intenção declarada do lead antes da primeira chamada. Rollout fora dos EUA ainda sem data.</div>
+      <div class="card-link"><a href="https://searchengineland.com/google-tests-new-conversational-ad-formats-in-ai-mode-and-search-478115" target="_blank">Search Engine Land — Google Tests Conversational Ad Formats in AI Mode</a></div>
+    </div>
+  </div>
+
+  <!-- IA & BUSCA GENERATIVA -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🤖</span>
+      <span class="section-title">IA &amp; Busca Generativa</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">Google AI Mode: 75 milhões de utilizadores e anúncios já em 25% das respostas AI Overview</div>
+      <div class="card-why">Em 2025, os anúncios apareciam em cerca de 5% das respostas AI Overview. No Q1 de 2026, já estão em 25% (dados Semrush). O Google AI Mode tem 75 milhões de utilizadores activos e o comportamento de pesquisa neste modo é fundamentalmente diferente: queries mais longas, mais conversacionais, com maior intenção declarada. Para quem faz lead gen em search, este é o ambiente que mais está a crescer — e a maioria dos anunciantes ainda não tem criativos ou landing pages optimizados para o contexto conversacional.</div>
+      <div class="card-link"><a href="https://www.digitalapplied.com/blog/google-ai-mode-75m-users-ads-in-ai-results-2026" target="_blank">DigitalApplied — Google AI Mode 75M Users, Ads in 25% of AI Results</a></div>
+    </div>
+  </div>
+
+  <!-- CRIATIVOS & ÂNGULOS -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">🎨</span>
+      <span class="section-title">Criativos &amp; Ângulos</span>
+    </div>
+
+    <div class="card">
+      <div class="card-title">UGC supera polished em hook rate e CTR no Meta: 34% vs 26% de hook, 1,88% vs 1,41% de CTR</div>
+      <div class="card-why">Os benchmarks de criativos para 2026 (Meta) mostram que vídeos de estilo testemunho ou "câmara no carro" batem a produção profissional em todas as métricas de topo do funil. O comprimento ideal no Meta é 15 a 30 segundos (CTR 1,72%). Os primeiros 3 segundos determinam tudo — a abordagem hook-first está sistematizada entre os top performers. Excepção: produtos e serviços de alto valor (acima de 200€) onde o polished ganha em brand recall (62% vs 44%). Para clínicas, serviços locais e formação, o testemunho simples filmado em telemóvel é hoje o formato com melhor relação custo-resultado.</div>
+      <div class="card-link"><a href="https://benly.ai/learn/ad-creative/ad-creative-benchmarks-2026" target="_blank">Benly.ai — Ad Creative Benchmarks 2026</a></div>
+    </div>
+  </div>
+
+  <!-- WHATSAPP & CTWA -->
+  <div class="section">
+    <div class="section-header">
+      <span class="section-icon">💬</span>
+      <span class="section-title">WhatsApp &amp; CTWA</span>
+    </div>
+
+    <div class="card">
+      <span class="badge badge-new">Desde 3/jun</span>
+      <div class="card-title">Meta Business Agent para WhatsApp disponível globalmente — gratuito agora, pago por token em breve</div>
+      <div class="card-why">O Meta Business Agent está disponível globalmente no WhatsApp, Instagram e Messenger desde 3 de junho (anunciado na Conversations 2026 em Londres). Mais de 1 milhão de negócios já o usam para responder 24/7 sem equipa humana. O agente qualifica o lead, recomenda produtos ou serviços, agenda consultas e faz handoff para humano quando necessário — com histórico de conversa completo. Para clientes com CTWA activo, é o próximo add-on óbvio: o utilizador clica no anúncio, o chat abre no WhatsApp e o agente toma conta da qualificação. O modelo de pagamento por token (estilo OpenAI) está a chegar "nos próximos meses".</div>
+      <div class="card-link"><a href="https://techcrunch.com/2026/06/03/metas-ai-agent-for-whatsapp-business-is-now-available-globally/" target="_blank">TechCrunch — Meta's AI Agent for WhatsApp Business Now Global</a></div>
+    </div>
+  </div>
+
+</div><!-- /container -->
+
+<footer>
+  <div class="prazos-label">⏳ Prazos a contar</div>
+  <div class="prazos-line">
+    <span class="prazo-item near">Meta auto→Comscore · 22/jun</span>
+    <span class="prazo-item">Meta Page Viewer API (substitui Reach) · fim de jun</span>
+  </div>
+</footer>
+
+</body>
+</html>
