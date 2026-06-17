@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing de Tráfego — 17/06/2026</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: #f2f4f7;
+    color: #1d1d1f;
+    font-size: 15px;
+    line-height: 1.6;
+  }
+  .header {
+    background: linear-gradient(135deg, #0f2027 0%, #203a43 50%, #2c5364 100%);
+    color: #fff;
+    padding: 28px 20px 22px;
+    text-align: center;
+  }
+  .header .label {
+    font-size: 11px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: #8bbfd4;
+    margin-bottom: 8px;
+  }
+  .header h1 {
+    font-size: 22px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.3px;
+  }
+  .header .sub {
+    font-size: 13px;
+    color: #94b8c8;
+    margin-top: 6px;
+  }
+  .container {
+    max-width: 680px;
+    margin: 0 auto;
+    padding: 22px 16px 48px;
+  }
+  .tldr {
+    background: #fff;
+    border-left: 4px solid #0057b7;
+    border-radius: 10px;
+    padding: 18px 20px;
+    margin-bottom: 26px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+  }
+  .tldr-label {
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    color: #0057b7;
+    margin-bottom: 10px;
+  }
+  .tldr p {
+    font-size: 14px;
+    line-height: 1.7;
+    color: #2a2a2a;
+  }
+  .section {
+    margin-bottom: 26px;
+  }
+  .section-title {
+    font-size: 11px;
+    font-weight: 800;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: #666;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding-left: 2px;
+  }
+  .card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 18px 20px;
+    margin-bottom: 12px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.06);
+    border: 1px solid #ebebeb;
+  }
+  .card h3 {
+    font-size: 14px;
+    font-weight: 700;
+    color: #111;
+    margin-bottom: 10px;
+    line-height: 1.45;
+  }
+  .card .why {
+    font-size: 13px;
+    color: #3a3a3a;
+    line-height: 1.7;
+    margin-bottom: 12px;
+  }
+  .card .why strong {
+    color: #111;
+  }
+  .card .source {
+    font-size: 12px;
+    color: #777;
+    border-top: 1px solid #f0f0f0;
+    padding-top: 10px;
+  }
+  .card .source a {
+    color: #0057b7;
+    text-decoration: none;
+    font-weight: 600;
+  }
+  .card .source a:hover { text-decoration: underline; }
+  .tag {
+    display: inline-block;
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 3px 8px;
+    border-radius: 5px;
+    margin-bottom: 10px;
+  }
+  .tag-alert { background: #fff3cd; color: #7d5a00; }
+  .tag-new   { background: #d1f5d3; color: #1a5c25; }
+  .tag-beta  { background: #dce8ff; color: #1a3a8c; }
+  .tag-pulse { background: #fde2e2; color: #7a1c1c; }
+  .tag-ai    { background: #ede0ff; color: #4a1a85; }
+  .prazos {
+    background: #fffbea;
+    border: 1px solid #f5d87a;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-top: 28px;
+  }
+  .prazos-label {
+    font-size: 11px;
+    font-weight: 800;
+    color: #8a6800;
+    margin-bottom: 8px;
+    letter-spacing: 0.05em;
+  }
+  .prazos p {
+    font-size: 12.5px;
+    color: #5c4500;
+    line-height: 1.9;
+  }
+  .prazo-sep { color: #c9a326; margin: 0 5px; }
+  .footer {
+    text-align: center;
+    font-size: 11px;
+    color: #aaa;
+    margin-top: 36px;
+  }
+  @media (max-width: 480px) {
+    .header h1 { font-size: 19px; }
+    .container { padding: 16px 12px 36px; }
+    .card { padding: 16px 15px; }
+    .tldr { padding: 16px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="header">
+  <div class="label">Briefing Diário · Tráfego Pago</div>
+  <h1>Briefing de Tráfego — 17/06/2026</h1>
+  <div class="sub">Para Elisabete Silva · Gestora de Tráfego Pago · Geração de Leads</div>
+</div>
+
+<div class="container">
+
+  <div class="tldr">
+    <div class="tldr-label">TL;DR — O mais importante hoje</div>
+    <p>
+      O Google anunciou 3 mudanças de bidding com impacto direto nas contas: Smart Bidding Exploration global para PMax sem feeds, Bidding Target Optimization que corrige campanhas "above target" a 17 de agosto (risco de queda de volume para quem está a bater os próprios targets), e Promotion Mode beta para picos sazonais. Em paralelo, o Limited Ad Serving chegou ao Search desde 12/jun, throttling novos anunciantes em verticals sensíveis (saúde, direito, finanças) sem aviso. No AI Mode, o Business Agent for Leads está em open beta nos EUA: chatbot Gemini qualifica e preenche o formulário diretamente na SERP, sem landing page.
+    </p>
+  </div>
+
+  <!-- PLATAFORMAS & ALGORITMOS -->
+  <div class="section">
+    <div class="section-title">⚡ Plataformas &amp; Algoritmos</div>
+
+    <div class="card">
+      <span class="tag tag-alert">Urgente · ação antes de 6/jul</span>
+      <h3>Google tripla mudança de bidding: Smart Bidding Exploration global para PMax, Bidding Target Optimization em 17/ago e Promotion Mode em beta</h3>
+      <p class="why">
+        <strong>Smart Bidding Exploration</strong> é agora globalmente disponível para todas as campanhas Performance Max sem product feeds (a Google indica um lift de +18 a +19% em testes internos, dado não verificado de forma independente). Anteriormente limitado ao Search desde 2024.<br><br>
+        <strong>Bidding Target Optimization (data crítica: 17/agosto):</strong> a partir de 17 de agosto, campanhas com "limited by budget" e tCPA ou tROAS que estão a entregar muito abaixo do target declarado vão ser corrigidas pelo algoritmo para ficarem perto desse target. Exemplo: campanha com tCPA de 20€ mas CPA real de 8€ durante meses vai voltar a entregar perto dos 20€, a não ser que o target seja atualizado antes. A ferramenta Bid Target Adjustment Tool fica disponível a <strong>6 de julho</strong> para auditar e ajustar os targets de forma controlada. Ação imediata: identificar todas as campanhas com "limited by budget" e medir o gap entre target declarado e performance real.<br><br>
+        <strong>Promotion Mode (beta, Search e PMax):</strong> permite agendar janelas com ROAS tolerance mais alta e budget diário extra para picos sazonais (lançamentos, promoções, eventos). Distinto das Seasonal Adjustments, que só ajustam a taxa de conversão esperada.
+      </p>
+      <div class="source">
+        Fontes: <a href="https://www.searchenginejournal.com/google-ads-three-bidding-budgeting-updates/579292/" target="_blank">Search Engine Journal</a>
+        &nbsp;·&nbsp;<a href="https://searchengineland.com/google-expands-smart-bidding-exploration-adds-promotion-mode-480165" target="_blank">Search Engine Land</a>
+        &nbsp;·&nbsp;<a href="https://ppc.land/google-ads-gets-promotion-mode-and-a-major-bidding-overhaul-this-august/" target="_blank">ppc.land</a>
+        &nbsp;·&nbsp;<a href="https://business.google.com/us/accelerate/announcements/bidding-and-budgeting-updates-to-scale-your-growth/" target="_blank">Google (oficial)</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="tag tag-alert">Ativo desde 12/jun</span>
+      <h3>Google Limited Ad Serving chega ao Search: novos anunciantes e verticals sensíveis com impressões throttled sem aviso</h3>
+      <p class="why">
+        Desde 12 de junho, a política de Limited Ad Serving foi alargada ao Search: contas consideradas "não qualificadas" podem ter o volume de impressões limitado automaticamente em queries de maior risco, sem reprovação de anúncios individuais e sem suspensão de conta. A decisão opera ao nível da conta e os user reports funcionam como trigger direto do algoritmo. Os verticals com maior exposição são saúde, advocacia, serviços financeiros e crédito. Verticals de maior risco podem estar sujeitos a requisitos de certificação adicionais (a política não especifica quais). O sintoma típico: aprovação rápida dos anúncios, budget ativo, consumo muito lento, posição média anormalmente baixa. O fix passa por fortalecer o sinal de autenticidade da conta: reviews Google, extensões de localização, nome real do negócio em structured snippets, e verificar se o vertical exige certificação adicional. A implementação é gradual e está prevista estender-se até 2028.
+      </p>
+      <div class="source">
+        Fontes: <a href="https://searchengineland.com/google-expands-limited-ad-serving-policy-on-search-480137" target="_blank">Search Engine Land</a>
+        &nbsp;·&nbsp;<a href="https://ppc.land/google-expands-limited-ad-serving-policy-to-google-search-from-june-2026/" target="_blank">ppc.land</a>
+        &nbsp;·&nbsp;<a href="https://support.google.com/adspolicy/answer/17122370?hl=en" target="_blank">Google Ads Policies (oficial)</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PULSO DO ICP -->
+  <div class="section">
+    <div class="section-title">👥 Pulso do ICP</div>
+
+    <div class="card">
+      <span class="tag tag-pulse">ICP · Clínicas, Coaches, Advogados</span>
+      <h3>"A campanha estava a converter a metade do custo previsto, agora vai subir?" — a queixa que chega em agosto se ninguém agir antes</h3>
+      <p class="why">
+        Com o Bidding Target Optimization de 17/agosto, clientes com campanhas que entregam bem abaixo do tCPA declarado vão ver o CPA subir de volta para o target antigo. Para uma clínica com tCPA definido a 30€ mas que recebe leads a 10€ há vários meses, vai parecer que "o Google estragou tudo". O que aconteceu é que o target nunca foi atualizado para refletir a performance real, e o algoritmo corrige isso automaticamente. A oportunidade para a Elisabete: contactar de forma proativa todos os clientes com campanhas "limited by budget" antes de 6 de julho, apresentar o gap entre target declarado e CPA real, e propor atualização dos targets agora. Qualquer gestor que não faça esta auditoria vai receber chamadas em agosto sem saber porquê. Este tipo de atenção é o que justifica a avença mensal e diferencia de quem só reporta o dashboard.
+      </p>
+      <div class="source">
+        Contexto: <a href="https://support.google.com/google-ads/answer/17061251?hl=en" target="_blank">Google Ads Help (target-based bid strategies)</a>
+        &nbsp;·&nbsp;<a href="https://www.digitalapplied.com/blog/google-ads-bidding-budgeting-overhaul-june-2026-ppc-playbook" target="_blank">Digital Applied</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="tag tag-pulse">ICP · Advogados, Nutricionistas, Crédito</span>
+      <h3>"Aprovaram o anúncio mas mal aparece no Search, campanha está mal configurada?" — não está, é política de plataforma</h3>
+      <p class="why">
+        Esta é a queixa típica que vai chegar de novos clientes em nichos sensíveis que começaram a anunciar no Google Search em junho de 2026. Com o Limited Ad Serving agora ativo no Search, contas sem histórico, sem reviews e em verticals como saúde, direito ou crédito podem ter impressões automaticamente limitadas sem qualquer notificação. O anúncio está aprovado, o budget está ativo, mas quase não entrega. Para distinguir este problema de um problema de lance: verificar as métricas de Impression Share divididas por "Budget Lost" vs "Rank Lost". Se Rank Lost for próximo de zero mas as impressões forem quase nulas, é sinal de throttle por política. Ao integrar um cliente novo nestes verticals: garantir extensões de identidade claras (localização verificada, número, nome real do negócio), priorizar reviews Google e verificar certificações necessárias.
+      </p>
+      <div class="source">
+        Fontes: <a href="https://searchengineland.com/google-expands-limited-ad-serving-policy-on-search-480137" target="_blank">Search Engine Land</a>
+        &nbsp;·&nbsp;<a href="https://www.digitalapplied.com/blog/google-limited-ad-serving-expands-search-2026-advertiser-guide" target="_blank">Digital Applied</a>
+        &nbsp;·&nbsp;<a href="https://almcorp.com/news/google-limited-ad-serving-policy-update-2026/" target="_blank">ALM Corp</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- IA & BUSCA GENERATIVA -->
+  <div class="section">
+    <div class="section-title">🤖 IA &amp; Busca Generativa</div>
+
+    <div class="card">
+      <span class="tag tag-beta">Open Beta · EUA (inglês)</span>
+      <h3>Google Business Agent for Leads: chatbot Gemini qualifica leads e preenche o formulário diretamente dentro do anúncio no AI Mode</h3>
+      <p class="why">
+        O Business Agent for Leads é um agente de IA integrado nos anúncios de lead gen dentro do AI Mode: o utilizador conversa com o agente (alimentado pelo conteúdo do website da empresa), é qualificado durante a conversa, e o formulário de lead é preenchido automaticamente no final. Já disponível em open beta nos EUA para contas em inglês. A mudança estrutural é significativa: o primeiro ponto de contacto passa de uma landing page para uma conversa. Para quem gere campanhas de serviços com formulário (imobiliário, clínicas, formação, B2B, advocacia), isto implica começar a pensar nas "perguntas de qualificação do agente" como o novo copy de conversão. A landing page não desaparece, mas perde a função de primeiro filtro de intenção.
+      </p>
+      <div class="source">
+        Fontes: <a href="https://searchengineland.com/google-tests-new-conversational-ad-formats-in-ai-mode-and-search-478115" target="_blank">Search Engine Land</a>
+        &nbsp;·&nbsp;<a href="https://www.yellowhead.com/blog/google-ai-mode-ads/" target="_blank">Yellowhead</a>
+        &nbsp;·&nbsp;<a href="https://blog.google/products/ads-commerce/google-marketing-live-search-ads/" target="_blank">Google Blog (oficial)</a>
+        &nbsp;·&nbsp;<a href="https://www.marketingdive.com/news/google-upgrades-ai-search-ads-what-marketers-need-to-know/820663/" target="_blank">Marketing Dive</a>
+      </div>
+    </div>
+
+    <div class="card">
+      <span class="tag tag-ai">Em Teste · EUA</span>
+      <h3>Conversational Discovery Ads e Highlighted Answers: Gemini gera criativo específico por query dentro do AI Mode, modelo "um criativo para tudo" começa a ser pressionado</h3>
+      <p class="why">
+        Dois novos formatos em teste nos EUA no AI Mode: os Conversational Discovery Ads geram criativo específico por cada query (em vez de servir um criativo estático previamente carregado), e os Highlighted Answers surfaceiam anúncios elegíveis dentro de respostas em lista geradas pela IA. Sem data de lançamento global confirmada. A implicação prática para já: para gestores de campanhas de serviços com alta variedade de queries, como imobiliário, advocacia ou saúde, faz sentido começar a alimentar o sistema com o máximo de assets variados (textos, imagens, dados de produto, FAQ do negócio), porque é esse repositório de contexto que o Gemini vai usar para gerar criativos dinâmicos quando o formato chegar globalmente.
+      </p>
+      <div class="source">
+        Fontes: <a href="https://searchengineland.com/google-tests-new-conversational-ad-formats-in-ai-mode-and-search-478115" target="_blank">Search Engine Land</a>
+        &nbsp;·&nbsp;<a href="https://www.avocadots.com/post/google-introduces-ads-in-ai-mode-the-future-of-search-advertising" target="_blank">Avocado TS</a>
+        &nbsp;·&nbsp;<a href="https://blog.google/products/ads-commerce/google-marketing-live-search-ads/" target="_blank">Google Blog (oficial)</a>
+      </div>
+    </div>
+
+  </div>
+
+  <!-- PRAZOS A CONTAR -->
+  <div class="prazos">
+    <div class="prazos-label">⏳ Prazos a contar</div>
+    <p>
+      Meta auto&rarr;Comscore <strong>22/jun</strong>
+      <span class="prazo-sep">&middot;</span>
+      Meta API Reach/Impressions&rarr;Page Viewer <strong>fim/jun</strong>
+      <span class="prazo-sep">&middot;</span>
+      Taxa Meta UE (UK/FR/IT/ES/AT/TR) <strong>1/jul</strong>
+      <span class="prazo-sep">&middot;</span>
+      Bid Target Adjustment Tool Google <strong>6/jul</strong>
+      <span class="prazo-sep">&middot;</span>
+      Google Bidding Target Optimization <strong>17/ago</strong>
+      <span class="prazo-sep">&middot;</span>
+      AI Max automigra&ccedil;&atilde;o DSAs <strong>set/2026</strong>
+    </p>
+  </div>
+
+  <div class="footer">
+    Briefing gerado automaticamente &middot; 17/06/2026 &middot; Para uso interno Elisabete Silva
+  </div>
+
+</div>
+</body>
+</html>
