@@ -1,0 +1,300 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing de Tráfego — 18/06/2026</title>
+<style>
+  :root {
+    --brand: #1a56db;
+    --brand-light: #e8effd;
+    --accent: #f59e0b;
+    --accent-light: #fffbea;
+    --green: #059669;
+    --green-light: #ecfdf5;
+    --red: #dc2626;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --bg: #f8fafc;
+    --card-bg: #ffffff;
+    --radius: 12px;
+    --shadow: 0 1px 4px rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.05);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 0 16px 40px;
+  }
+  header {
+    background: var(--brand);
+    color: #fff;
+    padding: 20px 24px 16px;
+    margin: 0 -16px 28px;
+    text-align: center;
+  }
+  header .label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-bottom: 4px;
+  }
+  header h1 { font-size: 1.4rem; font-weight: 700; }
+  header .date { font-size: 0.85rem; opacity: 0.8; margin-top: 4px; }
+  .tldr {
+    background: var(--accent-light);
+    border: 1.5px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 28px;
+  }
+  .tldr h2 { font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; color: #92400e; margin-bottom: 8px; }
+  .tldr p { font-size: 0.95rem; color: #78350f; line-height: 1.65; }
+  .section { margin-bottom: 28px; }
+  .section-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 10px;
+    box-shadow: var(--shadow);
+  }
+  .card h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  .card .why {
+    font-size: 0.875rem;
+    color: #374151;
+    margin-bottom: 10px;
+    line-height: 1.55;
+  }
+  .card a {
+    font-size: 0.78rem;
+    color: var(--brand);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    background: var(--brand-light);
+    padding: 3px 9px;
+    border-radius: 20px;
+  }
+  .card a:hover { background: #c7d9fb; }
+  .card .tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    padding: 2px 7px;
+    border-radius: 8px;
+    font-weight: 600;
+    margin-right: 6px;
+    margin-bottom: 6px;
+    vertical-align: middle;
+  }
+  .tag-new { background: #dcfce7; color: #166534; }
+  .tag-action { background: #fee2e2; color: #991b1b; }
+  .tag-watch { background: #e0f2fe; color: #075985; }
+  .icp-card {
+    background: var(--green-light);
+    border-color: #a7f3d0;
+  }
+  .icp-card h3 { color: #065f46; }
+  .icp-card .why { color: #064e3b; }
+  .icp-card a { color: var(--green); background: #d1fae5; }
+  footer-prazos {
+    display: block;
+    background: var(--accent-light);
+    border: 1px solid #f5d87a;
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    margin-top: 32px;
+    font-size: 0.8rem;
+    color: #78350f;
+  }
+  .prazo-label {
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .prazo-item { margin-right: 4px; }
+  .prazo-sep { opacity: 0.5; margin: 0 6px; }
+  @media (min-width: 640px) {
+    body { max-width: 700px; margin: 0 auto; padding: 0 24px 48px; }
+    header { margin: 0 -24px 32px; padding: 24px 32px 20px; }
+    header h1 { font-size: 1.6rem; }
+    .card h3 { font-size: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="label">Inteligência de Marketing</div>
+  <h1>Briefing de Tráfego</h1>
+  <div class="date">18 de junho de 2026 &nbsp;|&nbsp; Elisabete Silva</div>
+</header>
+
+<div class="tldr">
+  <h2>TL;DR — O mais importante hoje</h2>
+  <p>
+    A Meta passou a usar os dados que os negócios enviam via Pixel/CAPI para personalizar o feed e as respostas da IA dos utilizadores (não apenas anúncios), com entrada em vigor prevista para julho nos EUA e vários países. O Google auto-ligou canais YouTube às contas de Google Ads (a partir de 10/jun) e cortou o acesso a dados granulares com mais de 37 meses: duas mudanças com impacto direto em audiências PMax e em relatórios históricos. No imobiliário, o CPL no Meta subiu 59% em 12 meses segundo a SuperAds.
+  </p>
+</div>
+
+<!-- SECÇÃO A -->
+<div class="section">
+  <div class="section-title">⚡ Plataformas &amp; Algoritmos</div>
+
+  <div class="card">
+    <span class="tag tag-new">NOVO</span>
+    <h3>Meta usa dados off-site de outros negócios para personalizar o feed e a IA (não só anúncios)</h3>
+    <p class="why">
+      Até agora, os dados que os negócios partilham com a Meta via Pixel e CAPI (compras, visitas, formulários) eram usados apenas para targeting de anúncios. A partir de julho, a Meta vai usá-los também para personalizar o feed orgânico e as respostas da Meta AI dos utilizadores. Na prática: um utilizador que visitou o site de uma clínica começa a ver mais conteúdo relacionado no feed, mesmo sem clicar em anúncio. Para anunciantes, o Pixel/CAPI ganha um segundo efeito, e a qualidade do sinal de rastreio passa a importar mais ainda.
+    </p>
+    <a href="https://about.fb.com/news/2026/06/better-personalization-and-changes-to-controls-for-your-activity-from-other-businesses/" target="_blank">Fonte oficial Meta &#8599;</a>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-action">AÇÃO</span>
+    <h3>Google auto-ligou canais YouTube a contas de Ads: audiências de viewers chegam ao PMax e Demand Gen</h3>
+    <p class="why">
+      Desde 10 de junho, o Google ligou automaticamente contas de Google Ads a canais YouTube onde detectou relação de propriedade. O ganho concreto: passam a estar disponíveis seis segmentos de audiência baseados em comportamento no canal (quem viu qualquer vídeo, quem viu vídeos específicos, subscritores, visitantes da página do canal, quem deu like, quem adicionou a uma playlist) e estes segmentos são agora utilizáveis em campanhas Performance Max e Demand Gen. Também ficam visíveis as métricas de vídeo orgânico dentro do Google Ads.
+    </p>
+    <a href="https://searchengineland.com/google-ads-to-auto-link-youtube-channels-starting-june-10-477094" target="_blank">Search Engine Land &#8599;</a>
+  </div>
+</div>
+
+<!-- SECÇÃO B -->
+<div class="section">
+  <div class="section-title">🎯 Tracking &amp; Privacidade</div>
+
+  <div class="card">
+    <span class="tag tag-action">AÇÃO</span>
+    <h3>Google Ads corta acesso a dados granulares com mais de 37 meses (desde 1/jun)</h3>
+    <p class="why">
+      A partir de 1 de junho, os dados horários, diários e semanais do Google Ads ficaram limitados a uma janela de 37 meses. Qualquer query via API, Scripts ou BigQuery Data Transfer que peça dados mais antigos devolve erro. Dados mensais/anuais mantêm-se disponíveis por 11 anos. Impacto direto: análises sazonais com histórico de 3+ anos ficam comprometidas, e relatórios de agências que cruzavam campanhas de anos anteriores precisam de ser redesenhados. Quem ainda não fez backup dos dados históricos deve fazê-lo agora.
+    </p>
+    <a href="https://ads-developers.googleblog.com/2026/05/new-data-retention-policy-for-google.html" target="_blank">Google Developers Blog &#8599;</a>
+  </div>
+</div>
+
+<!-- SECÇÃO C -->
+<div class="section">
+  <div class="section-title">🧲 Geração de Leads</div>
+
+  <div class="card">
+    <span class="tag tag-watch">DADOS</span>
+    <h3>CPL imobiliário no Meta subiu 59% em 12 meses, segundo a SuperAds</h3>
+    <p class="why">
+      Os dados da SuperAds mostram que o custo por lead no setor imobiliário no Meta passou de cerca de $23 em junho de 2025 para $37 em maio de 2026, uma subida de 59%. A causa apontada é o efeito do acordo NAR (EUA) em 2024-2025, que empurrou mais agentes imobiliários para paid media e inflacionou o leilão em 20-35% nos principais mercados metropolitanos. Em Portugal, o padrão é equivalente: mais anunciantes do setor, mesma base de audiência, CPMs a subir. A resposta não é aumentar orçamento, é melhorar a qualidade do criativo e a segmentação por intenção.
+    </p>
+    <a href="https://www.superads.ai/facebook-ads-costs/cost-per-lead/real-estate" target="_blank">SuperAds Benchmarks &#8599;</a>
+  </div>
+</div>
+
+<!-- SECÇÃO D -->
+<div class="section">
+  <div class="section-title">👥 Pulso do ICP</div>
+
+  <div class="card icp-card">
+    <h3>"Estou a gastar o mesmo mas tenho menos leads" — clínicas, coaches, imobiliário, nutricionistas</h3>
+    <p class="why">
+      A queixa em crescimento no sector: orçamento igual, CPL a subir, dono de negócio confuso. A causa não é a campanha; é a competição no leilão. Em 2026, sectores como saúde, formação e imobiliário viram um aumento significativo de anunciantes a entrar no Meta (entre grandes marcas sazonais e novos competidores locais), o que sobe o CPM sem aviso. Para o dono de negócio parece que "os anúncios pararam de funcionar" quando na realidade o preço subiu. A conversa de avença começa aqui: explica o leilão, mostra o CPM histórico, posiciona-te como quem domina a eficiência dentro do custo crescente.
+    </p>
+    <a href="https://vgcreative.com.br/tendencias-marketing-digital-2026/" target="_blank">VG Creative &#8599;</a>
+  </div>
+
+  <div class="card icp-card">
+    <h3>"A lead chegou, mas o comercial não respondeu a tempo" — stands auto, imobiliário, clínicas</h3>
+    <p class="why">
+      A maior fuga de dinheiro em negócios com equipa comercial não organizada: um estudo citado pela Tecobi e Clarity Voice mostra que contactar um lead nos primeiros 5 minutos aumenta 100 vezes a probabilidade de conversão face a 30 minutos de demora. Em stands auto e imobiliário, é muito comum o lead chegar via formulário ou WhatsApp fora de horas e ninguém responder até ao dia seguinte. Para a proposta de avença: mostrar que os anúncios geram leads de qualidade, mas a conversão depende do processo comercial, e que isso é algo que podes ajudar a estruturar (automação de resposta, CTWA com bot de qualificação).
+    </p>
+    <a href="https://www.tecobi.com/why-your-dealerships-lead-generation-is-failing-and-how-to-fix-it-2/" target="_blank">Tecobi &#8599;</a>
+  </div>
+</div>
+
+<!-- SECÇÃO E -->
+<div class="section">
+  <div class="section-title">🇺🇸 Foco EUA</div>
+
+  <div class="card">
+    <span class="tag tag-watch">EUA</span>
+    <h3>Imobiliário e stands auto EUA: o problema é a conversão, não a geração de leads</h3>
+    <p class="why">
+      Dois relatórios recentes (Clarity Voice e C-4 Analytics) convergem: a maioria dos dealers e agentes imobiliários nos EUA já tem volume de leads digital, o problema é a resposta. Os orçamentos de digital marketing subiram mas os resultados estagnam, porque o lead chega e fica sem resposta rápida. No contexto de penetração no mercado americano, quem consegue resolver o problema de resposta e qualificação (com automação, IA de first-response ou CTWA) tem um diferencial claro face a agências que só "gerem a campanha".
+    </p>
+    <a href="https://clarityvoice.com/news/2026-auto-dealership-lead-generation/" target="_blank">Clarity Voice &#8599;</a>
+  </div>
+</div>
+
+<!-- SECÇÃO F -->
+<div class="section">
+  <div class="section-title">🤖 IA &amp; Busca Generativa</div>
+
+  <div class="card">
+    <span class="tag tag-new">REGULAÇÃO</span>
+    <h3>Google permite que publishers optem por sair do AI Mode sem perder posição no Search (regulação CMA UK)</h3>
+    <p class="why">
+      A 2-3 de junho, o Google anunciou um novo controlo no Search Console: publishers no Reino Unido podem dizer ao Google para não usar o seu conteúdo no AI Mode e nas AI Overviews, mantendo as posições no Search clássico. A medida é obrigatória por exigência da CMA (Competition and Markets Authority do Reino Unido). Para anunciantes: se sites de referência de um nicho (ex: portais imobiliários, sites de clínicas) optarem por sair do AI Mode, o grounding disponível para as respostas IA nesse nicho diminui, o que pode afetar a relevância dos anúncios conversacionais no AI Mode desse sector. Sinal de que a regulação de IA na busca está a avançar e Portugal pode ter obrigações semelhantes em breve.
+    </p>
+    <a href="https://9to5google.com/2026/06/02/google-ai-mode-overviews-opt-out/" target="_blank">9to5Google &#8599;</a>
+  </div>
+</div>
+
+<!-- SECÇÃO G -->
+<div class="section">
+  <div class="section-title">🎨 Criativos &amp; Ângulos</div>
+
+  <div class="card">
+    <span class="tag tag-new">FERRAMENTA</span>
+    <h3>Meta AI dubbing em expansão: traduz voiceover e texto em imagem para múltiplos idiomas, +10% CTR no beta</h3>
+    <p class="why">
+      A Meta está a expandir a ferramenta de AI dubbing para mais anunciantes: traduz e reduba o áudio de vídeos de anúncios para outros idiomas (com sincronização labial) e passa a incluir também a tradução do texto sobreposto nas imagens. Nos testes beta, segundo a Meta, a ferramenta gerou em média +10% de CTR e +8% de CVR. Para quem tem criativos em português e quer testar entrada em mercados LATAM, UK ou multilingue, este recurso elimina a necessidade de produção separada por idioma. Nota: o ganho reportado é da Meta (fonte interna); resultados independentes a confirmar.
+    </p>
+    <a href="https://www.jonloomer.com/qvt/translate-voiceover/" target="_blank">Jon Loomer Digital &#8599;</a>
+  </div>
+</div>
+
+<!-- PRAZOS -->
+<footer-prazos>
+  <span class="prazo-label">⏳ Prazos a contar</span>
+  <span class="prazo-item">Meta auto&rarr;Comscore <strong>22/jun</strong></span>
+  <span class="prazo-sep">&middot;</span>
+  <span class="prazo-item">Meta API Reach/Impressões&rarr;Page Viewer <strong>fim de jun</strong></span>
+  <span class="prazo-sep">&middot;</span>
+  <span class="prazo-item">Google Bid Target Adjustment Tool <strong>6/jul</strong></span>
+  <span class="prazo-sep">&middot;</span>
+  <span class="prazo-item">Google Bidding Target Optimization <strong>17/ago</strong></span>
+  <span class="prazo-sep">&middot;</span>
+  <span class="prazo-item">AI Max automigração DSAs <strong>fev 2027</strong></span>
+</footer-prazos>
+
+</body>
+</html>
