@@ -1,0 +1,337 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing de Tráfego — 19/06/2026</title>
+<style>
+  :root {
+    --blue: #1a56db;
+    --blue-light: #e8f0fe;
+    --green: #0d7c3d;
+    --green-light: #e6f4ec;
+    --orange: #c45c00;
+    --orange-light: #fff3e6;
+    --purple: #6b21a8;
+    --purple-light: #f5f0ff;
+    --red: #b91c1c;
+    --red-light: #fff1f1;
+    --teal: #0e7490;
+    --teal-light: #e0f7fa;
+    --gray: #374151;
+    --gray-light: #f9fafb;
+    --border: #e5e7eb;
+    --text: #111827;
+    --muted: #6b7280;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    font-size: 15px;
+    line-height: 1.65;
+    color: var(--text);
+    background: #f3f4f6;
+    padding: 16px;
+  }
+  .wrap { max-width: 740px; margin: 0 auto; }
+  /* Header */
+  .header {
+    background: var(--blue);
+    color: #fff;
+    border-radius: 12px 12px 0 0;
+    padding: 22px 24px 18px;
+  }
+  .header h1 { font-size: 1.25rem; font-weight: 700; letter-spacing: -0.01em; }
+  .header .meta { font-size: 0.82rem; opacity: 0.8; margin-top: 4px; }
+  /* TL;DR */
+  .tldr {
+    background: #fff;
+    border-left: 4px solid var(--blue);
+    padding: 18px 20px;
+    margin-bottom: 4px;
+  }
+  .tldr-label {
+    font-size: 0.72rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--blue);
+    margin-bottom: 8px;
+  }
+  .tldr p { font-size: 0.93rem; color: var(--gray); margin-bottom: 6px; }
+  .tldr p:last-child { margin-bottom: 0; }
+  /* Section */
+  .section { background: #fff; padding: 20px 20px 4px; margin-bottom: 4px; }
+  .section-title {
+    font-size: 0.78rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--muted);
+    margin-bottom: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .section-title span.emoji { font-size: 1rem; }
+  /* Card */
+  .card {
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    padding: 14px 16px;
+    margin-bottom: 12px;
+  }
+  .card-title {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  .card-why {
+    font-size: 0.88rem;
+    color: var(--gray);
+    margin-bottom: 10px;
+    line-height: 1.6;
+  }
+  .card-link a {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--blue);
+    text-decoration: none;
+  }
+  .card-link a:hover { text-decoration: underline; }
+  /* Color variants */
+  .card.blue  { border-left: 3px solid var(--blue);   background: var(--blue-light); }
+  .card.green { border-left: 3px solid var(--green);  background: var(--green-light); }
+  .card.orange{ border-left: 3px solid var(--orange); background: var(--orange-light); }
+  .card.purple{ border-left: 3px solid var(--purple); background: var(--purple-light); }
+  .card.red   { border-left: 3px solid var(--red);    background: var(--red-light); }
+  .card.teal  { border-left: 3px solid var(--teal);   background: var(--teal-light); }
+  /* Badge */
+  .badge {
+    display: inline-block;
+    font-size: 0.68rem;
+    font-weight: 700;
+    border-radius: 4px;
+    padding: 1px 6px;
+    margin-bottom: 6px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .badge.novo   { background: #d1fae5; color: #065f46; }
+  .badge.alert  { background: #fef3c7; color: #92400e; }
+  .badge.urgente{ background: #fee2e2; color: #991b1b; }
+  /* Prazos footer */
+  .footer-prazos {
+    background: #fff;
+    border-top: 1px solid var(--border);
+    padding: 14px 20px;
+    border-radius: 0 0 12px 12px;
+    margin-top: 4px;
+  }
+  .prazo-label {
+    font-size: 0.75rem;
+    font-weight: 700;
+    color: var(--muted);
+    display: block;
+    margin-bottom: 6px;
+  }
+  .prazo-line {
+    font-size: 0.82rem;
+    color: var(--muted);
+    display: flex;
+    flex-wrap: wrap;
+    gap: 4px 0;
+    align-items: center;
+  }
+  .prazo-item { white-space: nowrap; }
+  .prazo-item strong { color: var(--gray); }
+  .prazo-sep { margin: 0 8px; opacity: 0.4; }
+  /* Responsive */
+  @media (max-width: 480px) {
+    body { padding: 8px; font-size: 14px; }
+    .header { padding: 16px; }
+    .section, .tldr { padding: 14px; }
+    .card { padding: 12px 14px; }
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HEADER -->
+  <div class="header">
+    <h1>Briefing de Tráfego &mdash; 19/06/2026</h1>
+    <div class="meta">Plataformas &middot; Tracking &middot; Leads &middot; ICP &middot; IA &mdash; por Elisabete Silva</div>
+  </div>
+
+  <!-- TL;DR -->
+  <div class="tldr">
+    <div class="tldr-label">TL;DR &mdash; O mais importante hoje</div>
+    <p>O Google vai mudar a faturação de campanhas Demand Gen com VTC no Discover de CPC para CPM a partir de 15 de julho: quem usa esta combinação vai ver o ritmo de gasto e os relatórios alterarem-se automaticamente, sem notificação da plataforma.</p>
+    <p>O ChatGPT Ads Manager abriu product feeds e CPA bidding a mais anunciantes, incluindo verticals reguladas como serviços financeiros: a publicidade em IA conversacional começa a ter estrutura de licitação semelhante ao Search clássico.</p>
+    <p>A Microsoft alargou o targeting por seniority LinkedIn ao Search e Audience ads, em 29 mercados: leads B2B qualificadas por nível hierárquico a preço de Bing, sem depender do LinkedIn Campaign Manager.</p>
+  </div>
+
+  <!-- SECÇÃO A: PLATAFORMAS & ALGORITMOS -->
+  <div class="section">
+    <div class="section-title"><span class="emoji">&#9889;</span> Plataformas &amp; Algoritmos</div>
+
+    <div class="card blue">
+      <div class="badge alert">Ativo em 15/jul</div>
+      <div class="card-title">Google muda Demand Gen VTC no Discover de CPC para CPM a partir de 15 de julho</div>
+      <div class="card-why">
+        As campanhas Demand Gen com otimiza&ccedil;&atilde;o para VTC (view-through conversions) que servem no Discover v&atilde;o passar automaticamente de fatura&ccedil;&atilde;o por clique (CPC) para fatura&ccedil;&atilde;o por impres&atilde;o (CPM) na data indicada, sem a&ccedil;&atilde;o necess&aacute;ria. O impacto pr&aacute;tico: o ritmo de gasto pode alterar-se, e m&eacute;tricas de custo por resultado mudam de base, o que pode desorientar os reportes existentes. Quem n&atilde;o usa VTC optimization n&atilde;o &eacute; afetado. A&ccedil;&atilde;o imediata: identificar campanhas Demand Gen com VTC ativo e preparar clientes para a mudan&ccedil;a nos dashboards antes do dia 15.
+      </div>
+      <div class="card-link">
+        <a href="https://searchengineland.com/google-ads-shifts-demand-gen-billing-to-cpm-for-some-discover-campaigns-480300" target="_blank">Search Engine Land &#8599;</a>
+      </div>
+    </div>
+
+    <div class="card blue">
+      <div class="badge novo">Desde 8/jun</div>
+      <div class="card-title">Google Performance Max: testes A/B de assets dispon&iacute;veis para todos os tipos de campanha</div>
+      <div class="card-why">
+        Desde 8 de junho, os testes A/B de assets dentro de campanhas Performance Max est&atilde;o abertos a todos os tipos de campanha PMax, n&atilde;o apenas a e-commerce. A l&oacute;gica de testes: dois grupos de 20 buckets de tr&aacute;fego, um por controlo e outro por tratamento, com vencedor declarado a 95% de confian&ccedil;a. O que se pode testar: asset groups completos, assets individuais adicionados, criativo sazonal vs evergreen, e assets gerados pelo Asset Studio. Limitac&atilde;o: um teste por campanha de cada vez, e os asset groups ficam bloqueados enquanto o teste corre. Para gestores de leads: &eacute; finalmente poss&iacute;vel provar qual criativo gera mais convers&otilde;es sem dividir budget por campanhas separadas.
+      </div>
+      <div class="card-link">
+        <a href="https://searchengineland.com/google-adds-new-performance-max-asset-testing-tools-479667" target="_blank">Search Engine Land &#8599;</a>
+        &nbsp;&middot;&nbsp;
+        <a href="https://almcorp.com/news/performance-max-asset-experiments/" target="_blank">ALM Corp &#8599;</a>
+      </div>
+    </div>
+
+    <div class="card blue">
+      <div class="badge novo">15/jun</div>
+      <div class="card-title">Microsoft Ads expande targeting LinkedIn com seniority hierárquica em 29 mercados</div>
+      <div class="card-why">
+        A Microsoft adicionou um novo dimens&atilde;o de targeting no LinkedIn Profile: n&iacute;vel de seniority, com 10 cat&egorias padronizadas (CXO, VP, Director, Manager, Senior, Entry, Owner, Partner, Training, Volunteer). Dispon&iacute;vel em Search e Audience ads, ao n&iacute;vel de campanha ou ad group, com bid adjustments independentes por n&iacute;vel. O valor concreto para clientes B2B e SaaS: &eacute; poss&iacute;vel mostrar mensagens diferentes ao decisor (CXO, VP) e ao t&eacute;cnico (Senior, Entry) na mesma query de pesquisa, algo que no Google Ads n&atilde;o existe. E a CPC m&eacute;dia no Bing &eacute; 30-50% mais baixa que no Google para as mesmas keywords. Mercados cobertos incluem Portugal.
+      </div>
+      <div class="card-link">
+        <a href="https://searchengineland.com/microsoft-ads-expands-linkedin-targeting-with-job-seniority-filters-480296" target="_blank">Search Engine Land &#8599;</a>
+        &nbsp;&middot;&nbsp;
+        <a href="https://ppc.land/microsoft-advertising-adds-job-seniority-to-linkedin-profile-targeting/" target="_blank">ppc.land &#8599;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECÇÃO C: GERAÇÃO DE LEADS -->
+  <div class="section">
+    <div class="section-title"><span class="emoji">&#129394;</span> Gera&ccedil;&atilde;o de Leads</div>
+
+    <div class="card green">
+      <div class="badge novo">Global agora</div>
+      <div class="card-title">Meta Advantage+ Leads: verificação SMS e work email nos formulários, mais envio direto para Salesforce e Zapier via CAPI</div>
+      <div class="card-why">
+        A Meta tornou o Advantage+ Leads dispon&iacute;vel globalmente e adicionou dois novos filtros de qualidade nos instant forms: verifica&ccedil;&atilde;o por SMS (o lead recebe c&oacute;digo OTP antes de submeter) e verifica&ccedil;&atilde;o por work email (obriga a usar email corporativo, via Instagram ou Marketing API). Est&aacute; ainda a testar verifica&ccedil;&atilde;o por morada. Em paralelo, os anunciantes que integram o CRM com Zapier podem agora enviar at&eacute; 100.000 eventos de lead para a Conversions API de forma gratuita, e quem usa Salesforce Sales Cloud pode fazer o envio direto sem intermediários. O efeito combinado: formul&aacute;rios com menos leads falsas, e o sinal de qualidade a chegar &agrave; Conversions API para alimentar o Smart Bidding.
+      </div>
+      <div class="card-link">
+        <a href="https://www.socialmediatoday.com/news/meta-lead-gen-ad-updates-ai-targeting-verification-crm-expansion/804301/" target="_blank">Social Media Today &#8599;</a>
+        &nbsp;&middot;&nbsp;
+        <a href="https://joinbreaker.ai/blog-posts/meta-lead-generation-ads-ai-tools" target="_blank">Breaker Blog &#8599;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECÇÃO D: PULSO DO ICP -->
+  <div class="section">
+    <div class="section-title"><span class="emoji">&#128101;</span> Pulso do ICP</div>
+
+    <div class="card orange">
+      <div class="card-title">"O meu CPL &eacute; de €30 mas n&atilde;o sei quantas leads fecham" &mdash; imobili&aacute;rio, advocacia, stands auto</div>
+      <div class="card-why">
+        Dados de m&uacute;ltiplos mercados mostram que leads de portais imobili&aacute;rios (Zillow, Idealista, equivalentes) convertem a 0,4&ndash;1,2%, enquanto leads geradas diretamente por paid social ou Google Ads do pr&oacute;prio neg&oacute;cio convertem a 5&ndash;20%. Ou seja: um CPL de €20 num portal pode custar €2.000 por neg&oacute;cio fechado, enquanto um CPL de €60 em campanha pr&oacute;pria pode custar €300 por neg&oacute;cio. A queixa real que chega a gestores de tr&aacute;fego &eacute; &ldquo;estou a pagar as campanhas mas n&atilde;o vejo resultados&rdquo;, quando o problema &eacute; que ningu&eacute;m mediu nunca o custo por neg&oacute;cio fechado, s&oacute; o custo por lead. Oportunidade: propor a estes clientes um acompanhamento de pipeline simples (mesmo que em Google Sheets) antes de aumentar orçamento.
+      </div>
+      <div class="card-link">
+        <a href="https://goliathdata.com/average-cost-real-estate-leads-2025" target="_blank">Goliath Data &#8599;</a>
+        &nbsp;&middot;&nbsp;
+        <a href="https://www.ylopo.com/blog/how-much-do-real-estate-leads-cost" target="_blank">Ylopo &#8599;</a>
+      </div>
+    </div>
+
+    <div class="card orange">
+      <div class="card-title">"Recebo 80 contactos por mês mas metade tem número errado" &mdash; coaches, nutricionistas, clínicas, advogados</div>
+      <div class="card-why">
+        &Eacute; a queixa mais frequente em nichos de servi&ccedil;os locais com formul&aacute;rios de lead no Meta: a taxa de contacto real fica muito abaixo do n&uacute;mero de submiss&otilde;es, porque os campos do instant form s&atilde;o pr&eacute;-preenchidos com dados antigos do perfil Facebook que o utilizador n&atilde;o corrige. O novo filtro de verifica&ccedil;&atilde;o por SMS da Meta (ver sec&ccedil;&atilde;o de Leads) &eacute; a resposta direta: obriga o utilizador a confirmar o n&uacute;mero antes de submeter. O trade-off &eacute; real: o volume de leads desce, mas a taxa de contacto sobe. Para clientes que pagam avença e t&ecirc;m volume alto de leads irrastreáveis, ativar esta verifica&ccedil;&atilde;o &eacute; uma das a&ccedil;&otilde;es de maior impacto que pode ser feita em 5 minutos no Ads Manager.
+      </div>
+      <div class="card-link">
+        <a href="https://www.socialmediatoday.com/news/meta-lead-gen-ad-updates-ai-targeting-verification-crm-expansion/804301/" target="_blank">Social Media Today &#8599;</a>
+        &nbsp;&middot;&nbsp;
+        <a href="https://leadsync.me/blog/meta-leads-sms-verification/" target="_blank">LeadSync &#8599;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECÇÃO E: FOCO EUA -->
+  <div class="section">
+    <div class="section-title"><span class="emoji">&#127482;&#127480;</span> Foco EUA</div>
+
+    <div class="card teal">
+      <div class="card-title">67% dos compradores de casa nos EUA usam IA como principal ferramenta de pesquisa (era 17% há 18 meses)</div>
+      <div class="card-why">
+        A mudan&ccedil;a de comportamento no imobili&aacute;rio americano &eacute; a mais r&aacute;pida alguma vez registada neste setor: de 17% para 67% em 18 meses. O comprador j&aacute; n&atilde;o vai ao Zillow primeiro; faz uma pergunta ao ChatGPT ou ao Google Gemini. Para anunciantes de imobili&aacute;rio americano (ou portugueses que queiram penetrar este mercado), o que muda: presença em portais perde valor relativo e os anúncios nos resultados de IA (AI Overviews, ChatGPT Ads) ganham import&acirc;ncia. E porque a convers&atilde;o por IA &eacute; alta (quem pergunta &ldquo;casas em Lisboa para comprar&rdquo; ao Gemini j&aacute; est&aacute; no fundo do funil), o CPL aqui tende a ser melhor que em portais.
+      </div>
+      <div class="card-link">
+        <a href="https://www.homevalueleads.com/real-estate-marketing-trends/" target="_blank">Home Value Leads &#8599;</a>
+        &nbsp;&middot;&nbsp;
+        <a href="https://www.dealmachine.com/blog/revolutionizing-real-estate-lead-generation-2026" target="_blank">DealMachine &#8599;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- SECÇÃO F: IA & BUSCA GENERATIVA -->
+  <div class="section">
+    <div class="section-title"><span class="emoji">&#129302;</span> IA &amp; Busca Generativa</div>
+
+    <div class="card purple">
+      <div class="badge novo">11/jun</div>
+      <div class="card-title">ChatGPT Ads Manager: product feeds (at&eacute; 2M itens), CPA bidding e abertura a verticals reguladas como servi&ccedil;os financeiros</div>
+      <div class="card-why">
+        A 11 de junho, a OpenAI abriu a mais anunciantes a gest&atilde;o de product feeds no Ads Manager: os anunciantes podem carregar cat&aacute;logos com at&eacute; 2 milh&otilde;es de itens e gerar anúncios a partir do feed sem configurar campanha a campanha. Em paralelo, o CPA bidding (custo por a&ccedil;&atilde;o) est&aacute; em rollout para contas com pelo menos um evento de convers&atilde;o j&aacute; ativo, e os servi&ccedil;os financeiros entraram no piloto de anúncios. O sinal de fundo: o ChatGPT Ads est&aacute; a evoluir rapidamente para uma estrutura semelhante ao Google Ads cl&aacute;ssico (feeds, lances por CPA, verticals reguladas). Para quem tem clientes em seguros, cr&eacute;dito ou outros servi&ccedil;os financeiros, esta &eacute; a janela para testar antes de o leil&atilde;o encher.
+      </div>
+      <div class="card-link">
+        <a href="https://searchengineland.com/openai-launches-product-feed-ads-in-ads-manager-beta-479900" target="_blank">Search Engine Land &#8599;</a>
+        &nbsp;&middot;&nbsp;
+        <a href="https://ppc.land/chatgpt-ads-manager-now-supports-product-feeds-after-checkout-is-killed/" target="_blank">ppc.land &#8599;</a>
+        &nbsp;&middot;&nbsp;
+        <a href="https://openai.com/index/testing-ads-in-chatgpt/" target="_blank">OpenAI &#8599;</a>
+      </div>
+    </div>
+
+    <div class="card purple">
+      <div class="card-title">AI Overviews: 83% zero-click em queries com Overview; AI Mode chega a 93% &mdash; o tráfego orgânico está estruturalmente em queda</div>
+      <div class="card-why">
+        Análises de tr&aacute;fego mostram que quando o Google mostra uma AI Overview, 83% das queries n&atilde;o geram cliques em nenhum resultado, pago ou org&acirc;nico. No AI Mode, essa taxa sobe para 93%. Publishers em alguns nichos perderam entre 20% e 90% do tr&aacute;fego org&acirc;nico no &uacute;ltimo ano. Para anunciantes e para os seus clientes: o paid &eacute; a &uacute;nica forma garantida de aparecer em queries de alta inten&ccedil;&atilde;o no Google, porque os anúncios surgem mesmo dentro dos resultados AI. Este &eacute; o argumento concreto para clientes que &ldquo;j&aacute; aparecem no Google organicamente&rdquo; e ainda n&atilde;o inv&ecirc;stem em paid: o organic est&aacute; a perder vis&atilde;o sem que o site mude alguma coisa.
+      </div>
+      <div class="card-link">
+        <a href="https://www.adexchanger.com/publishers/the-ai-search-reckoning-is-dismantling-open-web-traffic-and-publishers-may-never-recover/" target="_blank">AdExchanger &#8599;</a>
+        &nbsp;&middot;&nbsp;
+        <a href="https://www.altaonline.com/dispatches/a70466591/ai-overviews-google-zero-search-traffic/" target="_blank">Alta Online &#8599;</a>
+      </div>
+    </div>
+  </div>
+
+  <!-- PRAZOS -->
+  <div class="footer-prazos">
+    <span class="prazo-label">&#9203; Prazos a contar</span>
+    <div class="prazo-line">
+      <span class="prazo-item">Meta auto&rarr;Comscore <strong>22/jun</strong></span>
+      <span class="prazo-sep">&middot;</span>
+      <span class="prazo-item">Meta API Reach&rarr;Page Viewer <strong>fim/jun</strong></span>
+      <span class="prazo-sep">&middot;</span>
+      <span class="prazo-item">Taxa Meta UE <strong>1/jul</strong></span>
+      <span class="prazo-sep">&middot;</span>
+      <span class="prazo-item">Google Demand Gen VTC Discover CPC&rarr;CPM <strong>15/jul</strong></span>
+      <span class="prazo-sep">&middot;</span>
+      <span class="prazo-item">Bid Target Adjustment Tool <strong>6/jul</strong></span>
+      <span class="prazo-sep">&middot;</span>
+      <span class="prazo-item">Bidding Target Optimization <strong>17/ago</strong></span>
+      <span class="prazo-sep">&middot;</span>
+      <span class="prazo-item">AI Max automigra&ccedil;&atilde;o DSAs <strong>fev 2027</strong></span>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
