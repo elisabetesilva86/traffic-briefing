@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing de Tráfego — 20/06/2026</title>
+<style>
+  :root {
+    --brand: #1a56db;
+    --brand-light: #e8effd;
+    --accent: #f59e0b;
+    --accent-light: #fffbea;
+    --green: #059669;
+    --green-light: #ecfdf5;
+    --text: #1e293b;
+    --muted: #64748b;
+    --border: #e2e8f0;
+    --bg: #f8fafc;
+    --card-bg: #ffffff;
+    --radius: 12px;
+    --shadow: 0 1px 4px rgba(0,0,0,0.07), 0 4px 16px rgba(0,0,0,0.05);
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    padding: 0 16px 40px;
+  }
+  header {
+    background: var(--brand);
+    color: #fff;
+    padding: 20px 24px 16px;
+    margin: 0 -16px 28px;
+    text-align: center;
+  }
+  header .label {
+    font-size: 11px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    opacity: 0.75;
+    margin-bottom: 4px;
+  }
+  header h1 { font-size: 1.4rem; font-weight: 700; }
+  header .date { font-size: 0.85rem; opacity: 0.8; margin-top: 4px; }
+  .tldr {
+    background: var(--accent-light);
+    border: 1.5px solid var(--accent);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 28px;
+  }
+  .tldr h2 { font-size: 0.7rem; letter-spacing: 1.5px; text-transform: uppercase; color: #92400e; margin-bottom: 8px; }
+  .tldr p { font-size: 0.95rem; color: #78350f; line-height: 1.65; }
+  .section { margin-bottom: 28px; }
+  .section-title {
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+    color: var(--muted);
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .section-title::after {
+    content: '';
+    flex: 1;
+    height: 1px;
+    background: var(--border);
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-bottom: 10px;
+    box-shadow: var(--shadow);
+  }
+  .card h3 {
+    font-size: 0.95rem;
+    font-weight: 700;
+    color: var(--text);
+    margin-bottom: 6px;
+    line-height: 1.4;
+  }
+  .card .why {
+    font-size: 0.875rem;
+    color: #374151;
+    margin-bottom: 10px;
+    line-height: 1.55;
+  }
+  .card .links { display: flex; flex-wrap: wrap; gap: 6px; }
+  .card a {
+    font-size: 0.78rem;
+    color: var(--brand);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 3px;
+    background: var(--brand-light);
+    padding: 3px 9px;
+    border-radius: 20px;
+  }
+  .card a:hover { background: #c7d9fb; }
+  .card .tag {
+    display: inline-block;
+    font-size: 0.68rem;
+    padding: 2px 7px;
+    border-radius: 8px;
+    font-weight: 600;
+    margin-right: 6px;
+    margin-bottom: 6px;
+    vertical-align: middle;
+  }
+  .tag-new { background: #dcfce7; color: #166534; }
+  .tag-action { background: #fee2e2; color: #991b1b; }
+  .tag-watch { background: #e0f2fe; color: #075985; }
+  .icp-card {
+    background: var(--green-light);
+    border-color: #a7f3d0;
+  }
+  .icp-card h3 { color: #065f46; }
+  .icp-card .why { color: #064e3b; }
+  .icp-card a { color: var(--green); background: #d1fae5; }
+  .prazos-footer {
+    background: var(--accent-light);
+    border: 1px solid #f5d87a;
+    border-radius: var(--radius);
+    padding: 12px 16px;
+    margin-top: 32px;
+    font-size: 0.82rem;
+    color: #78350f;
+    line-height: 1.9;
+  }
+  .prazo-label {
+    font-weight: 700;
+    font-size: 0.75rem;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+    display: block;
+  }
+  .prazo-sep { opacity: 0.4; margin: 0 7px; }
+  @media (min-width: 640px) {
+    body { max-width: 700px; margin: 0 auto; padding: 0 24px 48px; }
+    header { margin: 0 -24px 32px; padding: 24px 32px 20px; }
+    header h1 { font-size: 1.6rem; }
+    .card h3 { font-size: 1rem; }
+  }
+</style>
+</head>
+<body>
+
+<header>
+  <div class="label">Inteligência de Marketing</div>
+  <h1>Briefing de Tráfego</h1>
+  <div class="date">20 de junho de 2026 &nbsp;|&nbsp; Elisabete Silva</div>
+</header>
+
+<div class="tldr">
+  <h2>TL;DR — O mais importante hoje</h2>
+  <p>
+    A Meta estreou a Partnership Ads API: marcas e agências podem agora transformar posts orgânicos de criadores em anúncios pagos de forma programática, com Partnership Reels a registarem (segundo a Meta) 29% mais conversões face a anúncios standard. O Google abriu os Real Estate Local Services Ads a todos os 50 estados americanos, criando um canal de geração de leads direto para agentes imobiliários. No tracking, dois bloqueios entraram em vigor a 15/jun: a Google Ads API deixou de aceitar novos imports de conversões offline pela rota antiga, e o ad_storage do Consent Mode passou a ser o único ponto de controlo dos dados de publicidade no stack Google.
+  </p>
+</div>
+
+<!-- PLATAFORMAS & ALGORITMOS -->
+<div class="section">
+  <div class="section-title">⚡ Plataformas &amp; Algoritmos</div>
+
+  <div class="card">
+    <span class="tag tag-new">NOVO</span>
+    <h3>Meta Partnership Ads API: marcas transformam posts orgânicos de criadores em anúncios pagos à escala</h3>
+    <p class="why">
+      A Meta lançou a Facebook Partnership Ads API, que permite a marcas e agências identificar e ativar conteúdo de criadores (UGC, posts de afiliados, menções de marca) e convertê-lo em anúncio pago de forma programática, sem negociar manualmente com cada criador. O Partnership Ads Hub agrega automaticamente Instagram UGC, conteúdo afiliado e posts que mencionam a marca, com métricas de performance visíveis no Hub. Os dados internos da Meta indicam Partnership Ads em Reels com 16% menos custo por alcance, 13% mais ROAS e 29% mais conversões face a anúncios standard. Para gestoras com clientes em nichos de formação, clínicas ou infoprodutos, é o caminho mais direto para escalar criativos UGC sem produção de raiz.
+    </p>
+    <div class="links">
+      <a href="https://www.socialmediatoday.com/news/meta-expands-creator-partnership-opportunities-for-brands/807691/" target="_blank">Social Media Today &#8599;</a>
+      <a href="https://www.marketingdive.com/news/meta-streamlines-brands-creator-partnerships-with-ai-powered-updates/807629/" target="_blank">Marketing Dive &#8599;</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-new">NOVO</span>
+    <h3>Meta Threads: brand safety com IAS, DoubleVerify, Scope3 e Zefr em teste limitado</h3>
+    <p class="why">
+      A Meta arrancou com um teste de verificação de brand safety e suitability nos anúncios do Threads em parceria com Integral Ad Science, DoubleVerify, Scope3 e Zefr. Os parceiros usam análise multimédia (vídeo, áudio, imagem e texto) para verificar o contexto em que os anúncios aparecem. Para clientes em nichos regulados (saúde, direito, finanças), este passo sinaliza que o Threads caminha para ser um canal viável em campanhas que exigem controlos de brand safety equiparados aos de Facebook e Instagram.
+    </p>
+    <div class="links">
+      <a href="https://www.socialmediatoday.com/news/threads-expands-ad-verification-partnerships-threads-ias-doubleverify-scope3-zefr/803029/" target="_blank">Social Media Today &#8599;</a>
+      <a href="https://schemaninja.com/brand-safety-verification-on-threads/" target="_blank">SchemaNinja &#8599;</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-action">AÇÃO</span>
+    <h3>Google Ads unifica Enhanced Conversions num switch único em junho</h3>
+    <p class="why">
+      A Google fundiu as Enhanced Conversions for web e for leads num único toggle on/off, eliminando a seleção de métodos separados. Quem já tinha Enhanced Conversions ativas migra automaticamente. O ponto relevante: desde abril, a Google Ads aceita dados de utilizador em simultâneo via website tags, Data Manager e API, sem forçar uma rota única. Para campanhas de geração de leads, a configuração fica mais simples e reduz erros de implementação, especialmente em contas geridas por equipas sem fundo técnico.
+    </p>
+    <div class="links">
+      <a href="https://searchengineland.com/google-ads-simplifies-enhanced-conversions-into-a-single-switch-474101" target="_blank">Search Engine Land &#8599;</a>
+      <a href="https://support.google.com/google-ads/answer/16884284" target="_blank">Google Help Oficial &#8599;</a>
+    </div>
+  </div>
+</div>
+
+<!-- TRACKING & PRIVACIDADE -->
+<div class="section">
+  <div class="section-title">🎯 Tracking &amp; Privacidade</div>
+
+  <div class="card">
+    <span class="tag tag-action">AÇÃO URGENTE</span>
+    <h3>Google bloqueia novos imports de conversões offline via Google Ads API desde 15/jun: migração para Data Manager</h3>
+    <p class="why">
+      Desde 15 de junho, a Google Ads API deixou de aceitar tokens novos para import de conversões offline (incluindo Enhanced Conversions for Leads). Quem já usava a rota antiga pode continuar temporariamente, mas sem novas integrações possíveis por essa via. O Data Manager API é agora a rota obrigatória para qualquer nova implementação. Para agências com vários clientes e integrações de CRM via API, convém auditar já quais as contas que ainda não migraram.
+    </p>
+    <div class="links">
+      <a href="https://ppc.land/google-blocks-new-offline-conversion-imports-via-ads-api-from-june-15/" target="_blank">PPC.land &#8599;</a>
+      <a href="https://ads-developers.googleblog.com/2026/05/changes-to-offline-click-conversion.html" target="_blank">Google Ads Dev Blog &#8599;</a>
+    </div>
+  </div>
+
+  <div class="card">
+    <span class="tag tag-action">VERIFICAR</span>
+    <h3>GA4 e Google Ads consent controls separados desde 15/jun: ad_storage é o único ponto de controlo</h3>
+    <p class="why">
+      A Google consolidou os controlos de consentimento: o Google Signals do GA4 deixou de ser um gate secundário para os dados de anúncios. A partir de 15 de junho, o ad_storage (configurado na CMP via Consent Mode) é o único ponto que determina se os dados de advertising chegam ao Google Ads. Uma misconfiguration na CMP passa a ter impacto direto no rastreio de anúncios, sem rede de segurança. Quem tem clientes em mercados europeus deve confirmar que a CMP está a enviar ad_storage=granted corretamente, caso contrário arrisca perder dados de conversão sem aviso.
+    </p>
+    <div class="links">
+      <a href="https://www.uniconsent.com/blog/google-ads-consent-mode-change-2026" target="_blank">UniConsent &#8599;</a>
+      <a href="https://almcorp.com/blog/ga4-google-ads-consent-controls-split-june-2026/" target="_blank">ALM Corp &#8599;</a>
+    </div>
+  </div>
+</div>
+
+<!-- GERAÇÃO DE LEADS -->
+<div class="section">
+  <div class="section-title">🧲 Geração de Leads</div>
+
+  <div class="card">
+    <span class="tag tag-watch">BENCHMARK 2026</span>
+    <h3>WordStream: CPL médio no Google Ads desce para $66.69 e CVR sobe em 87% das indústrias</h3>
+    <p class="why">
+      O relatório anual WordStream (dados de abril 2025 a março 2026, mais de 17.000 contas Google e Microsoft Ads) mostra que o CPL médio desceu ligeiramente para $66.69, enquanto a taxa de conversão média subiu para 7.04%. Por nicho ICP: Advogados/Serviços Jurídicos lideram o CPL mais alto ($144), seguidos de Saúde e Educação Superior. Serviços locais e auto repair ficam nos mais baixos ($27-35). O dado mais acionável: a CVR subiu em 87% das indústrias, o que sugere que o problema raramente é o tráfego em si mas sim a landing page ou a qualificação do lead no formulário.
+    </p>
+    <div class="links">
+      <a href="https://www.wordstream.com/blog/2026-google-ads-benchmarks" target="_blank">WordStream &#8599;</a>
+    </div>
+  </div>
+</div>
+
+<!-- PULSO DO ICP -->
+<div class="section">
+  <div class="section-title">👥 Pulso do ICP</div>
+
+  <div class="card icp-card">
+    <span class="tag tag-new">SINAL PT</span>
+    <h3>"A minha concorrente não tem certificado nenhum mas tem 10k seguidores e cobra metade" — coaches e nutricionistas PT em aperto</h3>
+    <p class="why">
+      A Ordem dos Nutricionistas registou 86 denúncias de exercício ilegal da profissão entre novembro de 2024 e novembro de 2025 (dobro face ao período anterior), a maioria referindo páginas em redes sociais onde personal trainers e coaches prestam aconselhamento alimentar sem credenciais. Para donos de clínicas de nutrição e coaches certificados que investem em anúncios, o mercado ficou mais ruidoso: o prospect compara com operadores sem regulação, desvaloriza a proposta de valor e converte pior. O ângulo de anúncio que funciona neste contexto: credenciais visíveis, testemunhos com resultado mensurável, e uma pergunta de qualificação logo no formulário que filtra quem quer só "dicas grátis".
+    </p>
+    <div class="links">
+      <a href="https://observador.pt/2026/05/16/aumentam-denuncias-a-ordem-dos-nutricionistas-por-usurpacao-de-funcoes-nas-redes-sociais/" target="_blank">Observador &#8599;</a>
+      <a href="https://www.publico.pt/2026/05/16/sociedade/noticia/aumentam-denuncias-ordem-nutricionistas-usurpacao-funcoes-redes-sociais-2174948" target="_blank">Público &#8599;</a>
+    </div>
+  </div>
+
+  <div class="card icp-card">
+    <span class="tag tag-watch">BENCHMARK META</span>
+    <h3>CPL Meta 2026 em nichos regulados: saúde $157, direito $188, seguros $198 — pré-qualificação no formulário é o diferencial</h3>
+    <p class="why">
+      Os benchmarks de CPA Meta Ads 2026 por indústria (via get-ryze.ai) mostram que nichos regulados pagam os CPA mais altos: healthcare $156.88, legal $187.60, insurance $198.42. Para clientes nestes nichos (clínicas, advogados, seguradoras), adicionar perguntas de triagem no formulário de leads ou usar Click-to-WhatsApp como destino pode reduzir o CPA efetivo em 40-60%, filtrando leads que nunca convertem. O volume total de leads cai, mas o custo real por cliente conquistado melhora. Estes dados são da plataforma Meta; benchmarks independentes tendem a variar por mercado e vertical.
+    </p>
+    <div class="links">
+      <a href="https://www.get-ryze.ai/blog/meta-ads-cost-benchmarks-by-industry-2026" target="_blank">Get-Ryze.ai &#8599;</a>
+    </div>
+  </div>
+</div>
+
+<!-- FOCO EUA -->
+<div class="section">
+  <div class="section-title">🇺🇸 Foco EUA</div>
+
+  <div class="card">
+    <span class="tag tag-new">EXPANSÃO</span>
+    <h3>Google expande Real Estate Local Services Ads a todos os 50 estados: agentes imobiliários têm novo canal de leads</h3>
+    <p class="why">
+      A partir de 11 de junho, os Real Estate Local Services Ads do Google estão disponíveis nos 50 estados americanos, em parceria com a HouseCanary para dados de listagens. O formato mostra preço, fotos e características do imóvel diretamente nos resultados do Search mobile, com botões de chamada, mensagem ou agendamento direto com um agente local. Agentes já inscritos no LSA aparecem automaticamente no formato enriquecido. A expansão coloca o Google em concorrência direta com Zillow e Redfin (as ações de ambas caíram cerca de 4% na semana do anúncio). Para gestoras com clientes imobiliários nos EUA, convém confirmar se estão inscritos no LSA para não perderem visibilidade no novo formato.
+    </p>
+    <div class="links">
+      <a href="https://www.housingwire.com/articles/google-listing-ads-nationwide/" target="_blank">HousingWire &#8599;</a>
+      <a href="https://searchengineland.com/google-expands-richer-local-services-ads-for-real-estate-nationwide-479878" target="_blank">Search Engine Land &#8599;</a>
+    </div>
+  </div>
+</div>
+
+<!-- CRIATIVOS & ÂNGULOS -->
+<div class="section">
+  <div class="section-title">🎨 Criativos &amp; Ângulos</div>
+
+  <div class="card">
+    <span class="tag tag-watch">PADRÃO 2026</span>
+    <h3>Result hooks e UGC-style dominam: 71% da decisão de retenção acontece nos primeiros 3 segundos</h3>
+    <p class="why">
+      Uma análise de mais de 500 criativos Meta com melhor performance em 2026 (Brandsearch.co) e testes de hooks de vídeo (Imagine.art) apontam para o mesmo padrão: mostrar o resultado ou transformação logo no início bate qualquer outro tipo de abertura. Os hooks que falham: "Did you know?", apresentações do negócio, e "oferta limitada" nos primeiros 2 segundos (sinalizam "anúncio" antes de o viewer decidir ver). O que converte: imagem do antes/depois, pergunta direta ao problema, ou reação genuína de cliente. Para geração de leads em serviços (clínicas, coaches, imobiliário), o ângulo "o que o teu lead ganhou" nos primeiros 3 segundos supera qualquer explicação do serviço.
+    </p>
+    <div class="links">
+      <a href="https://brandsearch.co/blog/winning-meta-ad-patterns-2026" target="_blank">Brandsearch.co &#8599;</a>
+      <a href="https://www.imagine.art/blogs/best-hooks-for-video-ads-2026" target="_blank">Imagine.art &#8599;</a>
+    </div>
+  </div>
+</div>
+
+<!-- PRAZOS A CONTAR -->
+<div class="prazos-footer">
+  <span class="prazo-label">⏳ Prazos a contar</span>
+  Meta auto Nielsen&rarr;Comscore (stands auto): <strong>22/jun</strong>
+  <span class="prazo-sep">·</span>
+  Taxa Meta UE: <strong>1/jul</strong>
+  <span class="prazo-sep">·</span>
+  Bid Target Adjustment Tool (Google): <strong>6/jul</strong>
+  <span class="prazo-sep">·</span>
+  Demand Gen VTC Discover passa a CPM: <strong>15/jul</strong>
+  <span class="prazo-sep">·</span>
+  Bidding Target Optimization automático (Google): <strong>17/ago</strong>
+</div>
+
+</body>
+</html>
