@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Briefing de Tráfego — 22/06/2026</title>
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+      background: #f0f4f8;
+      color: #1a202c;
+      line-height: 1.65;
+      font-size: 15px;
+    }
+    .wrap { max-width: 740px; margin: 0 auto; padding: 24px 16px 48px; }
+
+    /* HEADER */
+    header {
+      background: linear-gradient(135deg, #1e3a5f 0%, #2b5282 100%);
+      color: #fff;
+      padding: 28px 28px 22px;
+      border-radius: 14px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 16px rgba(30,58,95,.25);
+    }
+    header .label {
+      font-size: 10px;
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      color: #90cdf4;
+      margin-bottom: 8px;
+    }
+    header h1 { font-size: 22px; font-weight: 700; line-height: 1.25; }
+    header .sub { font-size: 12px; color: #bee3f8; margin-top: 6px; }
+
+    /* TLDR */
+    .tldr {
+      background: #fffbeb;
+      border-left: 4px solid #f59e0b;
+      padding: 18px 22px;
+      border-radius: 10px;
+      margin-bottom: 28px;
+      box-shadow: 0 1px 4px rgba(0,0,0,.07);
+    }
+    .tldr-label {
+      font-size: 10px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.5px;
+      color: #92400e;
+      margin-bottom: 9px;
+    }
+    .tldr p { font-size: 14px; color: #78350f; line-height: 1.75; }
+    .tldr p + p { margin-top: 8px; }
+
+    /* SECTION */
+    section { margin-bottom: 30px; }
+    .sec-title {
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.4px;
+      color: #4a5568;
+      margin-bottom: 12px;
+      padding-bottom: 9px;
+      border-bottom: 2px solid #e2e8f0;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    /* CARD */
+    .card {
+      background: #fff;
+      border-radius: 11px;
+      padding: 17px 20px 16px;
+      margin-bottom: 10px;
+      box-shadow: 0 1px 3px rgba(0,0,0,.08), 0 2px 8px rgba(0,0,0,.04);
+      transition: box-shadow .15s;
+      border: 1px solid #edf2f7;
+    }
+    .card:hover { box-shadow: 0 4px 14px rgba(0,0,0,.11); }
+    .badge {
+      display: inline-block;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: .7px;
+      text-transform: uppercase;
+      padding: 2px 8px;
+      border-radius: 5px;
+      margin-bottom: 8px;
+    }
+    .badge-new  { background: #c6f6d5; color: #276749; }
+    .badge-beta { background: #bee3f8; color: #2b6cb0; }
+    .badge-alert{ background: #fed7d7; color: #c53030; }
+    .badge-watch{ background: #e9d8fd; color: #6b21a8; }
+    .badge-icp  { background: #fefcbf; color: #975a16; }
+    .card h3 {
+      font-size: 14.5px;
+      font-weight: 700;
+      color: #1a202c;
+      margin-bottom: 7px;
+      line-height: 1.45;
+    }
+    .card p {
+      font-size: 13.5px;
+      color: #4a5568;
+      line-height: 1.7;
+      margin-bottom: 11px;
+    }
+    .card a {
+      font-size: 12px;
+      color: #3182ce;
+      text-decoration: none;
+      font-weight: 600;
+      border-bottom: 1px solid #bee3f8;
+      padding-bottom: 1px;
+      word-break: break-all;
+      transition: color .12s;
+    }
+    .card a:hover { color: #2b6cb0; border-color: #90cdf4; }
+    .card .links { display: flex; flex-wrap: wrap; gap: 6px 14px; }
+
+    /* ICP card tint */
+    .card-icp {
+      background: #f0fff4;
+      border-color: #9ae6b4;
+    }
+    .card-icp h3 { color: #22543d; }
+    .card-icp p  { color: #276749; }
+    .card-icp a  { color: #276749; border-color: #9ae6b4; }
+
+    /* EUA card tint */
+    .card-usa {
+      background: #ebf8ff;
+      border-color: #90cdf4;
+    }
+    .card-usa h3 { color: #1a365d; }
+    .card-usa p  { color: #2c5282; }
+    .card-usa a  { color: #2b6cb0; border-color: #90cdf4; }
+
+    /* PRAZOS FOOTER */
+    .prazos {
+      background: #fffbeb;
+      border: 1px solid #fbd38d;
+      border-radius: 9px;
+      padding: 13px 18px;
+      font-size: 13px;
+      color: #744210;
+      line-height: 1.8;
+      margin-top: 8px;
+    }
+    .prazos strong { color: #744210; font-size: 11px; text-transform: uppercase; letter-spacing: .8px; display: block; margin-bottom: 5px; }
+    .sep { opacity: .4; margin: 0 7px; }
+
+    /* RESPONSIVE */
+    @media (max-width: 600px) {
+      header { padding: 20px 18px 18px; border-radius: 11px; }
+      header h1 { font-size: 18px; }
+      .card { padding: 14px 15px 13px; }
+      .card h3 { font-size: 14px; }
+      .card p { font-size: 13px; }
+      .wrap { padding: 16px 12px 40px; }
+    }
+  </style>
+</head>
+<body>
+<div class="wrap">
+
+  <!-- HEADER -->
+  <header>
+    <div class="label">Briefing Matinal · Tráfego Pago · por Elisabete Silva</div>
+    <h1>Briefing de Tráfego — 22/06/2026</h1>
+    <div class="sub">Plataformas · Geração de Leads · ICP · IA · Criativos · Ferramentas</div>
+  </header>
+
+  <!-- TLDR -->
+  <div class="tldr">
+    <div class="tldr-label">TL;DR — O mais importante hoje</div>
+    <p>O Google lançou o Promotion Mode (beta), uma ferramenta de ajuste temporário de ROAS e orçamento para picos sazonais, sem alterar os targets permanentes da campanha: ideal para lançamentos, eventos e datas comerciais em nichos como formação, imobiliário e stands auto.</p>
+    <p>A Meta disponibilizou os Creative Fatigue Score e Similarity Score no Ads Manager, tornando mensurável o desgaste criativo antes de os CPMs subirem, ponto crítico para contas que rodam os mesmos anúncios durante semanas.</p>
+    <p>No pulso ICP, o diagnóstico é unânime: o custo de lead para serviços locais subiu 21% este ano e a taxa de conversão desceu, mas a causa não é a plataforma, é a ausência de qualificação no formulário e de resposta rápida após submissão.</p>
+  </div>
+
+  <!-- PLATAFORMAS & ALGORITMOS -->
+  <section>
+    <div class="sec-title">⚡ Plataformas &amp; Algoritmos</div>
+
+    <div class="card">
+      <div class="badge badge-beta">Beta · Google Ads</div>
+      <h3>Google lança Promotion Mode: ajuste temporário de ROAS e orçamento para picos de procura</h3>
+      <p><strong>Porquê importa:</strong> O Promotion Mode permite aumentar temporariamente a tolerância de ROAS e o orçamento diário durante períodos de pico (lançamento de programa, Black Friday, época de primavera em imobiliário, evento de stand auto) sem alterar os targets permanentes da campanha. Quando o período termina, a campanha volta automaticamente à configuração original. Elimina o erro clássico de "mudar o tCPA para um evento e esquecer de reverter". Disponível em beta; o opt-in é feito no nível da campanha Search, Shopping ou Performance Max. A Google refere que campanhas em Promotion Mode mantiveram o tCPA declarado com mais consistência durante picos de tráfego em comparação com ajustes manuais de bid.</p>
+      <div class="links">
+        <a href="https://searchengineland.com/google-expands-smart-bidding-exploration-adds-promotion-mode-480165" target="_blank">Search Engine Land</a>
+        <a href="https://www.seroundtable.com/google-ads-promotion-mode-smart-bidding-bidding-target-41501.html" target="_blank">Search Engine Roundtable</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- GERAÇÃO DE LEADS -->
+  <section>
+    <div class="sec-title">🧲 Geração de Leads</div>
+
+    <div class="card">
+      <div class="badge badge-new">Open Beta EUA · GML 2026</div>
+      <h3>Google Business Agent for Leads: chatbot Gemini dentro do anúncio qualifica a lead antes do formulário</h3>
+      <p><strong>Porquê importa:</strong> Apresentado no Google Marketing Live (maio 2026), este formato substitui o formulário de lead estático dentro de um anúncio de Search por um agente conversacional com Gemini: o utilizador faz perguntas, o agente responde com base no site do anunciante, e o formulário pré-preenchido só aparece quando a intenção está qualificada. O processo acontece dentro do Google, sem visita à landing page. Em open beta nos EUA nos nichos de educação, imobiliário e automóvel (os primeiros a testar), os dados iniciais sugerem aumento de qualidade de lead face ao formulário standard. Condição: requer campanha com AI Max for Search ou Performance Max com text customization ativa. Para nichos como formação, coaching, jurídico e imobiliário, onde a qualidade da lead é mais crítica do que o volume, é o sinal mais relevante do ano em geração de leads Google.</p>
+      <div class="links">
+        <a href="https://krows-digital.com/google-business-agent-for-leads-what-it-means/" target="_blank">Krows Digital</a>
+        <a href="https://ivristech.com/google-business-agent-for-leads-b2b/" target="_blank">IvrisTech</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PULSO DO ICP -->
+  <section>
+    <div class="sec-title">👥 Pulso do ICP</div>
+
+    <div class="card card-icp">
+      <div class="badge badge-icp">Serviços Locais · Queixa Real</div>
+      <h3>"Tenho leads baratas mas o CRM está cheio de nãos" — o problema de qualidade que não se vê no Ads Manager</h3>
+      <p><strong>Porquê importa:</strong> A queixa mais frequente de donos de clínicas, advogados, nutricionistas e coaches em 2026 é esta: o CPL parece bom no Ads Manager mas a taxa de conversão em venda é baixa. Os dados confirmam a tendência: o custo médio de lead em Meta para serviços subiu 21% este ano (de 8,67% para 7,72% a taxa de conversão desceu em paralelo), criando um efeito de custo composto. A causa raramente é a plataforma: é a ausência de perguntas de pré-qualificação no formulário e o tempo de resposta após submissão. Quem responde em menos de 5 minutos após a lead entrar converte substancialmente mais do que quem responde horas depois. Para gestoras, a proposta de valor não é apenas "gerar leads mais baratas" mas fechar o loop entre o formulário e o CRM do cliente.</p>
+      <div class="links">
+        <a href="https://adadvisor.ai/blog/facebook-ads-for-service-businesses-in-2026-what-actually-works" target="_blank">AdAdvisor</a>
+        <a href="https://www.straightnorth.com/blog/lead-generation-on-meta-9-proven-tactics-for-delivering-high-quality-leads/" target="_blank">Straight North</a>
+      </div>
+    </div>
+
+    <div class="card card-icp">
+      <div class="badge badge-icp">Stand Auto · Atribuição</div>
+      <h3>Stands auto: "geramos leads mas não provamos que alguma vendeu um carro" — o problema de medição que bloqueia avenças</h3>
+      <p><strong>Porquê importa:</strong> Discussão recente na comunidade DealerRefresh (fórum de decisores do setor auto): o setor reconhece que medir apenas o volume de leads é "a forma mais incompleta de avaliar marketing", mas a maioria dos stands não tem o loop de atribuição offline fechado. O padrão que surge: dono de negócio com vendedor Google Ads que "não faz mudanças há 4 anos" e que não consegue provar ligação entre um anúncio e uma venda concreta. Para gestoras de tráfego, resolver este ponto (ligar o CRM do stand ao Google Ads via Data Manager e ao Meta via CAPI offline, passando eventos de "venda confirmada") é o diferencial que transforma uma proposta de €700/mês numa de €1.500+, porque passa a provar ROI real e não apenas custo por lead.</p>
+      <div class="links">
+        <a href="https://dealertalk.io/the-lead-conundrum-in-automotive-retail/" target="_blank">Dealer Talk</a>
+        <a href="https://forum.dealerrefresh.com/threads/advertising-ideas-and-best-practice-for-2026.11254/" target="_blank">DealerRefresh Forum</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOCO EUA -->
+  <section>
+    <div class="sec-title">🇺🇸 Foco EUA</div>
+
+    <div class="card card-usa">
+      <div class="badge badge-watch">Imobiliário EUA · Benchmark</div>
+      <h3>Imobiliário EUA: CPL blended sobe para $448 e Meta CPMs disparam 20-35% em grandes mercados</h3>
+      <p><strong>Porquê importa:</strong> Depois do NAR Settlement de 2024-2025 (acordo que alterou os modelos de comissão dos agentes imobiliários americanos), mais agentes e brokerages passaram a investir em publicidade paga, inundando os leilões do Meta com spend adicional e empurrando os CPMs para cima 20-35% nos grandes mercados americanos. O CPL blended do imobiliário chegou a $448 (paid $480, orgânico $416), tornando-o um dos nichos mais caros ao nível do jurídico ($649) e serviços financeiros ($653). Para gestoras de tráfego que pretendem entrar no mercado americano neste nicho, o sinal claro é: o mercado não procura leads mais baratas, procura leads com intenção confirmada. Formatos com pré-qualificação (CTWA, Business Agent for Leads, formulários com scoring) são o diferencial de proposta.</p>
+      <div class="links">
+        <a href="https://www.jamilacademy.com/blog/real-estate-lead-generation-costs" target="_blank">Jamil Academy</a>
+        <a href="https://www.dealmachineos.com/real-estate-lead-generation-statistics-2026" target="_blank">DealMachine</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- IA & BUSCA GENERATIVA -->
+  <section>
+    <div class="sec-title">🤖 IA &amp; Busca Generativa</div>
+
+    <div class="card">
+      <div class="badge badge-new">ChatGPT Ads · 2026</div>
+      <h3>ChatGPT Ads: $100M em receita anualizada — a plataforma publicitária mais rápida a escalar desde o TikTok</h3>
+      <p><strong>Porquê importa:</strong> O piloto publicitário do ChatGPT, lançado em fevereiro de 2026, já gera (segundo analistas citados pelo Digital Applied) cerca de $100M em receita anualizada, com CPM de referência a rondar os $60 e mais de 800 milhões de utilizadores semanais. Em paralelo, a Google indica que os seus anúncios já aparecem a par de 25% das respostas do AI Overview (face a 5% em início de 2025). O mercado de publicidade em motores de busca com IA nos EUA está estimado entre $15B e $25B este ano e a crescer 35-50% ao ano. Para gestoras de tráfego, o sinal prático ainda não é "lançar campanhas no ChatGPT já" (acesso restrito), mas sim perceber que o comportamento de pesquisa dos utilizadores se está a fragmentar entre Google tradicional, AI Mode e ChatGPT, com padrões de intenção distintos em cada canal.</p>
+      <div class="links">
+        <a href="https://www.digitalapplied.com/blog/ai-search-advertising-chatgpt-google-perplexity-2026" target="_blank">Digital Applied</a>
+        <a href="https://www.adventureppc.com/blog/chatgpt-ads-vs-perplexity-ads-2026-ai-search-advertising-comparison" target="_blank">Adventure PPC</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- CRIATIVOS & ÂNGULOS -->
+  <section>
+    <div class="sec-title">🎨 Criativos &amp; Ângulos</div>
+
+    <div class="card">
+      <div class="badge badge-new">Meta Ads Manager · Novo</div>
+      <h3>Meta lança Creative Fatigue Score e Similarity Score: o desgaste criativo passa a ser mensurável antes de os CPMs subirem</h3>
+      <p><strong>Porquê importa:</strong> Dois novos indicadores disponíveis no Ads Manager (em Análise e Relatórios, dentro de Insights da Conta), com rollout a decorrer em 2026. O Creative Fatigue Score alerta quando a audiência já viu o anúncio vezes suficientes para a performance começar a cair. O Similarity Score deteta quando se estão a correr anúncios visualmente ou conceptualmente tão semelhantes que o algoritmo Andromeda os trata como um único criativo, penalizando a conta com CPMs mais altos. O ponto crítico para contas de serviços locais (clínicas, imobiliário, coaching) que tendem a reutilizar os mesmos 2-3 criativos: o sistema passa a dar um aviso antecipado acionável, em vez de só ser visível após a queda de performance. Ação: verificar estes indicadores semanalmente e estabelecer um ritmo de renovação criativa baseado nos alertas, não no calendário.</p>
+      <div class="links">
+        <a href="https://www.admetrics.io/en/post/meta-creative-fatigue-and-similarity-score-complete-guide" target="_blank">Admetrics</a>
+        <a href="https://reportei.com/en/new-metrics-of-meta-ads/" target="_blank">Reportei</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- FERRAMENTAS & AUTOMAÇÃO -->
+  <section>
+    <div class="sec-title">🛠️ Ferramentas &amp; Automação</div>
+
+    <div class="card">
+      <div class="badge badge-new">Stape · Grátis</div>
+      <h3>Stape lança GTM Setup Assistant: tracking server-side sem escrever uma linha de código</h3>
+      <p><strong>Porquê importa:</strong> A Stape lançou o GTM Setup Assistant, uma ferramenta gratuita (disponível no plano Free) que configura tracking web e server-side através de um questionário guiado, sem necessidade de código ou developer. Suporta plataformas como Shopify, WordPress, Magento, WooCommerce e sites custom, e os destinos de tracking incluem GA4, Google Ads, Meta, Microsoft Ads, LinkedIn, TikTok e Snapchat. O output é um container GTM pronto a importar. Para agências com clientes que ainda têm tracking fraco (sem server-side, sem CAPI configurado, sem enhanced conversions), esta ferramenta reduz o tempo de setup de horas para minutos. O caso de uso mais direto: um cliente novo que ainda não tem nada configurado, ou uma migração de web-only para server-side que normalmente exigiria um técnico dedicado.</p>
+      <div class="links">
+        <a href="https://stape.io/" target="_blank">Stape.io</a>
+        <a href="https://www.issuewire.com/stape-makes-server-side-tracking-accessible-to-non-technical-marketers-with-new-gtm-setup-assistant-1868420043259305" target="_blank">IssueWire (Press Release)</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRAZOS A CONTAR -->
+  <div class="prazos">
+    <strong>⏳ Prazos a contar</strong>
+    Taxa Meta DST (AT/FR/IT/ES/TR/UK) <b>1/jul</b>
+    <span class="sep">·</span>
+    Google Ads avisos Bidding Target Optimization <b>6/jul</b>
+    <span class="sep">·</span>
+    Demand Gen VTC Discover: faturação muda de CPC para CPM <b>15/jul</b>
+    <span class="sep">·</span>
+    Google Ads mudança automática de licitação (campanhas budget-limited) <b>17/ago</b>
+    <span class="sep">·</span>
+    Google DSA: migração automática para AI Max <b>set. 2026</b>
+  </div>
+
+</div>
+</body>
+</html>
