@@ -1,0 +1,356 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Briefing de Tráfego — 23/06/2026</title>
+<style>
+  :root {
+    --primary: #1a1a2e;
+    --accent: #e94560;
+    --accent2: #0f3460;
+    --bg: #f8f9fa;
+    --card-bg: #ffffff;
+    --text: #2d2d2d;
+    --muted: #6c757d;
+    --border: #e9ecef;
+    --tag-bg: #eef2ff;
+    --tag-color: #3730a3;
+    --urgent-bg: #fff1f2;
+    --urgent-border: #fecdd3;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+  .topbar {
+    background: var(--primary);
+    color: white;
+    padding: 12px 20px;
+    font-size: 12px;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .topbar span { opacity: 0.7; }
+  .topbar strong { opacity: 1; }
+  header {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--accent2) 100%);
+    color: white;
+    padding: 36px 20px 28px;
+    text-align: center;
+  }
+  header h1 {
+    font-size: clamp(20px, 5vw, 30px);
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 6px;
+  }
+  header .subtitle {
+    opacity: 0.75;
+    font-size: 13px;
+    letter-spacing: 0.03em;
+  }
+  .container {
+    max-width: 700px;
+    margin: 0 auto;
+    padding: 0 16px 40px;
+  }
+  .tldr {
+    background: var(--accent);
+    color: white;
+    border-radius: 12px;
+    padding: 20px 22px;
+    margin: 24px 0 28px;
+  }
+  .tldr .label {
+    font-size: 10px;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 700;
+    opacity: 0.85;
+    margin-bottom: 10px;
+  }
+  .tldr p {
+    font-size: 14.5px;
+    line-height: 1.65;
+  }
+  section { margin-bottom: 32px; }
+  .section-header {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-bottom: 14px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--border);
+  }
+  .section-header h2 {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--primary);
+  }
+  .card {
+    background: var(--card-bg);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: 16px 18px;
+    margin-bottom: 12px;
+    transition: box-shadow 0.15s;
+  }
+  .card:hover { box-shadow: 0 4px 16px rgba(0,0,0,0.08); }
+  .card.urgent {
+    background: var(--urgent-bg);
+    border-color: var(--urgent-border);
+    border-left: 4px solid var(--accent);
+  }
+  .card-tags {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+  }
+  .tag {
+    font-size: 10px;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 20px;
+    background: var(--tag-bg);
+    color: var(--tag-color);
+  }
+  .tag.red { background: #fff1f2; color: #be123c; }
+  .tag.green { background: #f0fdf4; color: #166534; }
+  .tag.orange { background: #fff7ed; color: #9a3412; }
+  .tag.blue { background: #eff6ff; color: #1e40af; }
+  .card h3 {
+    font-size: 14.5px;
+    font-weight: 700;
+    color: var(--primary);
+    margin-bottom: 7px;
+    line-height: 1.4;
+  }
+  .card .why {
+    font-size: 13.5px;
+    color: #444;
+    line-height: 1.6;
+    margin-bottom: 10px;
+  }
+  .card a {
+    font-size: 12px;
+    color: var(--accent2);
+    text-decoration: none;
+    font-weight: 600;
+    display: inline-flex;
+    align-items: center;
+    gap: 4px;
+  }
+  .card a:hover { text-decoration: underline; }
+  .card a::after { content: " ↗"; opacity: 0.6; }
+  .prazos-bar {
+    background: var(--primary);
+    color: white;
+    border-radius: 10px;
+    padding: 14px 18px;
+    margin-top: 28px;
+    font-size: 13px;
+  }
+  .prazos-bar .plabel {
+    font-size: 10px;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.6;
+    margin-bottom: 7px;
+  }
+  .prazos-bar .plist {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px 16px;
+    list-style: none;
+    font-size: 13px;
+  }
+  .prazos-bar .plist li::before { content: "·"; margin-right: 6px; opacity: 0.5; }
+  .prazos-bar .plist li span { opacity: 0.65; font-size: 12px; }
+  footer {
+    text-align: center;
+    color: var(--muted);
+    font-size: 11px;
+    padding: 20px 16px 12px;
+    border-top: 1px solid var(--border);
+    margin-top: 10px;
+  }
+  @media (max-width: 480px) {
+    .topbar { flex-direction: column; gap: 2px; font-size: 11px; }
+    header { padding: 28px 16px 22px; }
+    .tldr { padding: 16px 16px; }
+  }
+</style>
+</head>
+<body>
+
+<div class="topbar">
+  <strong>Briefing Matinal · Tráfego Pago</strong>
+  <span>por Elisabete Silva</span>
+</div>
+
+<header>
+  <h1>Briefing de Tráfego — 23/06/2026</h1>
+  <p class="subtitle">Plataformas · Tracking · ICP · WhatsApp · Geração de Leads</p>
+</header>
+
+<div class="container">
+
+  <!-- TL;DR -->
+  <div class="tldr">
+    <div class="label">⚡ TL;DR — O mais importante hoje</div>
+    <p>A Google adiou a migração forçada de campanhas DSA para AI Max de setembro de 2026 para fevereiro de 2027, restaurando entretanto a criação de novos DSA, o que dá mais pista para migração controlada. Em paralelo, o Smart Bidding Exploration ficou disponível globalmente para todas as campanhas PMax sem product feeds, expandindo para intenções não capturadas sem alterar o tCPA. No Meta, as Advantage+ Leads chegam agora a todo o mundo com verificação de lead por SMS e email profissional, o que elimina submissões falsas antes de chegarem ao CRM. E o prazo para migrar os relatórios que usam métricas de "Reach" da Graph API v25 é esta semana.</p>
+  </div>
+
+  <!-- SECÇÃO 1: PLATAFORMAS & ALGORITMOS -->
+  <section>
+    <div class="section-header">
+      <h2>⚡ Plataformas & Algoritmos</h2>
+    </div>
+
+    <!-- Card 1 -->
+    <div class="card">
+      <div class="card-tags">
+        <span class="tag green">Boas Notícias</span>
+        <span class="tag">Google Ads</span>
+        <span class="tag">DSA / AI Max</span>
+      </div>
+      <h3>Google adia migração DSA → AI Max para fevereiro de 2027 e restaura criação de campanhas DSA</h3>
+      <div class="why">
+        <strong>Porquê importa:</strong> A migração automática de Dynamic Search Ads para AI Max estava prevista para setembro de 2026, mas a Google adiou-a para fevereiro de 2027 após pressão de anunciantes que pediam mais tempo para testar. Mais: desde junho de 2026, voltou a ser possível criar novas campanhas DSA (criação que tinha sido bloqueada numa fase anterior). Para gestoras com clientes em serviços, imobiliário, B2B ou formação que dependem de DSA para capturar intenções dinâmicas, há agora um período de migração voluntária até janeiro de 2027 e espaço para testar AI Max em paralelo sem cold start forçado.
+      </div>
+      <a href="https://searchengineland.com/google-delays-dynamic-search-ads-migration-to-ai-max-480049" target="_blank">Search Engine Land</a>
+      &nbsp;&nbsp;
+      <a href="https://ads-developers.googleblog.com/2026/06/dynamic-search-ads-dsa-automigration.html" target="_blank">Google Ads Developer Blog</a>
+    </div>
+
+    <!-- Card 2 -->
+    <div class="card">
+      <div class="card-tags">
+        <span class="tag blue">Global GA</span>
+        <span class="tag">Google Ads</span>
+        <span class="tag">Performance Max</span>
+      </div>
+      <h3>Google Smart Bidding Exploration: agora disponível globalmente para todas as campanhas PMax sem product feeds</h3>
+      <div class="why">
+        <strong>Porquê importa:</strong> O Smart Bidding Exploration permite ao algoritmo licitar em queries com histórico de conversão não provado, dentro de um intervalo de tolerância ROAS definido pelo anunciante. Para PMax sem product feeds (o formato dominante em geração de leads: serviços, coaching, imobiliário, jurídico, formação), isso significa acesso a intenções de compra que a campanha não estava a captar antes, sem mexer no tCPA ou ROAS target global. A Google indica, com base em dados internos, +18% em categorias de query com conversão e +19% em conversões; números atribuídos à plataforma, não verificados de forma independente. Para contas em plateau de volume, ativação de baixo risco.
+      </div>
+      <a href="https://business.google.com/us/accelerate/announcements/smart-bidding-exploration-expansion/" target="_blank">Google Accelerate</a>
+      &nbsp;&nbsp;
+      <a href="https://ppc.land/google-ads-gets-promotion-mode-and-a-major-bidding-overhaul-this-august/" target="_blank">PPC Land</a>
+    </div>
+
+    <!-- Card 3 -->
+    <div class="card">
+      <div class="card-tags">
+        <span class="tag blue">Global</span>
+        <span class="tag">Meta Ads</span>
+        <span class="tag">Lead Gen</span>
+      </div>
+      <h3>Meta Advantage+ Leads disponível globalmente: verificação por SMS e email profissional, mais "Chat na Messenger"</h3>
+      <div class="why">
+        <strong>Porquê importa:</strong> Advantage+ Leads é o motor de IA da Meta aplicado a geração de leads (o equivalente ao Advantage+ Sales para e-commerce): gere targeting, criativos e placements automaticamente para maximizar submissões qualificadas. A novidade desta semana é dupla. Primeiro, verificação de identidade antes da submissão do formulário: OTP via SMS ou email profissional, o que elimina números de telemóvel falsos e emails inválidos antes de chegarem ao CRM, sem criar atrito excessivo. Segundo, "Chat com a lead na Messenger": o anunciante pode ativar resposta automática imediata a quem submete o formulário, abrindo conversa antes que a intenção de compra arrefeça. A Meta indica (dados da plataforma) 14% menos CPL e 10% menos custo por lead qualificada em campanhas Advantage+ Leads vs. o padrão.
+      </div>
+      <a href="https://www.socialmediatoday.com/news/meta-lead-gen-ad-updates-ai-targeting-verification-crm-expansion/804301/" target="_blank">Social Media Today</a>
+      &nbsp;&nbsp;
+      <a href="https://www.facebook.com/business/help/898260175547909" target="_blank">Meta Business Help Center</a>
+    </div>
+  </section>
+
+  <!-- SECÇÃO 2: TRACKING & PRIVACIDADE -->
+  <section>
+    <div class="section-header">
+      <h2>🎯 Tracking & Privacidade</h2>
+    </div>
+
+    <!-- Card 4 -->
+    <div class="card urgent">
+      <div class="card-tags">
+        <span class="tag red">Urgente — Esta Semana</span>
+        <span class="tag">Meta API</span>
+        <span class="tag">Reporting</span>
+      </div>
+      <h3>Meta Graph API v25: métricas de "Reach" desaparecem até ao final de junho — migrar relatórios agora</h3>
+      <div class="why">
+        <strong>Porquê importa:</strong> A partir do final de junho de 2026, as métricas Post/Page Reach, Video Impressions e Story Impressions deixam de existir na Graph API v25. São substituídas pelas métricas Media Views e Media Viewers (Page Viewer Metric), que passam a ser o padrão unificado entre Facebook e Instagram. Qualquer ferramenta ou dashboard que ligue via API à Meta e use essas métricas vai deixar de receber dados de alcance sem aviso: Sprout Social, Hootsuite, Metricool, dashboards de BI e relatórios automáticos de agência estão afetados. O risco operacional: um relatório de cliente pode mostrar "alcance zero" sem que ninguém perceba que é um erro de integração e não uma queda real de performance. Ação: auditar agora quais relatórios de clientes usam Post/Page Reach e substituir pela nova métrica Media Viewers antes do final do mês.
+      </div>
+      <a href="https://www.socialmediatoday.com/news/meta-updates-marketing-api-to-align-with-latest-ad-shifts/812648/" target="_blank">Social Media Today</a>
+      &nbsp;&nbsp;
+      <a href="https://www.mobilemarketingreads.com/meta-overhauls-marketing-api-retires-legacy-reach-metrics-in-push-toward-views-standard/" target="_blank">Mobile Marketing Reads</a>
+    </div>
+  </section>
+
+  <!-- SECÇÃO 3: PULSO DO ICP -->
+  <section>
+    <div class="section-header">
+      <h2>👥 Pulso do ICP</h2>
+    </div>
+
+    <!-- Card 5 -->
+    <div class="card">
+      <div class="card-tags">
+        <span class="tag orange">Imobiliário PT</span>
+        <span class="tag">Queixa Real</span>
+      </div>
+      <h3>"A lead chegou mas o agente estava a visitar imóvel" — a janela de 5 minutos que o Ads Manager não mostra</h3>
+      <div class="why">
+        <strong>Porquê importa:</strong> O padrão dominante nas agências imobiliárias portuguesas em 2026 é este: CPL de €8-12 no Meta que parece ótimo no Ads Manager, mas taxa de conversão lead-para-reunião abaixo de 20% porque a resposta chega horas depois. A causa não é o anúncio nem a plataforma: a intenção de compra em imobiliário deteriora-se rapidamente após a submissão do formulário, e quem não responde em menos de 5 minutos perde a maioria das conversas. A queixa real do responsável da agência: "os agentes estão a fazer visitas durante o dia, e as leads ficam no email até à tarde". O problema é de operação, não de tráfego. Para gestoras, o argumento de avença mais forte deixou de ser "menos CPL" e passou a ser "integramos o formulário com o CRM e o agente recebe notificação de WhatsApp em tempo real". Resolve-se com n8n, Make ou integração nativa da maioria dos CRM imobiliários.
+      </div>
+      <a href="https://www.realeads.pt/tendencias-marketing-digital-imobiliario-2026/" target="_blank">Realeads PT</a>
+      &nbsp;&nbsp;
+      <a href="https://imobilead.me/integracao-facebook-crm/" target="_blank">Imobilead.me</a>
+    </div>
+  </section>
+
+  <!-- SECÇÃO 4: WHATSAPP & CTWA -->
+  <section>
+    <div class="section-header">
+      <h2>💬 WhatsApp & CTWA</h2>
+    </div>
+
+    <!-- Card 6 -->
+    <div class="card">
+      <div class="card-tags">
+        <span class="tag orange">Erro Técnico Comum</span>
+        <span class="tag">CTWA</span>
+        <span class="tag">Atribuição</span>
+      </div>
+      <h3>CTWA: 9 em 10 anunciantes perdem atribuição por não capturar o ctwa_clid — o "furo" silencioso</h3>
+      <div class="why">
+        <strong>Porquê importa:</strong> Click-to-WhatsApp Ads convertem até 3x mais do que um formulário standard (dados Meta) e podem chegar a 92% menos CPL em implementações corretas. O problema: 9 em 10 anunciantes não capturam o <strong>ctwa_clid</strong>, o identificador que o Meta injeta no webhook da conversa de WhatsApp e que liga cada clique ao anúncio original. Sem esse ID, o Ads Manager regista o clique mas não consegue atribuir a venda; o algoritmo não aprende qual criativo ou audiência gerou negócio real; e o ROAS calculado é ficção. A solução é técnica mas direta: capturar o ctwa_clid no webhook de WhatsApp, e devolver o evento de "compra" ou "lead qualificada" via Conversions API for Business Messaging (CAPI BM). Implementável em n8n, Make, ou código da integração de WhatsApp Business. Prazo crítico: a janela de atribuição que o Meta abre após o clique é de 72 horas.
+      </div>
+      <a href="https://getkanal.com/blog/click-to-whatsapp-ads-guide-2026" target="_blank">GetKanal</a>
+      &nbsp;&nbsp;
+      <a href="https://asisteclick.com/en/blog/click-to-whatsapp-ads-ctwa-conversion-2026/" target="_blank">AsisteClick</a>
+    </div>
+  </section>
+
+  <!-- PRAZOS A CONTAR -->
+  <div class="prazos-bar">
+    <div class="plabel">⏳ Prazos a contar</div>
+    <ul class="plist">
+      <li>Taxa Meta UE <span>· 1/jul</span></li>
+      <li>Google Bidding Target Optimization entra em vigor <span>· 17/ago</span></li>
+      <li>Google notificações de impacto no Ads Manager <span>· a partir de 6/jul</span></li>
+    </ul>
+  </div>
+
+</div>
+
+<footer>
+  Briefing de Tráfego Pago · Elisabete Silva · 23 de junho de 2026<br>
+  Gerado automaticamente com base em fontes públicas. Verificar sempre antes de agir.
+</footer>
+
+</body>
+</html>
